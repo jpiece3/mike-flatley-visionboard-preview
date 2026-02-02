@@ -5,91 +5,102 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Builder Architecture - Mike Flatley Real Estate</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       line-height: 1.6;
       color: #333;
       background: #f9f9f9;
+      padding-bottom: 80px;
     }
-
     .header {
       background: linear-gradient(135deg, #1a3a52 0%, #2c5166 100%);
       color: white;
-      padding: 32px 24px;
+      padding: 24px 0;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       position: sticky;
       top: 0;
       z-index: 100;
     }
-
     .header-content {
       max-width: 1200px;
       margin: 0 auto;
+      padding: 0 32px;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
-
-    .header h1 {
-      font-size: 1.8rem;
-      font-weight: 700;
-      margin: 0;
-    }
-
+    .header h1 { font-size: 1.5rem; font-weight: 600; }
     .back-link {
-      color: #d4a574;
+      color: white;
       text-decoration: none;
-      font-weight: 600;
-      padding: 10px 20px;
-      border: 2px solid #d4a574;
+      padding: 8px 16px;
+      background: rgba(255,255,255,0.15);
       border-radius: 6px;
-      transition: all 0.2s;
+      transition: background 0.2s;
+      font-size: 0.9rem;
     }
+    .back-link:hover { background: rgba(255,255,255,0.25); }
+    .container { max-width: 1200px; margin: 32px auto; padding: 0 32px; }
 
-    .back-link:hover {
-      background: #d4a574;
-      color: #1a3a52;
+    /* Custom meta display */
+    .meta-row {
+      display: flex;
+      padding: 8px 0;
+      border-bottom: 1px solid #f0f0f0;
     }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 48px 24px;
+    .meta-row:last-child { border-bottom: none; }
+    .meta-label {
+      font-weight: 600;
+      color: #666;
+      min-width: 200px;
     }
+    .meta-value { color: #333; }
 
-    h2 {
-      color: #1a3a52;
-      font-size: 2rem;
-      margin: 48px 0 24px 0;
-      padding-bottom: 12px;
-      border-bottom: 3px solid #d4a574;
-    }
-
-    h3 {
-      color: #1a3a52;
-      font-size: 1.5rem;
-      margin: 32px 0 16px 0;
-    }
-
-    h4 {
-      color: #2c5166;
-      font-size: 1.2rem;
-      margin: 24px 0 16px 0;
-    }
-
-    p, ul, ol {
+    /* Option cards within accordions */
+    .options-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
       margin: 16px 0;
-      color: #444;
     }
-
-    ul, ol {
-      padding-left: 24px;
+    .option-card {
+      background: #f8f9fa;
+      border: 1px solid #e5e5e5;
+      border-radius: 8px;
+      padding: 16px;
+    }
+    .option-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .option-id {
+      font-weight: 600;
+      color: #1a3a52;
+      font-family: "SF Mono", Monaco, monospace;
+      font-size: 0.9rem;
+    }
+    .option-icon { font-size: 1.5rem; }
+    .option-label {
+      font-weight: 600;
+      color: #1a3a52;
+      margin: 8px 0;
+      font-size: 1.1rem;
+    }
+    .option-description {
+      color: #666;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin-top: 8px;
+    }
+    .option-extra {
+      color: #777;
+      font-size: 0.85rem;
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px solid #e5e5e5;
     }
 
     code {
@@ -108,308 +119,15 @@
       border-radius: 6px;
       overflow-x: auto;
       margin: 16px 0;
+      font-family: "SF Mono", Monaco, monospace;
+      font-size: 0.9rem;
+      line-height: 1.6;
     }
 
     pre code {
       background: none;
       color: inherit;
       padding: 0;
-    }
-
-    strong {
-      color: #1a3a52;
-      font-weight: 600;
-    }
-
-    blockquote {
-      background: #fef9f1;
-      border-left: 4px solid #d4a574;
-      padding: 16px 20px;
-      margin: 24px 0;
-      color: #555;
-      font-style: italic;
-    }
-
-    hr {
-      border: none;
-      border-top: 2px solid #e0e0e0;
-      margin: 48px 0;
-    }
-
-    /* Dimension metadata cards */
-    .dimension-card {
-      background: linear-gradient(135deg, #fafafa 0%, white 100%);
-      border-left: 4px solid #1a3a52;
-      border-radius: 8px;
-      padding: 24px;
-      margin: 24px 0;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    }
-
-    .dimension-card h3 {
-      color: #1a3a52;
-      margin-bottom: 16px;
-      font-size: 1.3rem;
-      margin-top: 0;
-    }
-
-    .meta-row {
-      display: flex;
-      padding: 8px 0;
-      border-bottom: 1px solid #f0f0f0;
-    }
-
-    .meta-row:last-child {
-      border-bottom: none;
-    }
-
-    .meta-label {
-      font-weight: 600;
-      color: #666;
-      min-width: 200px;
-    }
-
-    .meta-value {
-      color: #333;
-    }
-
-    /* Option cards */
-    .options-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 16px;
-      margin: 24px 0;
-    }
-
-    .option-card {
-      background: white;
-      border: 1px solid #e5e5e5;
-      border-radius: 8px;
-      padding: 16px;
-      transition: all 0.2s;
-    }
-
-    .option-card:hover {
-      border-color: #d4a574;
-      box-shadow: 0 4px 12px rgba(212, 165, 116, 0.15);
-    }
-
-    .option-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 8px;
-    }
-
-    .option-id {
-      font-weight: 600;
-      color: #1a3a52;
-      font-family: "SF Mono", Monaco, monospace;
-      font-size: 0.9rem;
-    }
-
-    .option-icon {
-      font-size: 1.5rem;
-    }
-
-    .option-label {
-      font-weight: 600;
-      color: #1a3a52;
-      margin-bottom: 8px;
-      font-size: 1.1rem;
-    }
-
-    .option-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 8px;
-    }
-
-    .tag {
-      background: #f0f0f0;
-      color: #555;
-      padding: 4px 10px;
-      border-radius: 12px;
-      font-size: 0.8rem;
-    }
-
-    .option-description {
-      color: #666;
-      font-size: 0.95rem;
-      line-height: 1.5;
-      margin-top: 8px;
-    }
-
-    .option-extra {
-      color: #777;
-      font-size: 0.85rem;
-      margin-top: 8px;
-      padding-top: 8px;
-      border-top: 1px solid #f0f0f0;
-    }
-
-    /* Profile cards */
-    .profile-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 24px;
-      margin: 24px 0;
-    }
-
-    .profile-card {
-      background: linear-gradient(135deg, white 0%, #fafafa 100%);
-      border: 2px solid #e5e5e5;
-      border-radius: 12px;
-      padding: 24px;
-      transition: all 0.2s;
-    }
-
-    .profile-card:hover {
-      border-color: #1a3a52;
-      box-shadow: 0 8px 24px rgba(26, 58, 82, 0.1);
-    }
-
-    .profile-name {
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: #1a3a52;
-      margin-bottom: 8px;
-    }
-
-    .profile-tagline {
-      font-size: 1rem;
-      color: #d4a574;
-      font-style: italic;
-      margin-bottom: 12px;
-    }
-
-    .profile-description {
-      color: #555;
-      line-height: 1.6;
-      margin-bottom: 16px;
-    }
-
-    .profile-meta {
-      font-size: 0.9rem;
-      color: #666;
-      margin-top: 12px;
-      padding-top: 12px;
-      border-top: 1px solid #e5e5e5;
-    }
-
-    /* Flow table */
-    .flow-table {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 16px;
-      margin: 24px 0;
-    }
-
-    .flow-step {
-      background: white;
-      border: 1px solid #e5e5e5;
-      border-radius: 8px;
-      padding: 16px;
-      transition: all 0.2s;
-    }
-
-    .flow-step:hover {
-      border-color: #d4a574;
-      box-shadow: 0 4px 12px rgba(212, 165, 116, 0.15);
-    }
-
-    .step-number {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #d4a574;
-      margin-bottom: 8px;
-    }
-
-    .step-dimension {
-      font-family: "SF Mono", Monaco, monospace;
-      color: #1a3a52;
-      font-size: 0.9rem;
-      margin-bottom: 8px;
-    }
-
-    .step-heading {
-      font-weight: 600;
-      color: #1a3a52;
-      font-size: 1.1rem;
-      margin-bottom: 4px;
-    }
-
-    .step-subheading {
-      color: #666;
-      font-size: 0.95rem;
-      margin-bottom: 8px;
-    }
-
-    .step-meta {
-      display: flex;
-      gap: 12px;
-      margin-top: 12px;
-      padding-top: 12px;
-      border-top: 1px solid #f0f0f0;
-      font-size: 0.85rem;
-      color: #777;
-    }
-
-    /* Qualification signals table */
-    .signal-card {
-      background: white;
-      border: 1px solid #e5e5e5;
-      border-radius: 8px;
-      padding: 16px;
-      margin: 16px 0;
-    }
-
-    .signal-level {
-      font-weight: 700;
-      font-size: 1.1rem;
-      margin-bottom: 8px;
-    }
-
-    .signal-level.hot { color: #e74c3c; }
-    .signal-level.warm { color: #f39c12; }
-    .signal-level.cool { color: #3498db; }
-
-    /* Graphic template */
-    .template-box {
-      background: #2c3e50;
-      color: #ecf0f1;
-      padding: 24px;
-      border-radius: 8px;
-      margin: 24px 0;
-      font-family: "SF Mono", Monaco, monospace;
-      font-size: 0.95rem;
-      line-height: 1.8;
-    }
-
-    .placeholder-table {
-      display: grid;
-      gap: 12px;
-      margin: 24px 0;
-    }
-
-    .placeholder-row {
-      background: white;
-      border: 1px solid #e5e5e5;
-      border-radius: 6px;
-      padding: 12px;
-    }
-
-    .placeholder-name {
-      font-family: "SF Mono", Monaco, monospace;
-      color: #d4a574;
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-
-    .placeholder-details {
-      color: #666;
-      font-size: 0.9rem;
     }
   </style>
   <link rel="stylesheet" href="assets/preview-components.css">
@@ -423,1052 +141,597 @@
   </div>
 
   <div class="container">
-    <blockquote>
-      Architecture designed for: <strong>Build Your Chester County Dream Home Wishlist</strong><br>
-      Agent: VB Architecture Agent<br>
-      Date: February 1, 2026<br>
-      Vertical: Real Estate (using vertical-real-estate.json template with customizations)
-    </blockquote>
-
-    <hr>
-
-    <h2>1. Builder Overview</h2>
-
-    <div class="dimension-card">
-      <div class="meta-row">
-        <span class="meta-label">Title:</span>
-        <span class="meta-value">Build Your Chester County Dream Home Wishlist</span>
-      </div>
-      <div class="meta-row">
-        <span class="meta-label">Tagline:</span>
-        <span class="meta-value">See your perfect home come to life in 60 seconds</span>
-      </div>
-      <div class="meta-row">
-        <span class="meta-label">Step Count:</span>
-        <span class="meta-value">6 selection steps + 1 email capture = 7 total</span>
-      </div>
-      <div class="meta-row">
-        <span class="meta-label">Estimated Time:</span>
-        <span class="meta-value">60 seconds</span>
-      </div>
-      <div class="meta-row">
-        <span class="meta-label">Vertical:</span>
-        <span class="meta-value">Real Estate - Chester County, PA</span>
-      </div>
-      <div class="meta-row">
-        <span class="meta-label">Builder Type:</span>
-        <span class="meta-value">Vision Board (preference-based profile matching)</span>
-      </div>
+    <!-- Controls Bar -->
+    <div class="controls-bar">
+      <button class="control-btn" data-action="expand-all">Expand All Sections</button>
+      <button class="control-btn" data-action="collapse-all">Collapse All Sections</button>
     </div>
 
-    <hr>
+    <!-- Overview Card -->
+    <div class="preview-card highlight">
+      <div class="card-header">
+        <h3>Build Your Chester County Dream Home Wishlist</h3>
+        <span class="badge accent">Real Estate</span>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <span class="meta-label">Agent:</span>
+          <span class="meta-value">VB Architecture Agent (Stage 2A)</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Date:</span>
+          <span class="meta-value">February 1, 2026</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Tagline:</span>
+          <span class="meta-value">See your perfect home come to life in 60 seconds</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Builder Type:</span>
+          <span class="meta-value">Vision Board (preference-based profile matching)</span>
+        </div>
 
-    <h2>2. Preference Dimensions (6 Total)</h2>
-
-    <div class="dimension-card">
-      <h3>Dimension 1: <code>style</code> -- Home Style</h3>
-      <div class="meta-row">
-        <span class="meta-label">Label:</span>
-        <span class="meta-value">Your Home Style</span>
-      </div>
-      <div class="meta-row">
-        <span class="meta-label">Description:</span>
-        <span class="meta-value">Primary aesthetic preference and architectural style</span>
-      </div>
-      <div class="meta-row">
-        <span class="meta-label">Selection Type:</span>
-        <span class="meta-value"><code>card_selection</code></span>
-      </div>
-      <div class="meta-row">
-        <span class="meta-label">Min / Max Selections:</span>
-        <span class="meta-value">1 / 1</span>
-      </div>
-      <div class="meta-row">
-        <span class="meta-label">Display Config:</span>
-        <span class="meta-value"><code>card_size: large</code>, <code>show_images: true</code>, <code>image_source: glif_generated</code>, <code>columns: 2</code></span>
-      </div>
-    </div>
-
-    <h4>Options (6):</h4>
-    <div class="options-grid">
-      <div class="option-card">
-        <div class="option-header">
-          <span class="option-id">modern-luxury</span>
-          <span class="option-icon">🏢</span>
-        </div>
-        <div class="option-label">Modern Luxury</div>
-        <div class="option-tags">
-          <span class="tag">modern</span>
-          <span class="tag">luxury</span>
-          <span class="tag">clean-lines</span>
-          <span class="tag">contemporary</span>
-        </div>
-        <div class="option-extra">
-          <strong>Glif Keywords:</strong> modern luxury home, clean architectural lines, floor-to-ceiling windows, sleek finishes, open concept, Chester County contemporary
-        </div>
-        <div class="option-extra">
-          <strong>Graphic Elements:</strong> palette: monochrome-warm, mood: sleek and sophisticated
-        </div>
-      </div>
-
-      <div class="option-card">
-        <div class="option-header">
-          <span class="option-id">suburban-family</span>
-          <span class="option-icon">🏠</span>
-        </div>
-        <div class="option-label">Classic Family Home</div>
-        <div class="option-tags">
-          <span class="tag">suburban</span>
-          <span class="tag">family</span>
-          <span class="tag">traditional</span>
-          <span class="tag">spacious</span>
-        </div>
-        <div class="option-extra">
-          <strong>Glif Keywords:</strong> classic family home, large yard, front porch, traditional architecture, warm brick or stone siding, Chester County colonial
-        </div>
-        <div class="option-extra">
-          <strong>Graphic Elements:</strong> palette: warm-neutral, mood: warm and welcoming
-        </div>
-      </div>
-
-      <div class="option-card">
-        <div class="option-header">
-          <span class="option-id">historic-charm</span>
-          <span class="option-icon">🏛️</span>
-        </div>
-        <div class="option-label">Historic Charm</div>
-        <div class="option-tags">
-          <span class="tag">historic</span>
-          <span class="tag">character</span>
-          <span class="tag">charm</span>
-          <span class="tag">vintage</span>
-        </div>
-        <div class="option-extra">
-          <strong>Glif Keywords:</strong> historic home with character, original details, crown molding, hardwood floors, period architecture, Chester County stone farmhouse
-        </div>
-        <div class="option-extra">
-          <strong>Graphic Elements:</strong> palette: rich-heritage, mood: storied and elegant
-        </div>
-      </div>
-
-      <div class="option-card">
-        <div class="option-header">
-          <span class="option-id">urban-loft</span>
-          <span class="option-icon">🏗️</span>
-        </div>
-        <div class="option-label">Urban Loft</div>
-        <div class="option-tags">
-          <span class="tag">urban</span>
-          <span class="tag">loft</span>
-          <span class="tag">industrial</span>
-          <span class="tag">city</span>
-        </div>
-        <div class="option-extra">
-          <strong>Glif Keywords:</strong> urban loft space, exposed brick, high ceilings, industrial windows, open floor plan, West Chester Borough vibe
-        </div>
-        <div class="option-extra">
-          <strong>Graphic Elements:</strong> palette: charcoal-warm, mood: edgy and creative
-        </div>
-      </div>
-
-      <div class="option-card">
-        <div class="option-header">
-          <span class="option-id">waterfront</span>
-          <span class="option-icon">🌊</span>
-        </div>
-        <div class="option-label">Waterfront Living</div>
-        <div class="option-tags">
-          <span class="tag">waterfront</span>
-          <span class="tag">coastal</span>
-          <span class="tag">lakefront</span>
-          <span class="tag">scenic</span>
-        </div>
-        <div class="option-extra">
-          <strong>Glif Keywords:</strong> waterfront property, panoramic water views, dock or deck, natural light, coastal architecture, Chester County lake homes
-        </div>
-        <div class="option-extra">
-          <strong>Graphic Elements:</strong> palette: coastal-blue, mood: serene and expansive
-        </div>
-      </div>
-
-      <div class="option-card">
-        <div class="option-header">
-          <span class="option-id">new-construction</span>
-          <span class="option-icon">🔨</span>
-        </div>
-        <div class="option-label">New Construction</div>
-        <div class="option-tags">
-          <span class="tag">new-build</span>
-          <span class="tag">modern</span>
-          <span class="tag">smart-home</span>
-          <span class="tag">energy-efficient</span>
-        </div>
-        <div class="option-extra">
-          <strong>Glif Keywords:</strong> new construction home, modern finishes, smart home features, energy-efficient design, clean landscaping, Chester County new builds
-        </div>
-        <div class="option-extra">
-          <strong>Graphic Elements:</strong> palette: fresh-neutral, mood: fresh and polished
+        <div class="stats-row mt-3">
+          <div class="stat-box">
+            <span class="stat-value">6</span>
+            <span class="stat-label">Preference Dimensions</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-value">5</span>
+            <span class="stat-label">Buyer Profiles</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-value">60s</span>
+            <span class="stat-label">Estimated Time</span>
+          </div>
         </div>
       </div>
     </div>
 
-    <p><strong>Customizations from template:</strong> All <code>glif_prompt_keywords</code> enhanced with Chester County geographic references (West Chester Borough, Chester County stone farmhouse, Chester County new builds, Chester County lake homes).</p>
+    <!-- Preference Dimensions -->
+    <div class="preview-card">
+      <div class="card-header">
+        <h3>Preference Dimensions (6 Total)</h3>
+        <span class="badge primary">3 Selection Types</span>
+      </div>
+      <div class="card-body">
+        <p style="margin-bottom: 20px;">Six dimensions that map to buyer preferences and profiles:</p>
 
-    <hr>
+        <!-- Dimension 1: Style -->
+        <div class="accordion-section">
+          <button class="accordion-header">
+            <span><strong>Dimension 1:</strong> Home Style <code>(style)</code></span>
+            <svg class="accordion-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 8 10 12 14 8"></polyline>
+            </svg>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              <div class="meta-row">
+                <span class="meta-label">Selection Type:</span>
+                <span class="meta-value"><code>card_selection</code> (large cards with Glif-generated images)</span>
+              </div>
+              <div class="meta-row">
+                <span class="meta-label">Min / Max:</span>
+                <span class="meta-value">1 / 1</span>
+              </div>
+              <div class="meta-row">
+                <span class="meta-label">Display:</span>
+                <span class="meta-value">2 columns, large cards with images</span>
+              </div>
 
-    <div class="dimension-card">
-      <h3>Dimension 2: <code>neighborhood_vibe</code> -- Your Neighborhood</h3>
-      <div class="meta-row">
-        <span class="meta-label">Label:</span>
-        <span class="meta-value">Your Neighborhood</span>
-      </div>
-      <div class="meta-row">
-        <span class="meta-label">Description:</span>
-        <span class="meta-value">The setting and community feel</span>
-      </div>
-      <div class="meta-row">
-        <span class="meta-label">Selection Type:</span>
-        <span class="meta-value"><code>card_selection</code></span>
-      </div>
-      <div class="meta-row">
-        <span class="meta-label">Min / Max Selections:</span>
-        <span class="meta-value">1 / 1</span>
-      </div>
-      <div class="meta-row">
-        <span class="meta-label">Display Config:</span>
-        <span class="meta-value"><code>card_size: medium</code>, <code>show_images: false</code>, <code>columns: 3</code></span>
-      </div>
-    </div>
+              <h4 class="mt-3">6 Options:</h4>
+              <div class="options-grid">
+                <div class="option-card">
+                  <div class="option-header">
+                    <span class="option-id">modern-luxury</span>
+                    <span class="option-icon">🏢</span>
+                  </div>
+                  <div class="option-label">Modern Luxury</div>
+                  <div class="option-tags">
+                    <span class="tag-pill blue">modern</span>
+                    <span class="tag-pill blue">luxury</span>
+                    <span class="tag-pill blue">clean-lines</span>
+                  </div>
+                  <div class="option-extra">
+                    <strong>Glif Keywords:</strong> modern luxury home, clean architectural lines, floor-to-ceiling windows, Chester County contemporary
+                  </div>
+                </div>
 
-    <h4>Options (6):</h4>
-    <div class="options-grid">
-      <div class="option-card">
-        <div class="option-header">
-          <span class="option-id">walkable-downtown</span>
-          <span class="option-icon">📍</span>
-        </div>
-        <div class="option-label">Walkable Downtown</div>
-        <div class="option-tags">
-          <span class="tag">urban</span>
-          <span class="tag">walkable</span>
-          <span class="tag">downtown</span>
-        </div>
-        <div class="option-description">
-          Walkable urban neighborhood with cafes, shops, and nightlife nearby - West Chester Borough, Phoenixville Bridge Street
-        </div>
-      </div>
+                <div class="option-card">
+                  <div class="option-header">
+                    <span class="option-id">suburban-family</span>
+                    <span class="option-icon">🏠</span>
+                  </div>
+                  <div class="option-label">Classic Family Home</div>
+                  <div class="option-tags">
+                    <span class="tag-pill green">suburban</span>
+                    <span class="tag-pill green">family</span>
+                    <span class="tag-pill green">traditional</span>
+                  </div>
+                  <div class="option-extra">
+                    <strong>Glif Keywords:</strong> classic family home, large yard, front porch, Chester County colonial
+                  </div>
+                </div>
 
-      <div class="option-card">
-        <div class="option-header">
-          <span class="option-id">quiet-suburbs</span>
-          <span class="option-icon">🌳</span>
-        </div>
-        <div class="option-label">Quiet Suburbs</div>
-        <div class="option-tags">
-          <span class="tag">suburban</span>
-          <span class="tag">quiet</span>
-          <span class="tag">residential</span>
-        </div>
-        <div class="option-description">
-          Quiet suburban neighborhood with tree-lined streets and top-rated schools - Exton, Downingtown, Malvern
-        </div>
-      </div>
+                <div class="option-card">
+                  <div class="option-header">
+                    <span class="option-id">historic-charm</span>
+                    <span class="option-icon">🏛️</span>
+                  </div>
+                  <div class="option-label">Historic Charm</div>
+                  <div class="option-tags">
+                    <span class="tag-pill amber">historic</span>
+                    <span class="tag-pill amber">character</span>
+                    <span class="tag-pill amber">vintage</span>
+                  </div>
+                  <div class="option-extra">
+                    <strong>Glif Keywords:</strong> historic home with character, crown molding, Chester County stone farmhouse
+                  </div>
+                </div>
 
-      <div class="option-card">
-        <div class="option-header">
-          <span class="option-id">country-acreage</span>
-          <span class="option-icon">⛰️</span>
-        </div>
-        <div class="option-label">Country Acreage</div>
-        <div class="option-tags">
-          <span class="tag">rural</span>
-          <span class="tag">acreage</span>
-          <span class="tag">privacy</span>
-        </div>
-        <div class="option-description">
-          Spacious rural property with land, privacy, and nature - Unionville, Kennett Square horse country
-        </div>
-      </div>
+                <div class="option-card">
+                  <div class="option-header">
+                    <span class="option-id">urban-loft</span>
+                    <span class="option-icon">🏗️</span>
+                  </div>
+                  <div class="option-label">Urban Loft</div>
+                  <div class="option-tags">
+                    <span class="tag-pill">urban</span>
+                    <span class="tag-pill">loft</span>
+                    <span class="tag-pill">industrial</span>
+                  </div>
+                  <div class="option-extra">
+                    <strong>Glif Keywords:</strong> urban loft space, exposed brick, West Chester Borough vibe
+                  </div>
+                </div>
 
-      <div class="option-card">
-        <div class="option-header">
-          <span class="option-id">trendy-neighborhood</span>
-          <span class="option-icon">📈</span>
-        </div>
-        <div class="option-label">Up-and-Coming</div>
-        <div class="option-tags">
-          <span class="tag">trendy</span>
-          <span class="tag">emerging</span>
-          <span class="tag">investment</span>
-        </div>
-        <div class="option-description">
-          Trendy up-and-coming neighborhood with character and growth potential - Coatesville revitalization, Spring City
-        </div>
-      </div>
+                <div class="option-card">
+                  <div class="option-header">
+                    <span class="option-id">waterfront</span>
+                    <span class="option-icon">🌊</span>
+                  </div>
+                  <div class="option-label">Waterfront Living</div>
+                  <div class="option-tags">
+                    <span class="tag-pill blue">waterfront</span>
+                    <span class="tag-pill blue">coastal</span>
+                    <span class="tag-pill blue">scenic</span>
+                  </div>
+                  <div class="option-extra">
+                    <strong>Glif Keywords:</strong> waterfront property, panoramic water views, Chester County lake homes
+                  </div>
+                </div>
 
-      <div class="option-card">
-        <div class="option-header">
-          <span class="option-id">waterfront-community</span>
-          <span class="option-icon">⚓</span>
+                <div class="option-card">
+                  <div class="option-header">
+                    <span class="option-id">new-construction</span>
+                    <span class="option-icon">🔨</span>
+                  </div>
+                  <div class="option-label">New Construction</div>
+                  <div class="option-tags">
+                    <span class="tag-pill green">new-build</span>
+                    <span class="tag-pill green">smart-home</span>
+                    <span class="tag-pill green">energy-efficient</span>
+                  </div>
+                  <div class="option-extra">
+                    <strong>Glif Keywords:</strong> new construction home, smart home features, Chester County new builds
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="option-label">Waterfront Community</div>
-        <div class="option-tags">
-          <span class="tag">waterfront</span>
-          <span class="tag">coastal</span>
-          <span class="tag">scenic</span>
-        </div>
-        <div class="option-description">
-          Waterfront community with water access, marinas, and scenic views - Chester County reservoir properties
-        </div>
-      </div>
 
-      <div class="option-card">
-        <div class="option-header">
-          <span class="option-id">family-friendly</span>
-          <span class="option-icon">👥</span>
-        </div>
-        <div class="option-label">Family-Friendly</div>
-        <div class="option-tags">
-          <span class="tag">family</span>
-          <span class="tag">safe</span>
-          <span class="tag">schools</span>
-        </div>
-        <div class="option-description">
-          Family-friendly neighborhood with parks, top schools, and community events - Great Valley, Unionville-Chadds Ford districts
-        </div>
-      </div>
-    </div>
+        <!-- Dimension 2: Neighborhood -->
+        <div class="accordion-section">
+          <button class="accordion-header">
+            <span><strong>Dimension 2:</strong> Your Neighborhood <code>(neighborhood_vibe)</code></span>
+            <svg class="accordion-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 8 10 12 14 8"></polyline>
+            </svg>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              <div class="meta-row">
+                <span class="meta-label">Selection Type:</span>
+                <span class="meta-value"><code>card_selection</code> (medium cards, no images)</span>
+              </div>
+              <div class="meta-row">
+                <span class="meta-label">Min / Max:</span>
+                <span class="meta-value">1 / 1</span>
+              </div>
 
-    <p><strong>Customizations from template:</strong> All <code>location_vibe_description</code> fields enhanced with specific Chester County community names and school district references.</p>
+              <h4 class="mt-3">6 Options (with Chester County specifics):</h4>
+              <ul style="margin-left: 20px;">
+                <li><strong>Walkable Downtown</strong> 📍 - West Chester Borough, Phoenixville Bridge Street</li>
+                <li><strong>Quiet Suburbs</strong> 🌳 - Exton, Downingtown, Malvern</li>
+                <li><strong>Country Acreage</strong> ⛰️ - Unionville, Kennett Square horse country</li>
+                <li><strong>Up-and-Coming</strong> 📈 - Coatesville revitalization, Spring City</li>
+                <li><strong>Waterfront Community</strong> ⚓ - Chester County reservoir properties</li>
+                <li><strong>Family-Friendly</strong> 👥 - Great Valley, Unionville-Chadds Ford districts</li>
+              </ul>
+            </div>
+          </div>
+        </div>
 
-    <hr>
+        <!-- Dimension 3: Space -->
+        <div class="accordion-section">
+          <button class="accordion-header">
+            <span><strong>Dimension 3:</strong> Your Space <code>(bedrooms)</code></span>
+            <svg class="accordion-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 8 10 12 14 8"></polyline>
+            </svg>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              <div class="meta-row">
+                <span class="meta-label">Selection Type:</span>
+                <span class="meta-value"><code>scale_selector</code> (segmented bar)</span>
+              </div>
+              <div class="meta-row">
+                <span class="meta-label">Min / Max:</span>
+                <span class="meta-value">1 / 1</span>
+              </div>
 
-    <div class="dimension-card">
-      <h3>Dimension 3: <code>bedrooms</code> -- Your Space</h3>
-      <div class="meta-row">
-        <span class="meta-label">Label:</span>
-        <span class="meta-value">Your Space</span>
-      </div>
-      <div class="meta-row">
-        <span class="meta-label">Description:</span>
-        <span class="meta-value">How much room the buyer needs</span>
-      </div>
-      <div class="meta-row">
-        <span class="meta-label">Selection Type:</span>
-        <span class="meta-value"><code>scale_selector</code></span>
-      </div>
-      <div class="meta-row">
-        <span class="meta-label">Min / Max Selections:</span>
-        <span class="meta-value">1 / 1</span>
-      </div>
-      <div class="meta-row">
-        <span class="meta-label">Display Config:</span>
-        <span class="meta-value"><code>show_labels: true</code>, <code>style: segmented_bar</code></span>
-      </div>
-    </div>
+              <h4 class="mt-3">4 Options:</h4>
+              <ul style="margin-left: 20px;">
+                <li><strong>2 Bedrooms</strong> - Cozy home for singles, couples, downsizers</li>
+                <li><strong>3 Bedrooms</strong> - Comfortable home with room to grow</li>
+                <li><strong>4 Bedrooms</strong> - Spacious family home with guest space</li>
+                <li><strong>5+ Bedrooms</strong> - Estate for large or multi-generational families</li>
+              </ul>
+            </div>
+          </div>
+        </div>
 
-    <h4>Options (4):</h4>
-    <div class="options-grid">
-      <div class="option-card">
-        <div class="option-header">
-          <span class="option-id">beds-2</span>
-          <span class="option-icon"></span>
-        </div>
-        <div class="option-label">2 Bedrooms</div>
-        <div class="option-tags">
-          <span class="tag">small</span>
-          <span class="tag">starter</span>
-        </div>
-        <div class="option-description">
-          Cozy two-bedroom home perfect for singles, couples, or downsizers
-        </div>
-      </div>
+        <!-- Dimension 4: Must-Haves -->
+        <div class="accordion-section">
+          <button class="accordion-header">
+            <span><strong>Dimension 4:</strong> Must-Have Features <code>(must_haves)</code></span>
+            <svg class="accordion-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 8 10 12 14 8"></polyline>
+            </svg>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              <div class="meta-row">
+                <span class="meta-label">Selection Type:</span>
+                <span class="meta-value"><code>chip_multi_select</code> (pill with icon)</span>
+              </div>
+              <div class="meta-row">
+                <span class="meta-label">Min / Max:</span>
+                <span class="meta-value">1 / 5</span>
+              </div>
 
-      <div class="option-card">
-        <div class="option-header">
-          <span class="option-id">beds-3</span>
-          <span class="option-icon"></span>
+              <h4 class="mt-3">12 Options:</h4>
+              <div class="options-grid">
+                <div class="option-card">
+                  <div class="option-id">🍴 open-kitchen</div>
+                  <div class="option-label">Open Kitchen</div>
+                </div>
+                <div class="option-card">
+                  <div class="option-id">💼 home-office</div>
+                  <div class="option-label">Home Office</div>
+                </div>
+                <div class="option-card">
+                  <div class="option-id">☀️ outdoor-space</div>
+                  <div class="option-label">Outdoor Living</div>
+                </div>
+                <div class="option-card">
+                  <div class="option-id">🚗 garage</div>
+                  <div class="option-label">2+ Car Garage</div>
+                </div>
+                <div class="option-card">
+                  <div class="option-id">🛏️ primary-suite</div>
+                  <div class="option-label">Primary Suite</div>
+                </div>
+                <div class="option-card">
+                  <div class="option-id">💧 pool</div>
+                  <div class="option-label">Pool</div>
+                </div>
+                <div class="option-card">
+                  <div class="option-id">📶 smart-home</div>
+                  <div class="option-label">Smart Home</div>
+                </div>
+                <div class="option-card">
+                  <div class="option-id">🏗️ walkout-basement</div>
+                  <div class="option-label">Finished Basement</div>
+                </div>
+                <div class="option-card">
+                  <div class="option-id">🌲 large-yard</div>
+                  <div class="option-label">Large Yard</div>
+                </div>
+                <div class="option-card">
+                  <div class="option-id">👨‍🍳 gourmet-kitchen</div>
+                  <div class="option-label">Gourmet Kitchen</div>
+                </div>
+                <div class="option-card">
+                  <div class="option-id">☀️ natural-light</div>
+                  <div class="option-label">Natural Light</div>
+                </div>
+                <div class="option-card">
+                  <div class="option-id">🔥 fireplace</div>
+                  <div class="option-label">Fireplace</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="option-label">3 Bedrooms</div>
-        <div class="option-tags">
-          <span class="tag">medium</span>
-          <span class="tag">growing-family</span>
-        </div>
-        <div class="option-description">
-          Comfortable three-bedroom home with room to grow
-        </div>
-      </div>
 
-      <div class="option-card">
-        <div class="option-header">
-          <span class="option-id">beds-4</span>
-          <span class="option-icon"></span>
-        </div>
-        <div class="option-label">4 Bedrooms</div>
-        <div class="option-tags">
-          <span class="tag">large</span>
-          <span class="tag">family</span>
-        </div>
-        <div class="option-description">
-          Spacious four-bedroom family home with dedicated guest space
-        </div>
-      </div>
+        <!-- Dimension 5: Budget -->
+        <div class="accordion-section">
+          <button class="accordion-header">
+            <span><strong>Dimension 5:</strong> Investment Range <code>(budget)</code></span>
+            <svg class="accordion-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 8 10 12 14 8"></polyline>
+            </svg>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              <div class="meta-row">
+                <span class="meta-label">Selection Type:</span>
+                <span class="meta-value"><code>scale_selector</code> (segmented bar)</span>
+              </div>
+              <div class="meta-row">
+                <span class="meta-label">Min / Max:</span>
+                <span class="meta-value">1 / 1</span>
+              </div>
 
-      <div class="option-card">
-        <div class="option-header">
-          <span class="option-id">beds-5</span>
-          <span class="option-icon"></span>
+              <h4 class="mt-3">5 Options (with qualification signals):</h4>
+              <ul style="margin-left: 20px;">
+                <li><strong>Under $300K</strong> <span class="badge cool">cool</span></li>
+                <li><strong>$300K - $500K</strong> <span class="badge warm">warm</span></li>
+                <li><strong>$500K - $750K</strong> <span class="badge warm">warm</span> (Team avg: $629K)</li>
+                <li><strong>$750K - $1M</strong> <span class="badge hot">hot</span></li>
+                <li><strong>$1M+</strong> <span class="badge hot">hot</span></li>
+              </ul>
+            </div>
+          </div>
         </div>
-        <div class="option-label">5+ Bedrooms</div>
-        <div class="option-tags">
-          <span class="tag">estate</span>
-          <span class="tag">luxury</span>
-          <span class="tag">large-family</span>
-        </div>
-        <div class="option-description">
-          Expansive five-plus bedroom estate for large families or multi-generational living
-        </div>
-      </div>
-    </div>
 
-    <p><strong>Customizations from template:</strong> Updated atmosphere descriptions to be more specific. Added "downsizers" reference to 2-bedroom option per research on downsizer segment. Added "multi-generational living" to 5+ option.</p>
+        <!-- Dimension 6: Timeline -->
+        <div class="accordion-section">
+          <button class="accordion-header">
+            <span><strong>Dimension 6:</strong> Move-In Timeline <code>(timeline)</code></span>
+            <svg class="accordion-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 8 10 12 14 8"></polyline>
+            </svg>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              <div class="meta-row">
+                <span class="meta-label">Selection Type:</span>
+                <span class="meta-value"><code>card_selection</code> (small cards, no images)</span>
+              </div>
+              <div class="meta-row">
+                <span class="meta-label">Min / Max:</span>
+                <span class="meta-value">1 / 1</span>
+              </div>
 
-    <hr>
-
-    <div class="dimension-card">
-      <h3>Dimension 4: <code>must_haves</code> -- Must-Have Features</h3>
-      <div class="meta-row">
-        <span class="meta-label">Label:</span>
-        <span class="meta-value">Must-Have Features</span>
-      </div>
-      <div class="meta-row">
-        <span class="meta-label">Description:</span>
-        <span class="meta-value">The features the buyer's dream home absolutely needs</span>
-      </div>
-      <div class="meta-row">
-        <span class="meta-label">Selection Type:</span>
-        <span class="meta-value"><code>chip_multi_select</code></span>
-      </div>
-      <div class="meta-row">
-        <span class="meta-label">Min / Max Selections:</span>
-        <span class="meta-value">1 / 5</span>
-      </div>
-      <div class="meta-row">
-        <span class="meta-label">Display Config:</span>
-        <span class="meta-value"><code>chip_style: pill_with_icon</code>, <code>columns: 3</code>, <code>show_count: true</code></span>
-      </div>
-    </div>
-
-    <h4>Options (12):</h4>
-    <div class="options-grid">
-      <div class="option-card">
-        <div class="option-header">
-          <span class="option-id">open-kitchen</span>
-          <span class="option-icon">🍴</span>
-        </div>
-        <div class="option-label">Open Kitchen</div>
-        <div class="option-tags">
-          <span class="tag">open-kitchen</span>
-          <span class="tag">entertaining</span>
-        </div>
-        <div class="option-description">
-          Spacious open-concept kitchen with large island flowing into living area
-        </div>
-      </div>
-
-      <div class="option-card">
-        <div class="option-header">
-          <span class="option-id">home-office</span>
-          <span class="option-icon">💼</span>
-        </div>
-        <div class="option-label">Home Office</div>
-        <div class="option-tags">
-          <span class="tag">home-office</span>
-          <span class="tag">work-from-home</span>
-        </div>
-        <div class="option-description">
-          Dedicated home office with natural light and built-in desk area
-        </div>
-      </div>
-
-      <div class="option-card">
-        <div class="option-header">
-          <span class="option-id">outdoor-space</span>
-          <span class="option-icon">☀️</span>
-        </div>
-        <div class="option-label">Outdoor Living</div>
-        <div class="option-tags">
-          <span class="tag">outdoor</span>
-          <span class="tag">patio</span>
-          <span class="tag">deck</span>
-        </div>
-        <div class="option-description">
-          Outdoor living space with covered patio, stone pavers, and seating area
-        </div>
-      </div>
-
-      <div class="option-card">
-        <div class="option-header">
-          <span class="option-id">garage</span>
-          <span class="option-icon">🚗</span>
-        </div>
-        <div class="option-label">2+ Car Garage</div>
-        <div class="option-tags">
-          <span class="tag">garage</span>
-          <span class="tag">parking</span>
-        </div>
-        <div class="option-description">
-          Spacious two-car garage with storage and workshop potential
-        </div>
-      </div>
-
-      <div class="option-card">
-        <div class="option-header">
-          <span class="option-id">primary-suite</span>
-          <span class="option-icon">🛏️</span>
-        </div>
-        <div class="option-label">Primary Suite</div>
-        <div class="option-tags">
-          <span class="tag">primary-suite</span>
-          <span class="tag">luxury</span>
-        </div>
-        <div class="option-description">
-          Luxurious primary bedroom suite with walk-in closet and spa-like ensuite bath
-        </div>
-      </div>
-
-      <div class="option-card">
-        <div class="option-header">
-          <span class="option-id">pool</span>
-          <span class="option-icon">💧</span>
-        </div>
-        <div class="option-label">Pool</div>
-        <div class="option-tags">
-          <span class="tag">pool</span>
-          <span class="tag">outdoor</span>
-          <span class="tag">luxury</span>
-        </div>
-        <div class="option-description">
-          Backyard pool with surrounding landscaping and poolside seating
-        </div>
-      </div>
-
-      <div class="option-card">
-        <div class="option-header">
-          <span class="option-id">smart-home</span>
-          <span class="option-icon">📶</span>
-        </div>
-        <div class="option-label">Smart Home</div>
-        <div class="option-tags">
-          <span class="tag">smart-home</span>
-          <span class="tag">technology</span>
-        </div>
-        <div class="option-description">
-          Smart home technology panel with integrated lighting, climate, and security controls
-        </div>
-      </div>
-
-      <div class="option-card">
-        <div class="option-header">
-          <span class="option-id">walkout-basement</span>
-          <span class="option-icon">🏗️</span>
-        </div>
-        <div class="option-label">Finished Basement</div>
-        <div class="option-tags">
-          <span class="tag">basement</span>
-          <span class="tag">extra-space</span>
-        </div>
-        <div class="option-description">
-          Finished walkout basement with recreation area, wet bar, or home theater
-        </div>
-      </div>
-
-      <div class="option-card">
-        <div class="option-header">
-          <span class="option-id">large-yard</span>
-          <span class="option-icon">🌲</span>
-        </div>
-        <div class="option-label">Large Yard</div>
-        <div class="option-tags">
-          <span class="tag">yard</span>
-          <span class="tag">outdoor</span>
-          <span class="tag">family</span>
-        </div>
-        <div class="option-description">
-          Expansive landscaped yard with mature trees and room for play
-        </div>
-      </div>
-
-      <div class="option-card">
-        <div class="option-header">
-          <span class="option-id">gourmet-kitchen</span>
-          <span class="option-icon">👨‍🍳</span>
-        </div>
-        <div class="option-label">Gourmet Kitchen</div>
-        <div class="option-tags">
-          <span class="tag">gourmet-kitchen</span>
-          <span class="tag">high-end</span>
-        </div>
-        <div class="option-description">
-          Gourmet kitchen with professional-grade appliances, marble countertops, and wine fridge
-        </div>
-      </div>
-
-      <div class="option-card">
-        <div class="option-header">
-          <span class="option-id">natural-light</span>
-          <span class="option-icon">☀️</span>
-        </div>
-        <div class="option-label">Natural Light</div>
-        <div class="option-tags">
-          <span class="tag">natural-light</span>
-          <span class="tag">windows</span>
-        </div>
-        <div class="option-description">
-          Abundant natural light streaming through oversized windows and skylights
-        </div>
-      </div>
-
-      <div class="option-card">
-        <div class="option-header">
-          <span class="option-id">fireplace</span>
-          <span class="option-icon">🔥</span>
-        </div>
-        <div class="option-label">Fireplace</div>
-        <div class="option-tags">
-          <span class="tag">fireplace</span>
-          <span class="tag">cozy</span>
-        </div>
-        <div class="option-description">
-          Statement stone fireplace as the focal point of a cozy living area
+              <h4 class="mt-3">5 Options (with qualification signals):</h4>
+              <ul style="margin-left: 20px;">
+                <li><strong>ASAP</strong> ⚡ <span class="badge hot">hot</span></li>
+                <li><strong>Within 3 Months</strong> 📅 <span class="badge hot">hot</span></li>
+                <li><strong>3-6 Months</strong> 🗓️ <span class="badge warm">warm</span></li>
+                <li><strong>Next Year</strong> 📆 <span class="badge warm">warm</span></li>
+                <li><strong>Just Looking</strong> 👁️ <span class="badge cool">cool</span></li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-    <p><strong>Customizations from template:</strong> Enhanced all <code>visual_description</code> fields with Chester County architectural details (stone pavers, stone fireplace, wine fridge for Entertainer profile).</p>
+    <!-- Selection Flow -->
+    <div class="preview-card">
+      <div class="card-header">
+        <h3>Selection Flow</h3>
+        <span class="badge primary">7 Steps</span>
+      </div>
+      <div class="card-body">
+        <div class="info-grid cols-3">
+          <div class="info-item" style="border-left: 3px solid #d4af37;">
+            <h4>Step 1: Home Style</h4>
+            <p><strong>Type:</strong> <code>card_selection</code></p>
+            <p>"What vibe speaks to you?"</p>
+          </div>
+          <div class="info-item" style="border-left: 3px solid #d4af37;">
+            <h4>Step 2: Neighborhood</h4>
+            <p><strong>Type:</strong> <code>card_selection</code></p>
+            <p>"Where do you see yourself?"</p>
+          </div>
+          <div class="info-item" style="border-left: 3px solid #1a3a52;">
+            <h4>Step 3: Space</h4>
+            <p><strong>Type:</strong> <code>scale_selector</code></p>
+            <p>"Slide to your ideal size"</p>
+          </div>
+          <div class="info-item" style="border-left: 3px solid #10b981;">
+            <h4>Step 4: Must-Haves</h4>
+            <p><strong>Type:</strong> <code>chip_multi_select</code></p>
+            <p>"Choose up to 5 features"</p>
+          </div>
+          <div class="info-item" style="border-left: 3px solid #1a3a52;">
+            <h4>Step 5: Budget</h4>
+            <p><strong>Type:</strong> <code>scale_selector</code></p>
+            <p>"No judgment -- just matching"</p>
+          </div>
+          <div class="info-item" style="border-left: 3px solid #d4af37;">
+            <h4>Step 6: Timeline</h4>
+            <p><strong>Type:</strong> <code>card_selection</code></p>
+            <p>"We'll match your urgency"</p>
+          </div>
+        </div>
 
-    <hr>
-
-    <div class="dimension-card">
-      <h3>Dimension 5: <code>budget</code> -- Investment Range</h3>
-      <div class="meta-row">
-        <span class="meta-label">Label:</span>
-        <span class="meta-value">Investment Range</span>
-      </div>
-      <div class="meta-row">
-        <span class="meta-label">Description:</span>
-        <span class="meta-value">Helps match the right listings and neighborhoods to budget</span>
-      </div>
-      <div class="meta-row">
-        <span class="meta-label">Selection Type:</span>
-        <span class="meta-value"><code>scale_selector</code></span>
-      </div>
-      <div class="meta-row">
-        <span class="meta-label">Min / Max Selections:</span>
-        <span class="meta-value">1 / 1</span>
-      </div>
-      <div class="meta-row">
-        <span class="meta-label">Display Config:</span>
-        <span class="meta-value"><code>show_labels: true</code>, <code>style: segmented_bar</code></span>
-      </div>
-    </div>
-
-    <h4>Options (5):</h4>
-    <div class="options-grid">
-      <div class="option-card">
-        <div class="option-header">
-          <span class="option-id">budget-starter</span>
-        </div>
-        <div class="option-label">Under $300K</div>
-        <div class="option-tags">
-          <span class="tag">budget-starter</span>
-        </div>
-        <div class="option-extra">
-          <strong>Qualification Signal:</strong> <span class="signal-level cool">cool</span>
-        </div>
-      </div>
-
-      <div class="option-card">
-        <div class="option-header">
-          <span class="option-id">budget-mid</span>
-        </div>
-        <div class="option-label">$300K - $500K</div>
-        <div class="option-tags">
-          <span class="tag">budget-mid</span>
-        </div>
-        <div class="option-extra">
-          <strong>Qualification Signal:</strong> <span class="signal-level warm">warm</span>
-        </div>
-      </div>
-
-      <div class="option-card">
-        <div class="option-header">
-          <span class="option-id">budget-upper</span>
-        </div>
-        <div class="option-label">$500K - $750K</div>
-        <div class="option-tags">
-          <span class="tag">budget-upper</span>
-        </div>
-        <div class="option-extra">
-          <strong>Qualification Signal:</strong> <span class="signal-level warm">warm</span>
-        </div>
-      </div>
-
-      <div class="option-card">
-        <div class="option-header">
-          <span class="option-id">budget-premium</span>
-        </div>
-        <div class="option-label">$750K - $1M</div>
-        <div class="option-tags">
-          <span class="tag">budget-premium</span>
-        </div>
-        <div class="option-extra">
-          <strong>Qualification Signal:</strong> <span class="signal-level hot">hot</span>
-        </div>
-      </div>
-
-      <div class="option-card">
-        <div class="option-header">
-          <span class="option-id">budget-luxury</span>
-        </div>
-        <div class="option-label">$1M+</div>
-        <div class="option-tags">
-          <span class="tag">budget-luxury</span>
-        </div>
-        <div class="option-extra">
-          <strong>Qualification Signal:</strong> <span class="signal-level hot">hot</span>
-        </div>
+        <h4 class="mt-3">Flow Design Rationale</h4>
+        <ul class="checklist">
+          <li>Steps 1-2: Visual, engaging, identity-forming (user starts by dreaming)</li>
+          <li>Step 3: Quick segmented bar (breaks the card pattern, still about life)</li>
+          <li>Step 4: Multi-select chips let users build wishlist (micro-commitment peaks)</li>
+          <li>Steps 5-6: Practical qualification (budget quiet scale, timeline small cards)</li>
+          <li>3 different selection types, no two consecutive steps identical</li>
+        </ul>
       </div>
     </div>
 
-    <p><strong>Customizations from template:</strong> Budget ranges validated against Chester County market data ($236K condos to $2.6M estates). Team's average sale price of $629K sits in the $500-750K band, confirming these ranges match their market.</p>
-
-    <hr>
-
-    <div class="dimension-card">
-      <h3>Dimension 6: <code>timeline</code> -- Move-In Timeline</h3>
-      <div class="meta-row">
-        <span class="meta-label">Label:</span>
-        <span class="meta-value">Move-In Timeline</span>
+    <!-- Profile Matching -->
+    <div class="preview-card">
+      <div class="card-header">
+        <h3>Profile Matching</h3>
+        <span class="badge primary">5 Profiles</span>
       </div>
-      <div class="meta-row">
-        <span class="meta-label">Description:</span>
-        <span class="meta-value">When the buyer wants to be in their new home</span>
-      </div>
-      <div class="meta-row">
-        <span class="meta-label">Selection Type:</span>
-        <span class="meta-value"><code>card_selection</code></span>
-      </div>
-      <div class="meta-row">
-        <span class="meta-label">Min / Max Selections:</span>
-        <span class="meta-value">1 / 1</span>
-      </div>
-      <div class="meta-row">
-        <span class="meta-label">Display Config:</span>
-        <span class="meta-value"><code>card_size: small</code>, <code>show_images: false</code>, <code>columns: 3</code></span>
-      </div>
-    </div>
+      <div class="card-body">
+        <p style="margin-bottom: 20px;">Five distinct buyer profiles with tag-based matching:</p>
 
-    <h4>Options (5):</h4>
-    <div class="options-grid">
-      <div class="option-card">
-        <div class="option-header">
-          <span class="option-id">asap</span>
-          <span class="option-icon">⚡</span>
-        </div>
-        <div class="option-label">ASAP</div>
-        <div class="option-tags">
-          <span class="tag">immediate</span>
-          <span class="tag">urgent</span>
-        </div>
-        <div class="option-extra">
-          <strong>Qualification Signal:</strong> <span class="signal-level hot">hot</span>
-        </div>
-      </div>
+        <!-- Profile 1 -->
+        <div class="accordion-section">
+          <button class="accordion-header">
+            <span><strong>The Minimalist</strong> - "Less space, more life"</span>
+            <svg class="accordion-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 8 10 12 14 8"></polyline>
+            </svg>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              <p>Clean lines, open spaces, and intentional design. Your Chester County dream home is proof that less really is more. Every element earns its place -- from the smart home tech to the floor-to-ceiling windows flooding your space with natural light.</p>
 
-      <div class="option-card">
-        <div class="option-header">
-          <span class="option-id">3-months</span>
-          <span class="option-icon">📅</span>
+              <div class="meta-row mt-2">
+                <span class="meta-label">Trigger Tags:</span>
+                <span class="meta-value">
+                  <span class="tag-pill">modern</span>
+                  <span class="tag-pill blue">clean-lines</span>
+                  <span class="tag-pill">urban</span>
+                  <span class="tag-pill">loft</span>
+                  <span class="tag-pill">smart-home</span>
+                  <span class="tag-pill blue">natural-light</span>
+                </span>
+              </div>
+              <div class="meta-row">
+                <span class="meta-label">Match Threshold:</span>
+                <span class="meta-value">0.5</span>
+              </div>
+              <div class="meta-row">
+                <span class="meta-label">Graphic Mood:</span>
+                <span class="meta-value">Minimal, clean, modern architecture, open spaces with natural light and neutral tones</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="option-label">Within 3 Months</div>
-        <div class="option-tags">
-          <span class="tag">3-months</span>
-          <span class="tag">active-search</span>
-        </div>
-        <div class="option-extra">
-          <strong>Qualification Signal:</strong> <span class="signal-level hot">hot</span>
-        </div>
-      </div>
 
-      <div class="option-card">
-        <div class="option-header">
-          <span class="option-id">6-months</span>
-          <span class="option-icon">🗓️</span>
-        </div>
-        <div class="option-label">3-6 Months</div>
-        <div class="option-tags">
-          <span class="tag">6-months</span>
-          <span class="tag">planning</span>
-        </div>
-        <div class="option-extra">
-          <strong>Qualification Signal:</strong> <span class="signal-level warm">warm</span>
-        </div>
-      </div>
+        <!-- Profile 2 -->
+        <div class="accordion-section">
+          <button class="accordion-header">
+            <span><strong>The Nester</strong> - "Room to grow, space to gather"</span>
+            <svg class="accordion-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 8 10 12 14 8"></polyline>
+            </svg>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              <p>Home is where the heart is -- and yours is big. You want a place where memories get made, the kids can run wild in the yard, and everyone has room to grow. Chester County's top school districts and family-friendly communities were practically made for you.</p>
 
-      <div class="option-card">
-        <div class="option-header">
-          <span class="option-id">next-year</span>
-          <span class="option-icon">📆</span>
+              <div class="meta-row mt-2">
+                <span class="meta-label">Trigger Tags:</span>
+                <span class="meta-value">
+                  <span class="tag-pill">family</span>
+                  <span class="tag-pill">suburban</span>
+                  <span class="tag-pill">spacious</span>
+                  <span class="tag-pill">yard</span>
+                  <span class="tag-pill">family-friendly</span>
+                  <span class="tag-pill green">safe</span>
+                  <span class="tag-pill green">schools</span>
+                </span>
+              </div>
+              <div class="meta-row">
+                <span class="meta-label">Fallback Profile:</span>
+                <span class="meta-value"><span class="badge success">Yes</span> (largest segment, 40-50% of traffic)</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="option-label">Next Year</div>
-        <div class="option-tags">
-          <span class="tag">next-year</span>
-          <span class="tag">early-planning</span>
-        </div>
-        <div class="option-extra">
-          <strong>Qualification Signal:</strong> <span class="signal-level warm">warm</span>
-        </div>
-      </div>
 
-      <div class="option-card">
-        <div class="option-header">
-          <span class="option-id">just-looking</span>
-          <span class="option-icon">👁️</span>
-        </div>
-        <div class="option-label">Just Looking</div>
-        <div class="option-tags">
-          <span class="tag">browsing</span>
-          <span class="tag">exploring</span>
-        </div>
-        <div class="option-extra">
-          <strong>Qualification Signal:</strong> <span class="signal-level cool">cool</span>
-        </div>
-      </div>
-    </div>
+        <!-- Profile 3 -->
+        <div class="accordion-section">
+          <button class="accordion-header">
+            <span><strong>The Entertainer</strong> - "Built for hosting, designed for living"</span>
+            <svg class="accordion-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 8 10 12 14 8"></polyline>
+            </svg>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              <p>Your home is where the party happens. An open kitchen made for cooking with friends, outdoor space for legendary gatherings, and every detail designed for hosting. Chester County's got the space and the views to make your entertaining dreams real.</p>
 
-    <p><strong>Customizations from template:</strong> None. Timeline options align directly with research segments: Hot (0-3 months, 15-20% of traffic), Warm (3-12 months, 40-50%), Cool (12+ months, 30-40%).</p>
+              <div class="meta-row mt-2">
+                <span class="meta-label">Trigger Tags:</span>
+                <span class="meta-value">
+                  <span class="tag-pill">open-kitchen</span>
+                  <span class="tag-pill">outdoor</span>
+                  <span class="tag-pill">pool</span>
+                  <span class="tag-pill amber">gourmet-kitchen</span>
+                  <span class="tag-pill amber">entertaining</span>
+                  <span class="tag-pill">luxury</span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
 
-    <hr>
+        <!-- Profile 4 -->
+        <div class="accordion-section">
+          <button class="accordion-header">
+            <span><strong>The Urbanite</strong> - "Connected to everything that matters"</span>
+            <svg class="accordion-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 8 10 12 14 8"></polyline>
+            </svg>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              <p>You want to be where the action is. Walkable streets, great restaurants, and culture on your doorstep. West Chester Borough's restaurant row, Phoenixville's Bridge Street -- your home is your launchpad to the best Chester County has to offer.</p>
 
-    <h2>3. Selection Flow</h2>
+              <div class="meta-row mt-2">
+                <span class="meta-label">Trigger Tags:</span>
+                <span class="meta-value">
+                  <span class="tag-pill">urban</span>
+                  <span class="tag-pill">walkable</span>
+                  <span class="tag-pill">downtown</span>
+                  <span class="tag-pill amber">trendy</span>
+                  <span class="tag-pill amber">city</span>
+                  <span class="tag-pill">loft</span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
 
-    <div class="flow-table">
-      <div class="flow-step">
-        <div class="step-number">Step 1</div>
-        <div class="step-dimension">Dimension: <code>style</code></div>
-        <div class="step-heading">Choose Your Home Style</div>
-        <div class="step-subheading">What vibe speaks to you?</div>
-        <div class="step-meta">
-          <span>Type: <code>card_selection</code></span>
-          <span>Min: 1 / Max: 1</span>
-        </div>
-      </div>
+        <!-- Profile 5 -->
+        <div class="accordion-section">
+          <button class="accordion-header">
+            <span><strong>The Retreater</strong> - "Your private escape from the everyday"</span>
+            <svg class="accordion-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 8 10 12 14 8"></polyline>
+            </svg>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              <p>Peace, quiet, and a view that never gets old. Your Chester County dream home is a sanctuary -- rolling hills, stone walls, maybe a creek out back. Room to breathe, room to work from home, room to just be.</p>
 
-      <div class="flow-step">
-        <div class="step-number">Step 2</div>
-        <div class="step-dimension">Dimension: <code>neighborhood_vibe</code></div>
-        <div class="step-heading">Pick Your Neighborhood</div>
-        <div class="step-subheading">Where do you see yourself?</div>
-        <div class="step-meta">
-          <span>Type: <code>card_selection</code></span>
-          <span>Min: 1 / Max: 1</span>
+              <div class="meta-row mt-2">
+                <span class="meta-label">Trigger Tags:</span>
+                <span class="meta-value">
+                  <span class="tag-pill">waterfront</span>
+                  <span class="tag-pill">rural</span>
+                  <span class="tag-pill blue">privacy</span>
+                  <span class="tag-pill blue">scenic</span>
+                  <span class="tag-pill">acreage</span>
+                  <span class="tag-pill">fireplace</span>
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div class="flow-step">
-        <div class="step-number">Step 3</div>
-        <div class="step-dimension">Dimension: <code>bedrooms</code></div>
-        <div class="step-heading">How Much Space?</div>
-        <div class="step-subheading">Slide to your ideal size</div>
-        <div class="step-meta">
-          <span>Type: <code>scale_selector</code></span>
-          <span>Min: 1 / Max: 1</span>
-        </div>
-      </div>
-
-      <div class="flow-step">
-        <div class="step-number">Step 4</div>
-        <div class="step-dimension">Dimension: <code>must_haves</code></div>
-        <div class="step-heading">Pick Your Must-Haves</div>
-        <div class="step-subheading">Choose up to 5 features you can't live without</div>
-        <div class="step-meta">
-          <span>Type: <code>chip_multi_select</code></span>
-          <span>Min: 1 / Max: 5</span>
-        </div>
-      </div>
-
-      <div class="flow-step">
-        <div class="step-number">Step 5</div>
-        <div class="step-dimension">Dimension: <code>budget</code></div>
-        <div class="step-heading">Your Investment Range</div>
-        <div class="step-subheading">No judgment -- just matching</div>
-        <div class="step-meta">
-          <span>Type: <code>scale_selector</code></span>
-          <span>Min: 1 / Max: 1</span>
-        </div>
-      </div>
-
-      <div class="flow-step">
-        <div class="step-number">Step 6</div>
-        <div class="step-dimension">Dimension: <code>timeline</code></div>
-        <div class="step-heading">When Are You Moving?</div>
-        <div class="step-subheading">We'll match your urgency</div>
-        <div class="step-meta">
-          <span>Type: <code>card_selection</code></span>
-          <span>Min: 1 / Max: 1</span>
-        </div>
-      </div>
-    </div>
-
-    <h3>Flow Design Rationale</h3>
-    <ul>
-      <li><strong>Steps 1-2</strong> (card_selection, card_selection): Visual, engaging, identity-forming. Step 1 uses large image cards, Step 2 uses medium icon cards -- visually distinct. The user starts by dreaming.</li>
-      <li><strong>Step 3</strong> (scale_selector): Quick, low-friction tap on a segmented bar. Breaks the card pattern. Practical but still about their life (family size, not finances).</li>
-      <li><strong>Step 4</strong> (chip_multi_select): The most expressive step. Multi-select chips let users build their wishlist. This is where micro-commitment peaks.</li>
-      <li><strong>Steps 5-6</strong> (scale_selector, card_selection): Practical, decision-oriented. Budget as a quiet scale, timeline as small cards. These are qualification dimensions but framed casually.</li>
-    </ul>
-
-    <p><strong>Selection type variety:</strong> 3 different types used (card_selection, scale_selector, chip_multi_select). No two consecutive steps use identical visual presentations.</p>
-
-    <hr>
-
-    <h2>4. Profile Matching</h2>
-
-    <h3>5 Profiles</h3>
-
-    <div class="profile-grid">
-      <div class="profile-card">
-        <div class="profile-name">The Minimalist</div>
-        <div class="profile-tagline">Less space, more life</div>
-        <div class="profile-description">
-          Clean lines, open spaces, and intentional design. Your Chester County dream home is proof that less really is more. Every element earns its place -- from the smart home tech to the floor-to-ceiling windows flooding your space with natural light.
-        </div>
-        <div class="option-tags">
-          <span class="tag">modern</span>
-          <span class="tag">clean-lines</span>
-          <span class="tag">urban</span>
-          <span class="tag">loft</span>
-          <span class="tag">smart-home</span>
-          <span class="tag">natural-light</span>
-        </div>
-        <div class="profile-meta">
-          <strong>ID:</strong> <code>the-minimalist</code><br>
-          <strong>Unique Tags:</strong> clean-lines, natural-light<br>
-          <strong>Match Threshold:</strong> 0.5<br>
-          <strong>Share Text:</strong> I'm The Minimalist! Clean lines, open spaces, every detail intentional. Build your Chester County Dream Home Wishlist:<br>
-          <strong>Graphic Mood:</strong> minimal, clean, modern architecture, open spaces with natural light and neutral tones, Chester County contemporary home
-        </div>
-      </div>
-
-      <div class="profile-card">
-        <div class="profile-name">The Nester</div>
-        <div class="profile-tagline">Room to grow, space to gather</div>
-        <div class="profile-description">
-          Home is where the heart is -- and yours is big. You want a place where memories get made, the kids can run wild in the yard, and everyone has room to grow. Chester County's top school districts and family-friendly communities were practically made for you.
-        </div>
-        <div class="option-tags">
-          <span class="tag">family</span>
-          <span class="tag">suburban</span>
-          <span class="tag">spacious</span>
-          <span class="tag">yard</span>
-          <span class="tag">family-friendly</span>
-          <span class="tag">safe</span>
-          <span class="tag">schools</span>
-        </div>
-        <div class="profile-meta">
-          <strong>ID:</strong> <code>the-nester</code><br>
-          <strong>Unique Tags:</strong> safe, schools<br>
-          <strong>Match Threshold:</strong> 0.5<br>
-          <strong>Share Text:</strong> I'm The Nester! Big yard, top schools, and room for everyone. Build your Chester County Dream Home Wishlist:<br>
-          <strong>Graphic Mood:</strong> warm, family-friendly, spacious rooms with cozy details, large yard with swing set, Chester County suburban family home
-        </div>
-      </div>
-
-      <div class="profile-card">
-        <div class="profile-name">The Entertainer</div>
-        <div class="profile-tagline">Built for hosting, designed for living</div>
-        <div class="profile-description">
-          Your home is where the party happens. An open kitchen made for cooking with friends, outdoor space for legendary gatherings, and every detail designed for hosting. Chester County's got the space and the views to make your entertaining dreams real.
-        </div>
-        <div class="option-tags">
-          <span class="tag">open-kitchen</span>
-          <span class="tag">outdoor</span>
-          <span class="tag">pool</span>
-          <span class="tag">gourmet-kitchen</span>
-          <span class="tag">entertaining</span>
-          <span class="tag">luxury</span>
-        </div>
-        <div class="profile-meta">
-          <strong>ID:</strong> <code>the-entertainer</code><br>
-          <strong>Unique Tags:</strong> gourmet-kitchen, entertaining<br>
-          <strong>Match Threshold:</strong> 0.5<br>
-          <strong>Share Text:</strong> I'm The Entertainer! Gourmet kitchen, outdoor living, and space for everyone. Build your Chester County Dream Home Wishlist:<br>
-          <strong>Graphic Mood:</strong> inviting, social, open-concept kitchen flowing to outdoor entertaining area with pool, Chester County estate with outdoor kitchen
-        </div>
-      </div>
-
-      <div class="profile-card">
-        <div class="profile-name">The Urbanite</div>
-        <div class="profile-tagline">Connected to everything that matters</div>
-        <div class="profile-description">
-          You want to be where the action is. Walkable streets, great restaurants, and culture on your doorstep. West Chester Borough's restaurant row, Phoenixville's Bridge Street, Wayne's downtown -- your home is your launchpad to the best Chester County has to offer.
-        </div>
-        <div class="option-tags">
-          <span class="tag">urban</span>
-          <span class="tag">walkable</span>
-          <span class="tag">downtown</span>
-          <span class="tag">trendy</span>
-          <span class="tag">city</span>
-          <span class="tag">loft</span>
-        </div>
-        <div class="profile-meta">
-          <strong>ID:</strong> <code>the-urbanite</code><br>
-          <strong>Unique Tags:</strong> trendy, city<br>
-          <strong>Match Threshold:</strong> 0.5<br>
-          <strong>Share Text:</strong> I'm The Urbanite! Walkable streets, city vibes, culture at my doorstep. Build your Chester County Dream Home Wishlist:<br>
-          <strong>Graphic Mood:</strong> urban, energetic, city views from stylish townhome or condo, vibrant walkable neighborhood, West Chester Borough vibe
-        </div>
-      </div>
-
-      <div class="profile-card">
-        <div class="profile-name">The Retreater</div>
-        <div class="profile-tagline">Your private escape from the everyday</div>
-        <div class="profile-description">
-          Peace, quiet, and a view that never gets old. Your Chester County dream home is a sanctuary -- rolling hills, stone walls, maybe a creek out back. Room to breathe, room to work from home, room to just be. This is your private escape.
-        </div>
-        <div class="option-tags">
-          <span class="tag">waterfront</span>
-          <span class="tag">rural</span>
-          <span class="tag">privacy</span>
-          <span class="tag">scenic</span>
-          <span class="tag">acreage</span>
-          <span class="tag">fireplace</span>
-        </div>
-        <div class="profile-meta">
-          <strong>ID:</strong> <code>the-retreater</code><br>
-          <strong>Unique Tags:</strong> privacy, scenic<br>
-          <strong>Match Threshold:</strong> 0.5<br>
-          <strong>Share Text:</strong> I'm The Retreater! Rolling hills, wide open spaces, total tranquility. Build your Chester County Dream Home Wishlist:<br>
-          <strong>Graphic Mood:</strong> serene, rural, panoramic nature views, peaceful private setting, Chester County horse country, stone farmhouse with rolling hills
-        </div>
-      </div>
-    </div>
-
-    <h3>Fallback Profile</h3>
-    <div class="dimension-card">
-      <div class="meta-row">
-        <span class="meta-label">Profile:</span>
-        <span class="meta-value">The Nester</span>
-      </div>
-      <div class="meta-row">
-        <span class="meta-label">Rationale:</span>
-        <span class="meta-value">The Nester represents the largest buyer segment in Chester County (growing families, 40-50% of traffic per research). When selections are too diffuse to clearly match a specific profile, they most likely fit the broad family-oriented buyer that Chester County primarily attracts.</span>
-      </div>
-    </div>
-
-    <h3>Match Algorithm</h3>
-    <pre><code>For each profile:
+        <h4 class="mt-3">Match Algorithm</h4>
+        <pre><code>For each profile:
   user_tags = all tags from user's selections across all 6 dimensions
   overlap = count(user_tags INTERSECT profile.trigger_tags)
   ratio = overlap / count(profile.trigger_tags)
@@ -1477,111 +740,85 @@
 Winner = candidate with highest ratio
 Ties broken by profile order (first in array wins)
 If no candidate exceeds threshold: fallback to The Nester</code></pre>
-
-    <hr>
-
-    <h2>5. Qualification Signals (Backend Only)</h2>
-
-    <blockquote>
-      These signals are NEVER shown to the user. They determine email sequence targeting and follow-up priority.
-    </blockquote>
-
-    <h3>Urgency (from Timeline Dimension)</h3>
-
-    <div class="signal-card">
-      <div class="signal-level hot">Hot</div>
-      <div class="option-tags">
-        <span class="tag">immediate</span>
-        <span class="tag">urgent</span>
-        <span class="tag">active-search</span>
-      </div>
-      <div class="option-description">
-        Ready to tour homes this week. Same-day follow-up.
       </div>
     </div>
 
-    <div class="signal-card">
-      <div class="signal-level warm">Warm</div>
-      <div class="option-tags">
-        <span class="tag">3-months</span>
-        <span class="tag">6-months</span>
-        <span class="tag">planning</span>
-        <span class="tag">early-planning</span>
+    <!-- Qualification Signals -->
+    <div class="preview-card">
+      <div class="card-header">
+        <h3>Qualification Signals (Backend Only)</h3>
+        <span class="badge neutral">NOT shown to user</span>
       </div>
-      <div class="option-description">
-        Actively researching. Nurture with neighborhood guides.
+      <div class="card-body">
+        <blockquote style="background: #fff3cd; border-left: 4px solid #f59e0b; padding: 12px 20px; margin: 16px 0;">
+          These signals are NEVER shown to the user. They determine email sequence targeting and follow-up priority.
+        </blockquote>
+
+        <h4>Urgency (from Timeline)</h4>
+        <div class="info-grid cols-3 mt-2">
+          <div class="info-item" style="border-left: 4px solid #ef4444;">
+            <h4><span class="badge hot">HOT</span></h4>
+            <p>ASAP, Within 3 Months</p>
+            <p style="font-size: 0.9rem; color: #666;">Ready to tour homes this week. Same-day follow-up.</p>
+          </div>
+          <div class="info-item" style="border-left: 4px solid #f59e0b;">
+            <h4><span class="badge warm">WARM</span></h4>
+            <p>3-6 Months, Next Year</p>
+            <p style="font-size: 0.9rem; color: #666;">Actively researching. Nurture with neighborhood guides.</p>
+          </div>
+          <div class="info-item" style="border-left: 4px solid #3b82f6;">
+            <h4><span class="badge cool">COOL</span></h4>
+            <p>Just Looking</p>
+            <p style="font-size: 0.9rem; color: #666;">Long-term dreamer. Monthly market updates.</p>
+          </div>
+        </div>
+
+        <h4 class="mt-3">Budget Fit (from Budget)</h4>
+        <div class="info-grid cols-3 mt-2">
+          <div class="info-item" style="border-left: 4px solid #ef4444;">
+            <h4><span class="badge hot">HOT</span></h4>
+            <p>$750K+ (Premium, Luxury)</p>
+            <p style="font-size: 0.9rem; color: #666;">Above team's average sale price. High-value lead.</p>
+          </div>
+          <div class="info-item" style="border-left: 4px solid #f59e0b;">
+            <h4><span class="badge warm">WARM</span></h4>
+            <p>$300-750K (Mid, Upper)</p>
+            <p style="font-size: 0.9rem; color: #666;">Core Chester County market. Solid lead.</p>
+          </div>
+          <div class="info-item" style="border-left: 4px solid #3b82f6;">
+            <h4><span class="badge cool">COOL</span></h4>
+            <p>Under $300K (Starter)</p>
+            <p style="font-size: 0.9rem; color: #666;">Limited Chester County inventory. Longer nurture.</p>
+          </div>
+        </div>
+
+        <h4 class="mt-3">Composite Formula</h4>
+        <pre><code>composite = urgency * 0.6 + budget_fit * 0.4
+
+Signal values:
+  hot = 1.0
+  warm = 0.5
+  cool = 0.0
+
+Composite thresholds:
+  >= 0.7 = Hot lead (immediate outreach, schedule showing)
+  0.3 - 0.69 = Warm lead (nurture sequence, market updates)
+  < 0.3 = Cool lead (long-term drip, inspiration content)</code></pre>
+
+        <p style="color: #666; font-size: 0.95rem;"><strong>Weight rationale:</strong> Urgency weighted higher (0.6) because real estate is timing-driven. The Gary Mercer Team's volume model (401 sales/year) means they can serve all budget levels -- urgency is the stronger signal.</p>
       </div>
     </div>
 
-    <div class="signal-card">
-      <div class="signal-level cool">Cool</div>
-      <div class="option-tags">
-        <span class="tag">browsing</span>
-        <span class="tag">exploring</span>
-        <span class="tag">next-year</span>
+    <!-- Graphic Prompt Template -->
+    <div class="preview-card">
+      <div class="card-header">
+        <h3>Graphic Prompt Template</h3>
+        <span class="badge accent">Glif API</span>
       </div>
-      <div class="option-description">
-        Long-term dreamer. Monthly market updates.
-      </div>
-    </div>
+      <div class="card-body">
+        <p style="margin-bottom: 16px;">Template string for generating personalized vision board graphics:</p>
 
-    <h3>Budget Fit (from Budget Dimension)</h3>
-
-    <div class="signal-card">
-      <div class="signal-level hot">Hot</div>
-      <div class="option-tags">
-        <span class="tag">budget-premium</span>
-        <span class="tag">budget-luxury</span>
-      </div>
-      <div class="option-description">
-        $750K+ -- above team's average sale price. High-value lead.
-      </div>
-    </div>
-
-    <div class="signal-card">
-      <div class="signal-level warm">Warm</div>
-      <div class="option-tags">
-        <span class="tag">budget-mid</span>
-        <span class="tag">budget-upper</span>
-      </div>
-      <div class="option-description">
-        $300-750K -- core Chester County market. Solid lead.
-      </div>
-    </div>
-
-    <div class="signal-card">
-      <div class="signal-level cool">Cool</div>
-      <div class="option-tags">
-        <span class="tag">budget-starter</span>
-      </div>
-      <div class="option-description">
-        Under $300K -- limited Chester County inventory. Longer nurture.
-      </div>
-    </div>
-
-    <h3>Composite Formula</h3>
-
-    <pre><code>composite = urgency * 0.6 + budget_fit * 0.4</code></pre>
-
-    <p><strong>Signal values:</strong> hot = 1.0, warm = 0.5, cool = 0.0</p>
-
-    <p><strong>Composite thresholds:</strong></p>
-    <ul>
-      <li>>= 0.7 = <strong>Hot lead</strong> (immediate outreach, schedule showing)</li>
-      <li>0.3 - 0.69 = <strong>Warm lead</strong> (nurture sequence, market updates)</li>
-      <li>< 0.3 = <strong>Cool lead</strong> (long-term drip, inspiration content)</li>
-    </ul>
-
-    <p><strong>Weight rationale:</strong> Urgency weighted higher (0.6) because real estate is timing-driven. The Gary Mercer Team's volume model (401 sales/year) means they can serve all budget levels -- urgency is the stronger signal.</p>
-
-    <hr>
-
-    <h2>6. Graphic Prompt Template</h2>
-
-    <h3>Template String</h3>
-
-    <div class="template-box">
-Pinterest-style dream home mood board collage, editorial interior and exterior photography.
+        <pre><code>Pinterest-style dream home mood board collage, editorial interior and exterior photography.
 Style: {style_label} home aesthetic, {style_glif_keywords}.
 Location vibe: {neighborhood_vibe_description}.
 Must-have features visualized: {must_haves_visual_descriptions}.
@@ -1590,118 +827,107 @@ Chester County, Pennsylvania setting. Rolling hills, mature trees, stone and bri
 Aspirational, shareable, real estate magazine quality.
 Warm natural lighting, inviting atmosphere.
 No text overlays, purely visual mood board.
-Ultra-detailed, architectural photography, 8K.
-    </div>
+Ultra-detailed, architectural photography, 8K.</code></pre>
 
-    <h3>Placeholder Inventory</h3>
-
-    <div class="placeholder-table">
-      <div class="placeholder-row">
-        <div class="placeholder-name">{style_label}</div>
-        <div class="placeholder-details">
-          <strong>Source:</strong> <code>style</code> dimension, <code>option.label</code><br>
-          <strong>Fallback:</strong> "Classic Family Home"
-        </div>
-      </div>
-
-      <div class="placeholder-row">
-        <div class="placeholder-name">{style_glif_keywords}</div>
-        <div class="placeholder-details">
-          <strong>Source:</strong> <code>style</code> dimension, <code>option.glif_prompt_keywords</code><br>
-          <strong>Fallback:</strong> "classic family home, large yard, front porch, traditional architecture, warm brick or stone siding, Chester County colonial"
-        </div>
-      </div>
-
-      <div class="placeholder-row">
-        <div class="placeholder-name">{neighborhood_vibe_description}</div>
-        <div class="placeholder-details">
-          <strong>Source:</strong> <code>neighborhood_vibe</code> dimension, <code>option.location_vibe_description</code><br>
-          <strong>Fallback:</strong> "quiet suburban neighborhood with tree-lined streets and top-rated schools"
-        </div>
-      </div>
-
-      <div class="placeholder-row">
-        <div class="placeholder-name">{must_haves_visual_descriptions}</div>
-        <div class="placeholder-details">
-          <strong>Source:</strong> <code>must_haves</code> dimension, concatenated <code>option.visual_description</code> for all selected options, comma-separated<br>
-          <strong>Fallback:</strong> "spacious open-concept kitchen with large island, dedicated home office with natural light"
-        </div>
-      </div>
-
-      <div class="placeholder-row">
-        <div class="placeholder-name">{bedrooms_atmosphere}</div>
-        <div class="placeholder-details">
-          <strong>Source:</strong> <code>bedrooms</code> dimension, <code>option.atmosphere_description</code><br>
-          <strong>Fallback:</strong> "comfortable three-bedroom home"
-        </div>
-      </div>
-
-      <div class="placeholder-row">
-        <div class="placeholder-name">{bedrooms_label}</div>
-        <div class="placeholder-details">
-          <strong>Source:</strong> <code>bedrooms</code> dimension, <code>option.label</code><br>
-          <strong>Fallback:</strong> "3 Bedrooms"
+        <h4 class="mt-3">Placeholder Variables</h4>
+        <div class="info-grid cols-2">
+          <div class="info-item">
+            <h4>{style_label}</h4>
+            <p><strong>Source:</strong> <code>style</code> dimension</p>
+            <p><strong>Fallback:</strong> "Classic Family Home"</p>
+          </div>
+          <div class="info-item">
+            <h4>{style_glif_keywords}</h4>
+            <p><strong>Source:</strong> <code>style</code> dimension</p>
+            <p><strong>Fallback:</strong> Chester County colonial keywords</p>
+          </div>
+          <div class="info-item">
+            <h4>{neighborhood_vibe_description}</h4>
+            <p><strong>Source:</strong> <code>neighborhood_vibe</code> dimension</p>
+            <p><strong>Fallback:</strong> Quiet suburban neighborhood</p>
+          </div>
+          <div class="info-item">
+            <h4>{must_haves_visual_descriptions}</h4>
+            <p><strong>Source:</strong> <code>must_haves</code> (concatenated)</p>
+            <p><strong>Fallback:</strong> Open kitchen, home office</p>
+          </div>
+          <div class="info-item">
+            <h4>{bedrooms_atmosphere}</h4>
+            <p><strong>Source:</strong> <code>bedrooms</code> dimension</p>
+            <p><strong>Fallback:</strong> "Comfortable three-bedroom home"</p>
+          </div>
+          <div class="info-item">
+            <h4>{bedrooms_label}</h4>
+            <p><strong>Source:</strong> <code>bedrooms</code> dimension</p>
+            <p><strong>Fallback:</strong> "3 Bedrooms"</p>
+          </div>
         </div>
       </div>
     </div>
 
-    <hr>
+    <!-- Implementation Notes -->
+    <div class="preview-card">
+      <div class="card-header">
+        <h3>Implementation Notes</h3>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <span class="meta-label">Vertical Template:</span>
+          <span class="meta-value"><code>vertical-real-estate.json</code></span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Tech Stack:</span>
+          <span class="meta-value">Astro + Vercel, Supabase, Glif API (Nano Banana Pro), Resend</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Timeline:</span>
+          <span class="meta-value">5-7 days (standard vision board build)</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Capacity:</span>
+          <span class="meta-value">Glif API rate limits; implement SHA-256 caching</span>
+        </div>
 
-    <h2>7. Implementation Notes</h2>
-
-    <div class="dimension-card">
-      <div class="meta-row">
-        <span class="meta-label">Vertical Template Used:</span>
-        <span class="meta-value"><code>vertical-real-estate.json</code></span>
-      </div>
-      <div class="meta-row">
-        <span class="meta-label">Tech Requirements:</span>
-        <span class="meta-value">Astro + Vercel, Supabase, Glif API (Nano Banana Pro), Resend</span>
-      </div>
-      <div class="meta-row">
-        <span class="meta-label">Timeline Estimate:</span>
-        <span class="meta-value">5-7 days (standard vision board build)</span>
-      </div>
-      <div class="meta-row">
-        <span class="meta-label">Capacity Considerations:</span>
-        <span class="meta-value">Glif API rate limits; implement SHA-256 caching</span>
+        <h4 class="mt-3">Customizations from Template</h4>
+        <ul class="checklist">
+          <li>All <code>glif_prompt_keywords</code> enhanced with Chester County geographic references</li>
+          <li>Neighborhood Vibe descriptions with specific Chester County communities</li>
+          <li>Profile descriptions and share text localized to Chester County</li>
+          <li>Profile graphic moods with Chester County visual cues</li>
+          <li>Budget ranges validated against Chester County market data</li>
+          <li>Timeline signals confirmed with research segments</li>
+          <li>Must-Have visual descriptions with Chester County architectural details</li>
+          <li>Fallback profile rationale documented (The Nester = 40-50% segment)</li>
+        </ul>
       </div>
     </div>
 
-    <h3>Customizations from Template</h3>
-
-    <ol>
-      <li><strong>All <code>glif_prompt_keywords</code>:</strong> Added Chester County geographic references</li>
-      <li><strong>Neighborhood Vibe descriptions:</strong> Added specific Chester County community examples</li>
-      <li><strong>Profile descriptions and share text:</strong> Localized to Chester County</li>
-      <li><strong>Profile graphic moods:</strong> Added Chester County visual cues</li>
-      <li><strong>Budget range validation:</strong> Confirmed match with Chester County market data</li>
-      <li><strong>Timeline signals:</strong> Confirmed alignment with research segments</li>
-      <li><strong>Must-Have visual descriptions:</strong> Enhanced with Chester County architectural details</li>
-      <li><strong>Fallback profile rationale:</strong> Documented why The Nester is the right fallback</li>
-    </ol>
-
-    <hr>
-
-    <h2>Validation Checklist</h2>
-
-    <ul>
-      <li>✓ 6 preference dimensions with correct selection types</li>
-      <li>✓ Selection flow has 6 steps with 3 different selection types</li>
-      <li>✓ No two consecutive steps use identical visual presentations</li>
-      <li>✓ 5 profiles with distinct trigger tag sets and at least 2 unique tags each</li>
-      <li>✓ Every option tag appears in at least one profile's trigger_tags</li>
-      <li>✓ Fallback profile defined (The Nester) with graphic_mood</li>
-      <li>✓ Qualification signals from budget + timeline only (backend-only)</li>
-      <li>✓ Graphic prompt template has all 6 {variables} mapped</li>
-      <li>✓ Customizations from template documented</li>
-      <li>✓ All options have id, label, icon, tags at minimum</li>
-      <li>✓ Style options have glif_prompt_keywords and graphic_elements</li>
-      <li>✓ Must-have options have visual_description</li>
-      <li>✓ Budget and timeline options have qualification_signal</li>
-    </ul>
-
+    <!-- Validation Checklist -->
+    <div class="preview-card success">
+      <div class="card-header">
+        <h3>Validation Checklist</h3>
+        <span class="badge success">All Complete</span>
+      </div>
+      <div class="card-body">
+        <ul class="checklist">
+          <li>6 preference dimensions with correct selection types</li>
+          <li>Selection flow has 6 steps with 3 different selection types</li>
+          <li>No two consecutive steps use identical visual presentations</li>
+          <li>5 profiles with distinct trigger tag sets and at least 2 unique tags each</li>
+          <li>Every option tag appears in at least one profile's trigger_tags</li>
+          <li>Fallback profile defined (The Nester) with graphic_mood</li>
+          <li>Qualification signals from budget + timeline only (backend-only)</li>
+          <li>Graphic prompt template has all 6 {variables} mapped</li>
+          <li>Customizations from template documented</li>
+          <li>All options have id, label, icon, tags at minimum</li>
+          <li>Style options have glif_prompt_keywords and graphic_elements</li>
+          <li>Must-have options have visual_description</li>
+          <li>Budget and timeline options have qualification_signal</li>
+        </ul>
+      </div>
+    </div>
   </div>
+
   <script src="assets/preview-components.js"></script>
 </body>
 </html>
