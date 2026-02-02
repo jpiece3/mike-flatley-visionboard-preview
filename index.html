@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mike Flatley Real Estate - Vision Board Builder Preview</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+      background: #fafafa;
+      color: #262626;
+      line-height: 1.6;
+    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+    .hero {
+      background: linear-gradient(135deg, #1a3a52 0%, #2d5570 100%);
+      color: white;
+      padding: 60px 40px;
+      border-radius: 16px;
+      text-align: center;
+      margin-bottom: 40px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    .hero h1 { font-size: 2.5rem; margin-bottom: 8px; font-weight: 700; }
+    .hero h2 { font-size: 1.5rem; margin-bottom: 12px; font-weight: 500; opacity: 0.95; }
+    .hero p { font-size: 1rem; opacity: 0.85; }
+    .nav-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .nav-card {
+      background: white;
+      padding: 28px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: 1px solid #e5e5e5;
+    }
+    .nav-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    }
+    .nav-card a {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .nav-card h3 {
+      color: #1a3a52;
+      margin: 0 0 8px 0;
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+    .nav-card p {
+      color: #525252;
+      font-size: 0.9rem;
+      margin: 0;
+    }
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #1a3a52;
+      margin: 40px 0 20px 0;
+      padding-bottom: 12px;
+      border-bottom: 2px solid #e5e5e5;
+    }
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 1.75rem; }
+      .hero h2 { font-size: 1.15rem; }
+      .nav-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="hero">
+      <h1>Mike Flatley Real Estate</h1>
+      <h2>Dream Home Wishlist Builder - Client Preview</h2>
+      <p>Gary Mercer Team | Chester County, PA</p>
+    </div>
+
+    <div class="section-title">Core Documentation</div>
+    <div class="nav-grid">
+      <div class="nav-card">
+        <a href="walkthrough.html">
+          <h3>Builder Walkthrough</h3>
+          <p>Step-by-step user experience through all 6 dimensions</p>
+        </a>
+      </div>
+      <div class="nav-card">
+        <a href="research.html">
+          <h3>Market Research</h3>
+          <p>Buyer profiles, psychology, and qualification signals</p>
+        </a>
+      </div>
+      <div class="nav-card">
+        <a href="architecture.html">
+          <h3>Builder Architecture</h3>
+          <p>6 preference dimensions, 5 buyer profiles, profile matching</p>
+        </a>
+      </div>
+      <div class="nav-card">
+        <a href="design.html">
+          <h3>Visual Design System</h3>
+          <p>Colors, typography, components, and brand consistency</p>
+        </a>
+      </div>
+    </div>
+
+    <div class="section-title">Email Marketing</div>
+    <div class="nav-grid">
+      <div class="nav-card">
+        <a href="email-sequences.html">
+          <h3>Email Sequences</h3>
+          <p>10 personalized emails across 4 sequences (Welcome, Hot, Warm, Re-Engagement)</p>
+        </a>
+      </div>
+    </div>
+
+    <div class="section-title">Strategy Pack</div>
+    <div class="nav-grid">
+      <div class="nav-card">
+        <a href="ad-strategy.html">
+          <h3>Ad Strategy</h3>
+          <p>Google, Facebook, and Instagram ad variations with targeting</p>
+        </a>
+      </div>
+      <div class="nav-card">
+        <a href="social-content.html">
+          <h3>Social Content</h3>
+          <p>30-day content calendar with platform-specific recommendations</p>
+        </a>
+      </div>
+      <div class="nav-card">
+        <a href="consultation-scripts.html">
+          <h3>Consultation Scripts</h3>
+          <p>Hot/Warm/Cool conversation frameworks for lead follow-up</p>
+        </a>
+      </div>
+    </div>
+
+    <div class="section-title">Growth & Expansion</div>
+    <div class="nav-grid">
+      <div class="nav-card">
+        <a href="ways-to-grow.html">
+          <h3>Growth Add-Ons</h3>
+          <p>Included features and optional expansion packages</p>
+        </a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

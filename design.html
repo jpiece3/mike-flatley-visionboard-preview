@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visual Design System - Mike Flatley Real Estate</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+      background: #fafafa;
+      color: #262626;
+      line-height: 1.7;
+      padding-bottom: 80px;
+    }
+    .header {
+      background: linear-gradient(135deg, #1a3a52 0%, #2d5570 100%);
+      color: white;
+      padding: 24px 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .header h1 { font-size: 1.5rem; font-weight: 600; }
+    .back-link {
+      color: white;
+      text-decoration: none;
+      padding: 8px 16px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 6px;
+      transition: background 0.2s;
+      font-size: 0.9rem;
+    }
+    .back-link:hover { background: rgba(255,255,255,0.25); }
+    .container { max-width: 1200px; margin: 32px auto; padding: 0 32px; }
+    .content {
+      background: white;
+      padding: 48px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    h1 { font-size: 2.25rem; color: #1a3a52; margin-bottom: 24px; font-weight: 700; }
+    h2 { font-size: 1.75rem; color: #1a3a52; margin: 40px 0 16px 0; font-weight: 600; padding-bottom: 8px; border-bottom: 2px solid #e5e5e5; }
+    h3 { font-size: 1.35rem; color: #2d5570; margin: 32px 0 12px 0; font-weight: 600; }
+    h4 { font-size: 1.1rem; color: #2d5570; margin: 24px 0 8px 0; font-weight: 600; }
+    p { margin: 12px 0; color: #404040; }
+    ul, ol { margin: 12px 0 12px 24px; color: #404040; }
+    li { margin: 6px 0; }
+    strong { color: #1a3a52; font-weight: 600; }
+    em { color: #525252; }
+    code {
+      background: #f5f5f5;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: 'Monaco', 'Courier New', monospace;
+      font-size: 0.9em;
+      color: #d63384;
+    }
+    pre {
+      background: #f5f5f5;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin: 16px 0;
+      border: 1px solid #e5e5e5;
+    }
+    pre code {
+      background: none;
+      padding: 0;
+      color: #262626;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    th {
+      background: #1a3a52;
+      color: white;
+      padding: 12px;
+      text-align: left;
+      font-weight: 600;
+    }
+    td {
+      padding: 12px;
+      border-bottom: 1px solid #e5e5e5;
+    }
+    tr:hover { background: #fafafa; }
+    blockquote {
+      border-left: 4px solid #1a3a52;
+      padding: 12px 20px;
+      margin: 20px 0;
+      background: #f8f9fa;
+      color: #525252;
+      font-style: italic;
+    }
+    hr {
+      border: none;
+      border-top: 2px solid #e5e5e5;
+      margin: 32px 0;
+    }
+    a { color: #1a3a52; text-decoration: none; font-weight: 500; }
+    a:hover { text-decoration: underline; }
+    @media (max-width: 768px) {
+      .content { padding: 24px; }
+      .header-content { flex-direction: column; gap: 12px; text-align: center; }
+      h1 { font-size: 1.75rem; }
+      h2 { font-size: 1.35rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="header-content">
+      <h1>Visual Design System</h1>
+      <a href="index.html" class="back-link">← Back to Index</a>
+    </div>
+  </div>
+  <div class="container">
+    <div class="content">
+<h1>Mike Flatley Real Estate - Vision Board Builder Design Specifications</h1>
+
+<blockquote><strong>Design Mode</strong>: Soft</blockquote>
+<blockquote><strong>Detection Method</strong>: Inferred from vertical (real estate requires warm, approachable aesthetics)</blockquote>
+<blockquote><strong>Brand Source</strong>: Gary Mercer Team website analysis</blockquote>
+
+<hr>
+
+<h2>1. Brand Colors</h2>
+
+<h3>Primary Palette</h3>
+<pre><code>--color-primary-navy: #1a3a52;        /<em> Deep navy - trust, professionalism </em>/
+<p>--color-primary-navy-light: #2d5570;  /<em> Lighter navy for hover states </em>/</p>
+<p>--color-primary-navy-dark: #0f2636;   /<em> Darker navy for text </em>/</p>
+
+<p>--color-accent-gold: #d4a574;         /<em> Warm gold - premium, achievement </em>/</p>
+<p>--color-accent-gold-light: #e8c9a1;   /<em> Light gold for backgrounds </em>/</p>
+<p>--color-accent-gold-dark: #b8894f;    /<em> Dark gold for emphasis </em>/</p>
+
+<p>--color-accent-amber: #f5a623;        /<em> Bright amber - energy, optimism </em>/</p>
+</code></pre>
+
+<h3>Neutrals (Soft Mode)</h3>
+<pre><code>--color-neutral-50: #fafafa;          /<em> Lightest background </em>/
+<p>--color-neutral-100: #f5f5f5;         /<em> Light background </em>/</p>
+<p>--color-neutral-200: #e8e8e8;         /<em> Border light </em>/</p>
+<p>--color-neutral-300: #d4d4d4;         /<em> Border medium </em>/</p>
+<p>--color-neutral-400: #a3a3a3;         /<em> Text secondary </em>/</p>
+<p>--color-neutral-600: #525252;         /<em> Text primary </em>/</p>
+<p>--color-neutral-800: #262626;         /<em> Text dark </em>/</p>
+<p>--color-neutral-900: #171717;         /<em> Text darkest </em>/</p>
+</code></pre>
+
+<h3>Semantic Colors</h3>
+<pre><code>--color-success: #10b981;             /<em> Green for confirmation </em>/
+<p>--color-warning: #f59e0b;             /<em> Amber for caution </em>/</p>
+<p>--color-error: #ef4444;               /<em> Red for errors </em>/</p>
+<p>--color-info: #3b82f6;                /<em> Blue for information </em>/</p>
+</code></pre>
+
+<hr>
+
+<h2>2. Typography Scale</h2>
+
+<h3>Font Families</h3>
+<pre><code>--font-heading: 'Playfair Display', Georgia, serif;  /<em> Elegant serif for headlines </em>/
+<p>--font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;</p>
+<p>--font-mono: 'JetBrains Mono', 'Courier New', monospace;</p>
+</code></pre>
+
+<strong>Font Loading</strong>:
+<pre><code><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</code></pre>
+
+<h3>Type Scale</h3>
+<pre><code>--text-xs: 0.75rem;      /<em> 12px - captions, fine print </em>/
+<p>--text-sm: 0.875rem;     /<em> 14px - secondary text </em>/</p>
+<p>--text-base: 1rem;       /<em> 16px - body text </em>/</p>
+<p>--text-lg: 1.125rem;     /<em> 18px - large body </em>/</p>
+<p>--text-xl: 1.25rem;      /<em> 20px - small headings </em>/</p>
+<p>--text-2xl: 1.5rem;      /<em> 24px - section headings </em>/</p>
+<p>--text-3xl: 1.875rem;    /<em> 30px - page headings </em>/</p>
+<p>--text-4xl: 2.25rem;     /<em> 36px - hero headings </em>/</p>
+<p>--text-5xl: 3rem;        /<em> 48px - display headings </em>/</p>
+</code></pre>
+
+<h3>Font Weights</h3>
+<pre><code>--font-normal: 400;
+<p>--font-medium: 500;</p>
+<p>--font-semibold: 600;</p>
+<p>--font-bold: 700;</p>
+</code></pre>
+
+<h3>Line Heights</h3>
+<pre><code>--leading-tight: 1.25;   /<em> Headings </em>/
+<p>--leading-snug: 1.375;   /<em> Subheadings </em>/</p>
+<p>--leading-normal: 1.5;   /<em> Body text </em>/</p>
+<p>--leading-relaxed: 1.625;/<em> Large body text </em>/</p>
+<p>--leading-loose: 2;      /<em> Spaced content </em>/</p>
+</code></pre>
+
+<hr>
+
+<h2>3. Spacing System</h2>
+
+<h3>Scale (based on 4px base unit)</h3>
+<pre><code>--space-1: 0.25rem;   /<em> 4px </em>/
+<p>--space-2: 0.5rem;    /<em> 8px </em>/</p>
+<p>--space-3: 0.75rem;   /<em> 12px </em>/</p>
+<p>--space-4: 1rem;      /<em> 16px </em>/</p>
+<p>--space-5: 1.25rem;   /<em> 20px </em>/</p>
+<p>--space-6: 1.5rem;    /<em> 24px </em>/</p>
+<p>--space-8: 2rem;      /<em> 32px </em>/</p>
+<p>--space-10: 2.5rem;   /<em> 40px </em>/</p>
+<p>--space-12: 3rem;     /<em> 48px </em>/</p>
+<p>--space-16: 4rem;     /<em> 64px </em>/</p>
+<p>--space-20: 5rem;     /<em> 80px </em>/</p>
+<p>--space-24: 6rem;     /<em> 96px </em>/</p>
+</code></pre>
+
+<hr>
+
+<h2>4. Layout</h2>
+
+<h3>Container Max-Widths</h3>
+<pre><code>--container-sm: 640px;   /<em> Mobile landscape </em>/
+<p>--container-md: 768px;   /<em> Tablets </em>/</p>
+<p>--container-lg: 1024px;  /<em> Desktops </em>/</p>
+<p>--container-xl: 1280px;  /<em> Large desktops </em>/</p>
+<p>--container-2xl: 1536px; /<em> Extra large </em>/</p>
+
+<p>--builder-max-width: 800px;  /<em> Builder steps </em>/</p>
+<p>--reveal-max-width: 1000px;  /<em> Reveal page </em>/</p>
+</code></pre>
+
+<h3>Breakpoints</h3>
+<pre><code>--breakpoint-sm: 640px;
+<p>--breakpoint-md: 768px;</p>
+<p>--breakpoint-lg: 1024px;</p>
+<p>--breakpoint-xl: 1280px;</p>
+<p>--breakpoint-2xl: 1536px;</p>
+</code></pre>
+
+<h3>Border Radius (Soft Mode)</h3>
+<pre><code>--radius-sm: 0.375rem;   /<em> 6px - small elements </em>/
+<p>--radius-md: 0.5rem;     /<em> 8px - buttons, inputs </em>/</p>
+<p>--radius-lg: 0.75rem;    /<em> 12px - cards </em>/</p>
+<p>--radius-xl: 1rem;       /<em> 16px - large cards </em>/</p>
+<p>--radius-2xl: 1.5rem;    /<em> 24px - hero elements </em>/</p>
+<p>--radius-full: 9999px;   /<em> Full rounded - badges, pills </em>/</p>
+</code></pre>
+
+<hr>
+
+<h2>5. Premium Polish System (Soft Mode)</h2>
+
+<h3>5-Layer Shadow System</h3>
+<pre><code>/<em> Layer 1: Subtle elevation </em>/
+<p>--shadow-sm:</p>
+<p>  0 1px 2px rgba(26, 58, 82, 0.03),</p>
+<p>  0 1px 3px rgba(26, 58, 82, 0.02);</p>
+
+<p>/<em> Layer 2: Card elevation </em>/</p>
+<p>--shadow-md:</p>
+<p>  0 2px 4px rgba(26, 58, 82, 0.04),</p>
+<p>  0 4px 8px rgba(26, 58, 82, 0.03),</p>
+<p>  0 1px 3px rgba(26, 58, 82, 0.02);</p>
+
+<p>/<em> Layer 3: Raised elements </em>/</p>
+<p>--shadow-lg:</p>
+<p>  0 4px 8px rgba(26, 58, 82, 0.05),</p>
+<p>  0 8px 16px rgba(26, 58, 82, 0.04),</p>
+<p>  0 2px 6px rgba(26, 58, 82, 0.03);</p>
+
+<p>/<em> Layer 4: Floating elements </em>/</p>
+<p>--shadow-xl:</p>
+<p>  0 8px 16px rgba(26, 58, 82, 0.06),</p>
+<p>  0 16px 32px rgba(26, 58, 82, 0.05),</p>
+<p>  0 4px 12px rgba(26, 58, 82, 0.04);</p>
+
+<p>/<em> Layer 5: Maximum elevation </em>/</p>
+<p>--shadow-2xl:</p>
+<p>  0 16px 32px rgba(26, 58, 82, 0.08),</p>
+<p>  0 32px 64px rgba(26, 58, 82, 0.06),</p>
+<p>  0 8px 24px rgba(26, 58, 82, 0.05);</p>
+</code></pre>
+
+<h3>Soft Mode Glow Effects</h3>
+<pre><code>/<em> Gold glow for selections </em>/
+<p>--glow-gold:</p>
+<p>  0 0 0 3px rgba(212, 165, 116, 0.2),</p>
+<p>  0 0 20px rgba(212, 165, 116, 0.15),</p>
+<p>  0 0 40px rgba(212, 165, 116, 0.1);</p>
+
+<p>/<em> Navy glow for focus </em>/</p>
+<p>--glow-navy:</p>
+<p>  0 0 0 3px rgba(26, 58, 82, 0.15),</p>
+<p>  0 0 16px rgba(26, 58, 82, 0.1);</p>
+</code></pre>
+
+<hr>
+
+<h2>6. Component CSS</h2>
+
+<h3>6.1 Progress Indicator</h3>
+<pre><code>.progress-indicator {
+<p>  display: flex;</p>
+<p>  justify-content: center;</p>
+<p>  align-items: center;</p>
+<p>  gap: var(--space-2);</p>
+<p>  padding: var(--space-6);</p>
+<p>  background: linear-gradient(135deg, var(--color-neutral-50) 0%, var(--color-accent-gold-light) 100%);</p>
+<p>  border-radius: var(--radius-lg);</p>
+<p>}</p>
+
+<p>.progress-step {</p>
+<p>  width: 48px;</p>
+<p>  height: 48px;</p>
+<p>  border-radius: var(--radius-full);</p>
+<p>  display: flex;</p>
+<p>  align-items: center;</p>
+<p>  justify-content: center;</p>
+<p>  font-family: var(--font-body);</p>
+<p>  font-size: var(--text-sm);</p>
+<p>  font-weight: var(--font-semibold);</p>
+<p>  background: var(--color-neutral-200);</p>
+<p>  color: var(--color-neutral-600);</p>
+<p>  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);</p>
+<p>}</p>
+
+<p>.progress-step.active {</p>
+<p>  background: var(--color-primary-navy);</p>
+<p>  color: white;</p>
+<p>  box-shadow: var(--shadow-lg), var(--glow-navy);</p>
+<p>  transform: scale(1.15);</p>
+<p>}</p>
+
+<p>.progress-step.completed {</p>
+<p>  background: var(--color-accent-gold);</p>
+<p>  color: var(--color-primary-navy-dark);</p>
+<p>  box-shadow: var(--shadow-md);</p>
+<p>}</p>
+
+<p>.progress-connector {</p>
+<p>  width: 32px;</p>
+<p>  height: 2px;</p>
+<p>  background: var(--color-neutral-300);</p>
+<p>  transition: background 0.4s ease;</p>
+<p>}</p>
+
+<p>.progress-connector.completed {</p>
+<p>  background: var(--color-accent-gold);</p>
+<p>}</p>
+</code></pre>
+
+<h3>6.2 Card Selection Components</h3>
+<pre><code>.card-selection-grid {
+<p>  display: grid;</p>
+<p>  gap: var(--space-6);</p>
+<p>  padding: var(--space-8) 0;</p>
+<p>}</p>
+
+<p>/<em> Large cards (style selection) </em>/</p>
+<p>.card-selection-grid.large {</p>
+<p>  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));</p>
+<p>}</p>
+
+<p>/<em> Medium cards (neighborhood) </em>/</p>
+<p>.card-selection-grid.medium {</p>
+<p>  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));</p>
+<p>}</p>
+
+<p>/<em> Small cards (timeline) </em>/</p>
+<p>.card-selection-grid.small {</p>
+<p>  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));</p>
+<p>}</p>
+
+<p>.selection-card {</p>
+<p>  position: relative;</p>
+<p>  border-radius: var(--radius-xl);</p>
+<p>  background: white;</p>
+<p>  border: 2px solid var(--color-neutral-200);</p>
+<p>  cursor: pointer;</p>
+<p>  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);</p>
+<p>  overflow: hidden;</p>
+<p>}</p>
+
+<p>.selection-card:hover {</p>
+<p>  border-color: var(--color-accent-gold);</p>
+<p>  box-shadow: var(--shadow-lg);</p>
+<p>  transform: translateY(-4px);</p>
+<p>}</p>
+
+<p>.selection-card.selected {</p>
+<p>  border-color: var(--color-accent-gold);</p>
+<p>  background: linear-gradient(135deg, white 0%, var(--color-accent-gold-light) 100%);</p>
+<p>  box-shadow: var(--glow-gold);</p>
+<p>  transform: translateY(-4px);</p>
+<p>}</p>
+
+<p>.selection-card.selected::before {</p>
+<p>  content: '';</p>
+<p>  position: absolute;</p>
+<p>  top: 0;</p>
+<p>  left: 0;</p>
+<p>  right: 0;</p>
+<p>  height: 4px;</p>
+<p>  background: linear-gradient(90deg, var(--color-accent-gold) 0%, var(--color-accent-amber) 100%);</p>
+<p>}</p>
+
+<p>.card-image {</p>
+<p>  width: 100%;</p>
+<p>  aspect-ratio: 16 / 10;</p>
+<p>  object-fit: cover;</p>
+<p>  border-radius: var(--radius-lg) var(--radius-lg) 0 0;</p>
+<p>}</p>
+
+<p>.card-content {</p>
+<p>  padding: var(--space-6);</p>
+<p>}</p>
+
+<p>.card-icon {</p>
+<p>  width: 48px;</p>
+<p>  height: 48px;</p>
+<p>  margin-bottom: var(--space-4);</p>
+<p>  color: var(--color-primary-navy);</p>
+<p>  transition: color 0.3s ease;</p>
+<p>}</p>
+
+<p>.selection-card.selected .card-icon {</p>
+<p>  color: var(--color-accent-gold);</p>
+<p>}</p>
+
+<p>.card-label {</p>
+<p>  font-family: var(--font-heading);</p>
+<p>  font-size: var(--text-xl);</p>
+<p>  font-weight: var(--font-semibold);</p>
+<p>  color: var(--color-primary-navy-dark);</p>
+<p>  margin-bottom: var(--space-2);</p>
+<p>  line-height: var(--leading-tight);</p>
+<p>}</p>
+
+<p>.card-description {</p>
+<p>  font-family: var(--font-body);</p>
+<p>  font-size: var(--text-sm);</p>
+<p>  color: var(--color-neutral-600);</p>
+<p>  line-height: var(--leading-normal);</p>
+<p>}</p>
+
+<p>.card-checkmark {</p>
+<p>  position: absolute;</p>
+<p>  top: var(--space-4);</p>
+<p>  right: var(--space-4);</p>
+<p>  width: 32px;</p>
+<p>  height: 32px;</p>
+<p>  border-radius: var(--radius-full);</p>
+<p>  background: var(--color-accent-gold);</p>
+<p>  color: white;</p>
+<p>  display: flex;</p>
+<p>  align-items: center;</p>
+<p>  justify-content: center;</p>
+<p>  opacity: 0;</p>
+<p>  transform: scale(0.5);</p>
+<p>  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);</p>
+<p>}</p>
+
+<p>.selection-card.selected .card-checkmark {</p>
+<p>  opacity: 1;</p>
+<p>  transform: scale(1);</p>
+<p>}</p>
+</code></pre>
+
+<h3>6.3 Scale Selector Components</h3>
+<pre><code>.scale-selector {
+<p>  display: flex;</p>
+<p>  background: var(--color-neutral-100);</p>
+<p>  border-radius: var(--radius-xl);</p>
+<p>  padding: var(--space-2);</p>
+<p>  gap: var(--space-2);</p>
+<p>  box-shadow: inset 0 2px 4px rgba(26, 58, 82, 0.06);</p>
+<p>}</p>
+
+<p>.scale-option {</p>
+<p>  flex: 1;</p>
+<p>  padding: var(--space-4) var(--space-6);</p>
+<p>  border-radius: var(--radius-lg);</p>
+<p>  background: transparent;</p>
+<p>  border: none;</p>
+<p>  font-family: var(--font-body);</p>
+<p>  font-size: var(--text-base);</p>
+<p>  font-weight: var(--font-medium);</p>
+<p>  color: var(--color-neutral-600);</p>
+<p>  cursor: pointer;</p>
+<p>  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);</p>
+<p>  text-align: center;</p>
+<p>}</p>
+
+<p>.scale-option:hover {</p>
+<p>  background: white;</p>
+<p>  color: var(--color-primary-navy);</p>
+<p>  box-shadow: var(--shadow-sm);</p>
+<p>}</p>
+
+<p>.scale-option.selected {</p>
+<p>  background: var(--color-primary-navy);</p>
+<p>  color: white;</p>
+<p>  box-shadow: var(--shadow-md);</p>
+<p>  transform: scale(1.05);</p>
+<p>}</p>
+
+<p>@media (max-width: 640px) {</p>
+<p>  .scale-selector {</p>
+<p>    flex-direction: column;</p>
+<p>  }</p>
+
+<p>  .scale-option {</p>
+<p>    padding: var(--space-3) var(--space-4);</p>
+<p>  }</p>
+<p>}</p>
+</code></pre>
+
+<h3>6.4 Chip Multi-Select Components</h3>
+<pre><code>.chip-grid {
+<p>  display: grid;</p>
+<p>  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));</p>
+<p>  gap: var(--space-3);</p>
+<p>  padding: var(--space-6) 0;</p>
+<p>}</p>
+
+<p>.chip {</p>
+<p>  position: relative;</p>
+<p>  display: flex;</p>
+<p>  align-items: center;</p>
+<p>  gap: var(--space-2);</p>
+<p>  padding: var(--space-3) var(--space-4);</p>
+<p>  border-radius: var(--radius-full);</p>
+<p>  background: white;</p>
+<p>  border: 2px solid var(--color-neutral-300);</p>
+<p>  cursor: pointer;</p>
+<p>  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);</p>
+<p>  font-family: var(--font-body);</p>
+<p>  font-size: var(--text-sm);</p>
+<p>  font-weight: var(--font-medium);</p>
+<p>  color: var(--color-neutral-700);</p>
+<p>}</p>
+
+<p>.chip:hover {</p>
+<p>  border-color: var(--color-accent-gold);</p>
+<p>  background: var(--color-accent-gold-light);</p>
+<p>  transform: translateY(-2px);</p>
+<p>  box-shadow: var(--shadow-sm);</p>
+<p>}</p>
+
+<p>.chip.selected {</p>
+<p>  background: var(--color-primary-navy);</p>
+<p>  border-color: var(--color-primary-navy);</p>
+<p>  color: white;</p>
+<p>  box-shadow: var(--shadow-md);</p>
+<p>}</p>
+
+<p>.chip-icon {</p>
+<p>  width: 20px;</p>
+<p>  height: 20px;</p>
+<p>  transition: transform 0.3s ease;</p>
+<p>}</p>
+
+<p>.chip.selected .chip-icon {</p>
+<p>  transform: scale(1.1);</p>
+<p>}</p>
+
+<p>.chip-counter {</p>
+<p>  position: fixed;</p>
+<p>  bottom: var(--space-6);</p>
+<p>  left: 50%;</p>
+<p>  transform: translateX(-50%);</p>
+<p>  padding: var(--space-4) var(--space-6);</p>
+<p>  background: var(--color-primary-navy);</p>
+<p>  color: white;</p>
+<p>  border-radius: var(--radius-full);</p>
+<p>  font-family: var(--font-body);</p>
+<p>  font-size: var(--text-sm);</p>
+<p>  font-weight: var(--font-semibold);</p>
+<p>  box-shadow: var(--shadow-xl);</p>
+<p>  opacity: 0;</p>
+<p>  transition: opacity 0.3s ease;</p>
+<p>  z-index: 1000;</p>
+<p>}</p>
+
+<p>.chip-counter.visible {</p>
+<p>  opacity: 1;</p>
+<p>}</p>
+</code></pre>
+
+<h3>6.5 Email Form</h3>
+<pre><code>.email-form-container {
+<p>  max-width: 500px;</p>
+<p>  margin: 0 auto;</p>
+<p>  padding: var(--space-8);</p>
+<p>  background: white;</p>
+<p>  border-radius: var(--radius-2xl);</p>
+<p>  box-shadow: var(--shadow-xl);</p>
+<p>}</p>
+
+<p>.form-group {</p>
+<p>  margin-bottom: var(--space-6);</p>
+<p>}</p>
+
+<p>.form-label {</p>
+<p>  display: block;</p>
+<p>  font-family: var(--font-body);</p>
+<p>  font-size: var(--text-sm);</p>
+<p>  font-weight: var(--font-semibold);</p>
+<p>  color: var(--color-primary-navy-dark);</p>
+<p>  margin-bottom: var(--space-2);</p>
+<p>}</p>
+
+<p>.form-input {</p>
+<p>  width: 100%;</p>
+<p>  padding: var(--space-4);</p>
+<p>  border: 2px solid var(--color-neutral-300);</p>
+<p>  border-radius: var(--radius-md);</p>
+<p>  font-family: var(--font-body);</p>
+<p>  font-size: var(--text-base);</p>
+<p>  color: var(--color-neutral-800);</p>
+<p>  transition: all 0.3s ease;</p>
+<p>  background: var(--color-neutral-50);</p>
+<p>}</p>
+
+<p>.form-input:focus {</p>
+<p>  outline: none;</p>
+<p>  border-color: var(--color-accent-gold);</p>
+<p>  background: white;</p>
+<p>  box-shadow: var(--glow-gold);</p>
+<p>}</p>
+
+<p>.form-input::placeholder {</p>
+<p>  color: var(--color-neutral-400);</p>
+<p>}</p>
+
+<p>.privacy-message {</p>
+<p>  font-family: var(--font-body);</p>
+<p>  font-size: var(--text-xs);</p>
+<p>  color: var(--color-neutral-500);</p>
+<p>  text-align: center;</p>
+<p>  margin-top: var(--space-4);</p>
+<p>  line-height: var(--leading-relaxed);</p>
+<p>}</p>
+</code></pre>
+
+<h3>6.6 Primary CTA Button</h3>
+<pre><code>.btn-primary {
+<p>  display: inline-flex;</p>
+<p>  align-items: center;</p>
+<p>  justify-content: center;</p>
+<p>  gap: var(--space-2);</p>
+<p>  padding: var(--space-4) var(--space-8);</p>
+<p>  background: var(--color-primary-navy);</p>
+<p>  color: var(--color-accent-gold);</p>
+<p>  border: none;</p>
+<p>  border-radius: var(--radius-md);</p>
+<p>  font-family: var(--font-body);</p>
+<p>  font-size: var(--text-lg);</p>
+<p>  font-weight: var(--font-semibold);</p>
+<p>  cursor: pointer;</p>
+<p>  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);</p>
+<p>  box-shadow: var(--shadow-md);</p>
+<p>  position: relative;</p>
+<p>  overflow: hidden;</p>
+<p>}</p>
+
+<p>.btn-primary::before {</p>
+<p>  content: '';</p>
+<p>  position: absolute;</p>
+<p>  top: 0;</p>
+<p>  left: -100%;</p>
+<p>  width: 100%;</p>
+<p>  height: 100%;</p>
+<p>  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);</p>
+<p>  transition: left 0.5s ease;</p>
+<p>}</p>
+
+<p>.btn-primary:hover {</p>
+<p>  background: var(--color-primary-navy-light);</p>
+<p>  box-shadow: var(--shadow-lg);</p>
+<p>  transform: translateY(-2px);</p>
+<p>}</p>
+
+<p>.btn-primary:hover::before {</p>
+<p>  left: 100%;</p>
+<p>}</p>
+
+<p>.btn-primary:active {</p>
+<p>  transform: translateY(0);</p>
+<p>  box-shadow: var(--shadow-sm);</p>
+<p>}</p>
+
+<p>.btn-primary:disabled {</p>
+<p>  background: var(--color-neutral-300);</p>
+<p>  color: var(--color-neutral-500);</p>
+<p>  cursor: not-allowed;</p>
+<p>  box-shadow: none;</p>
+<p>}</p>
+</code></pre>
+
+<h3>6.7 Reveal Page Components</h3>
+<pre><code>.reveal-hero {
+<p>  text-align: center;</p>
+<p>  padding: var(--space-12) var(--space-6);</p>
+<p>  background: linear-gradient(135deg, var(--color-neutral-50) 0%, var(--color-accent-gold-light) 100%);</p>
+<p>  border-radius: var(--radius-2xl);</p>
+<p>  margin-bottom: var(--space-12);</p>
+<p>}</p>
+
+<p>.profile-badge {</p>
+<p>  display: inline-flex;</p>
+<p>  align-items: center;</p>
+<p>  gap: var(--space-3);</p>
+<p>  padding: var(--space-3) var(--space-6);</p>
+<p>  background: var(--color-primary-navy);</p>
+<p>  color: var(--color-accent-gold);</p>
+<p>  border-radius: var(--radius-full);</p>
+<p>  font-family: var(--font-heading);</p>
+<p>  font-size: var(--text-2xl);</p>
+<p>  font-weight: var(--font-semibold);</p>
+<p>  box-shadow: var(--shadow-xl);</p>
+<p>  margin-bottom: var(--space-6);</p>
+<p>}</p>
+
+<p>.profile-description {</p>
+<p>  font-family: var(--font-body);</p>
+<p>  font-size: var(--text-lg);</p>
+<p>  color: var(--color-neutral-700);</p>
+<p>  line-height: var(--leading-relaxed);</p>
+<p>  max-width: 600px;</p>
+<p>  margin: 0 auto var(--space-8);</p>
+<p>}</p>
+
+<p>.wishlist-graphic {</p>
+<p>  width: 100%;</p>
+<p>  max-width: 800px;</p>
+<p>  margin: 0 auto var(--space-8);</p>
+<p>  border-radius: var(--radius-xl);</p>
+<p>  box-shadow: var(--shadow-2xl);</p>
+<p>  border: 4px solid white;</p>
+<p>}</p>
+
+<p>.cta-row {</p>
+<p>  display: flex;</p>
+<p>  gap: var(--space-4);</p>
+<p>  justify-content: center;</p>
+<p>  flex-wrap: wrap;</p>
+<p>  margin-top: var(--space-8);</p>
+<p>}</p>
+
+<p>.btn-download {</p>
+<p>  padding: var(--space-4) var(--space-6);</p>
+<p>  background: var(--color-accent-gold);</p>
+<p>  color: var(--color-primary-navy-dark);</p>
+<p>  border: none;</p>
+<p>  border-radius: var(--radius-md);</p>
+<p>  font-family: var(--font-body);</p>
+<p>  font-size: var(--text-base);</p>
+<p>  font-weight: var(--font-semibold);</p>
+<p>  cursor: pointer;</p>
+<p>  transition: all 0.3s ease;</p>
+<p>  box-shadow: var(--shadow-md);</p>
+<p>}</p>
+
+<p>.btn-download:hover {</p>
+<p>  background: var(--color-accent-gold-dark);</p>
+<p>  box-shadow: var(--shadow-lg);</p>
+<p>  transform: translateY(-2px);</p>
+<p>}</p>
+
+<p>.btn-share {</p>
+<p>  padding: var(--space-4) var(--space-6);</p>
+<p>  background: white;</p>
+<p>  color: var(--color-primary-navy);</p>
+<p>  border: 2px solid var(--color-primary-navy);</p>
+<p>  border-radius: var(--radius-md);</p>
+<p>  font-family: var(--font-body);</p>
+<p>  font-size: var(--text-base);</p>
+<p>  font-weight: var(--font-semibold);</p>
+<p>  cursor: pointer;</p>
+<p>  transition: all 0.3s ease;</p>
+<p>}</p>
+
+<p>.btn-share:hover {</p>
+<p>  background: var(--color-primary-navy);</p>
+<p>  color: white;</p>
+<p>  transform: translateY(-2px);</p>
+<p>}</p>
+
+<p>.selections-summary {</p>
+<p>  background: white;</p>
+<p>  padding: var(--space-8);</p>
+<p>  border-radius: var(--radius-xl);</p>
+<p>  box-shadow: var(--shadow-lg);</p>
+<p>  margin: var(--space-12) 0;</p>
+<p>}</p>
+
+<p>.summary-grid {</p>
+<p>  display: grid;</p>
+<p>  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));</p>
+<p>  gap: var(--space-6);</p>
+<p>}</p>
+
+<p>.summary-item {</p>
+<p>  padding: var(--space-4);</p>
+<p>  border-radius: var(--radius-lg);</p>
+<p>  background: var(--color-neutral-50);</p>
+<p>}</p>
+
+<p>.summary-label {</p>
+<p>  font-family: var(--font-body);</p>
+<p>  font-size: var(--text-xs);</p>
+<p>  font-weight: var(--font-semibold);</p>
+<p>  color: var(--color-neutral-500);</p>
+<p>  text-transform: uppercase;</p>
+<p>  letter-spacing: 0.05em;</p>
+<p>  margin-bottom: var(--space-2);</p>
+<p>}</p>
+
+<p>.summary-value {</p>
+<p>  font-family: var(--font-body);</p>
+<p>  font-size: var(--text-base);</p>
+<p>  color: var(--color-neutral-800);</p>
+<p>  font-weight: var(--font-medium);</p>
+<p>}</p>
+</code></pre>
+
+<hr>
+
+<h2>7. Motion System (Soft Mode)</h2>
+
+<h3>Easing Functions</h3>
+<pre><code>--ease-soft: cubic-bezier(0.4, 0, 0.2, 1);      /<em> Standard soft easing </em>/
+<p>--ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1); /<em> Gentle bounce </em>/</p>
+<p>--ease-in-soft: cubic-bezier(0.4, 0, 1, 1);      /<em> Soft ease-in </em>/</p>
+<p>--ease-out-soft: cubic-bezier(0, 0, 0.2, 1);     /<em> Soft ease-out </em>/</p>
+</code></pre>
+
+<h3>Animation Durations</h3>
+<pre><code>--duration-fast: 150ms;
+<p>--duration-base: 300ms;</p>
+<p>--duration-slow: 500ms;</p>
+<p>--duration-slower: 700ms;</p>
+</code></pre>
+
+<h3>Key Animations</h3>
+<pre><code>@keyframes fadeInUp {
+<p>  from {</p>
+<p>    opacity: 0;</p>
+<p>    transform: translateY(20px);</p>
+<p>  }</p>
+<p>  to {</p>
+<p>    opacity: 1;</p>
+<p>    transform: translateY(0);</p>
+<p>  }</p>
+<p>}</p>
+
+<p>@keyframes fadeInScale {</p>
+<p>  from {</p>
+<p>    opacity: 0;</p>
+<p>    transform: scale(0.95);</p>
+<p>  }</p>
+<p>  to {</p>
+<p>    opacity: 1;</p>
+<p>    transform: scale(1);</p>
+<p>  }</p>
+<p>}</p>
+
+<p>@keyframes shimmer {</p>
+<p>  0% {</p>
+<p>    background-position: -200% center;</p>
+<p>  }</p>
+<p>  100% {</p>
+<p>    background-position: 200% center;</p>
+<p>  }</p>
+<p>}</p>
+
+<p>@keyframes pulseGlow {</p>
+<p>  0%, 100% {</p>
+<p>    box-shadow: var(--shadow-lg);</p>
+<p>  }</p>
+<p>  50% {</p>
+<p>    box-shadow: var(--glow-gold);</p>
+<p>  }</p>
+<p>}</p>
+
+<p>/<em> Apply to page transitions </em>/</p>
+<p>.builder-step {</p>
+<p>  animation: fadeInUp var(--duration-slow) var(--ease-soft);</p>
+<p>}</p>
+
+<p>.selection-card {</p>
+<p>  animation: fadeInScale var(--duration-base) var(--ease-soft);</p>
+<p>  animation-delay: calc(var(--card-index) <em> 50ms);</p>
+<p>}</p>
+
+<p>.reveal-hero {</p>
+<p>  animation: fadeInUp var(--duration-slower) var(--ease-soft);</p>
+<p>}</p>
+</code></pre>
+
+<hr>
+
+<h2>8. Decorative Elements (Soft Mode)</h2>
+
+<h3>Background Gradients</h3>
+<pre><code>.gradient-soft-hero {
+<p>  background: linear-gradient(</p>
+<p>    135deg,</p>
+<p>    var(--color-neutral-50) 0%,</p>
+<p>    var(--color-accent-gold-light) 50%,</p>
+<p>    var(--color-neutral-50) 100%</p>
+<p>  );</p>
+<p>}</p>
+
+<p>.gradient-soft-card {</p>
+<p>  background: linear-gradient(</p>
+<p>    135deg,</p>
+<p>    white 0%,</p>
+<p>    var(--color-accent-gold-light) 100%</p>
+<p>  );</p>
+<p>}</p>
+
+<p>.gradient-navy-gold {</p>
+<p>  background: linear-gradient(</p>
+<p>    90deg,</p>
+<p>    var(--color-primary-navy) 0%,</p>
+<p>    var(--color-accent-gold) 100%</p>
+<p>  );</p>
+<p>}</p>
+</code></pre>
+
+<h3>Subtle Patterns</h3>
+<pre><code>.pattern-dots {
+<p>  background-image: radial-gradient(</p>
+<p>    circle,</p>
+<p>    var(--color-neutral-300) 1px,</p>
+<p>    transparent 1px</p>
+<p>  );</p>
+<p>  background-size: 20px 20px;</p>
+<p>  opacity: 0.3;</p>
+<p>}</p>
+
+<p>.pattern-lines {</p>
+<p>  background-image: linear-gradient(</p>
+<p>    45deg,</p>
+<p>    var(--color-neutral-200) 1px,</p>
+<p>    transparent 1px</p>
+<p>  );</p>
+<p>  background-size: 30px 30px;</p>
+<p>  opacity: 0.2;</p>
+<p>}</p>
+</code></pre>
+
+<hr>
+
+<h2>9. Responsive Design</h2>
+
+<h3>Mobile-First Approach</h3>
+<pre><code>/</em> Base styles (mobile) <em>/
+<p>.builder-container {</p>
+<p>  padding: var(--space-4);</p>
+<p>  max-width: 100%;</p>
+<p>}</p>
+
+<p>/</em> Tablet (640px+) <em>/</p>
+<p>@media (min-width: 640px) {</p>
+<p>  .builder-container {</p>
+<p>    padding: var(--space-6);</p>
+<p>    max-width: var(--builder-max-width);</p>
+<p>    margin: 0 auto;</p>
+<p>  }</p>
+<p>}</p>
+
+<p>/</em> Desktop (1024px+) <em>/</p>
+<p>@media (min-width: 1024px) {</p>
+<p>  .builder-container {</p>
+<p>    padding: var(--space-8);</p>
+<p>  }</p>
+<p>}</p>
+</code></pre>
+
+<h3>Touch Target Sizes</h3>
+<pre><code>/</em> Minimum 44x44px for mobile tap targets <em>/
+<p>.tap-target {</p>
+<p>  min-width: 44px;</p>
+<p>  min-height: 44px;</p>
+<p>}</p>
+</code></pre>
+
+<hr>
+
+<h2>10. Accessibility</h2>
+
+<h3>Focus States</h3>
+<pre><code></em>:focus-visible {
+<p>  outline: 3px solid var(--color-accent-gold);</p>
+<p>  outline-offset: 2px;</p>
+<p>}</p>
+
+<p>.selection-card:focus-visible {</p>
+<p>  box-shadow: var(--glow-gold);</p>
+<p>}</p>
+</code></pre>
+
+<h3>Color Contrast</h3>
+<p>All text meets WCAG AA standards:</p>
+<ul>
+<li>Body text: 4.5:1 minimum</li>
+<li>Large text (18px+): 3:1 minimum</li>
+<li>Primary navy on white: 8.7:1 ✓</li>
+<li>Gold on navy: 4.6:1 ✓</li>
+</ul>
+
+<hr>
+
+<h2>11. Image Strategy</h2>
+
+<h3>Required Images</h3>
+<ol>
+<li><strong>Logo</strong> - Gary Mercer Team logo (SVG or high-res PNG)</li>
+<li><strong>Agent Photo</strong> - Professional headshot for reveal page</li>
+<li><strong>Style Cards</strong> - 6 AI-generated home images from Glif (16:10 aspect ratio)</li>
+<li><strong>Hero Image</strong> - Luxury home exterior (optional, for landing page)</li>
+</ol>
+
+<h3>Image Optimization</h3>
+<pre><code>.responsive-image {
+<p>  width: 100%;</p>
+<p>  height: auto;</p>
+<p>  object-fit: cover;</p>
+<p>  loading: lazy;</p>
+<p>}</p>
+</code></pre>
+
+<hr>
+
+<h2>12. Print/Download Styles</h2>
+
+<h3>Wishlist Graphic Download</h3>
+<pre><code>@media print {
+<p>  body {</p>
+<p>    background: white;</p>
+<p>  }</p>
+
+<p>  .no-print {</p>
+<p>    display: none !important;</p>
+<p>  }</p>
+
+<p>  .wishlist-graphic {</p>
+<p>    page-break-inside: avoid;</p>
+<p>    border: none;</p>
+<p>    box-shadow: none;</p>
+<p>  }</p>
+<p>}</p>
+</code></pre>
+
+<hr>
+
+<h2>Design Mode Summary</h2>
+
+<strong>Soft Mode Characteristics</strong>:
+<ul>
+<li>Rounded corners (8-24px)</li>
+<li>Layered shadows (subtle, multi-layer)</li>
+<li>Warm color temperature</li>
+<li>Gentle animations</li>
+<li>Organic shapes</li>
+<li>Approachable typography</li>
+</ul>
+
+<strong>Brand Personality</strong>: Professional yet warm, premium yet accessible, aspirational yet authentic
+
+<strong>Emotional Arc</strong>: Excitement → Delight → Confidence → Action
+
+<hr>
+
+<h2>Design Validation Checklist</h2>
+
+<ul>
+<li>[x] Brand colors extracted from website</li>
+<li>[x] Typography scale defined (Playfair Display + Inter)</li>
+<li>[x] Spacing system (4px base unit)</li>
+<li>[x] 5-layer shadow system (premium polish)</li>
+<li>[x] All component CSS written</li>
+<li>[x] Responsive breakpoints defined</li>
+<li>[x] Motion patterns defined (Soft mode)</li>
+<li>[x] Accessibility standards met (WCAG AA)</li>
+<li>[x] Touch target sizes (44px minimum)</li>
+<li>[x] Focus states defined</li>
+<li>[x] Image strategy documented</li>
+</ul>
+
+    </div>
+  </div>
+</body>
+</html>

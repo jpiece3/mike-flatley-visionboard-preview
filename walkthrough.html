@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Builder Walkthrough - Mike Flatley Real Estate</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+      background: #fafafa;
+      color: #262626;
+      line-height: 1.7;
+      padding-bottom: 80px;
+    }
+    .header {
+      background: linear-gradient(135deg, #1a3a52 0%, #2d5570 100%);
+      color: white;
+      padding: 24px 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .header h1 { font-size: 1.5rem; font-weight: 600; }
+    .back-link {
+      color: white;
+      text-decoration: none;
+      padding: 8px 16px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 6px;
+      transition: background 0.2s;
+      font-size: 0.9rem;
+    }
+    .back-link:hover { background: rgba(255,255,255,0.25); }
+    .container { max-width: 1200px; margin: 32px auto; padding: 0 32px; }
+    .content {
+      background: white;
+      padding: 48px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    h1 { font-size: 2.25rem; color: #1a3a52; margin-bottom: 24px; font-weight: 700; }
+    h2 { font-size: 1.75rem; color: #1a3a52; margin: 40px 0 16px 0; font-weight: 600; padding-bottom: 8px; border-bottom: 2px solid #e5e5e5; }
+    h3 { font-size: 1.35rem; color: #2d5570; margin: 32px 0 12px 0; font-weight: 600; }
+    h4 { font-size: 1.1rem; color: #2d5570; margin: 24px 0 8px 0; font-weight: 600; }
+    p { margin: 12px 0; color: #404040; }
+    ul, ol { margin: 12px 0 12px 24px; color: #404040; }
+    li { margin: 6px 0; }
+    strong { color: #1a3a52; font-weight: 600; }
+    em { color: #525252; }
+    code {
+      background: #f5f5f5;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: 'Monaco', 'Courier New', monospace;
+      font-size: 0.9em;
+      color: #d63384;
+    }
+    pre {
+      background: #f5f5f5;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin: 16px 0;
+      border: 1px solid #e5e5e5;
+    }
+    pre code {
+      background: none;
+      padding: 0;
+      color: #262626;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    th {
+      background: #1a3a52;
+      color: white;
+      padding: 12px;
+      text-align: left;
+      font-weight: 600;
+    }
+    td {
+      padding: 12px;
+      border-bottom: 1px solid #e5e5e5;
+    }
+    tr:hover { background: #fafafa; }
+    blockquote {
+      border-left: 4px solid #1a3a52;
+      padding: 12px 20px;
+      margin: 20px 0;
+      background: #f8f9fa;
+      color: #525252;
+      font-style: italic;
+    }
+    hr {
+      border: none;
+      border-top: 2px solid #e5e5e5;
+      margin: 32px 0;
+    }
+    a { color: #1a3a52; text-decoration: none; font-weight: 500; }
+    a:hover { text-decoration: underline; }
+    @media (max-width: 768px) {
+      .content { padding: 24px; }
+      .header-content { flex-direction: column; gap: 12px; text-align: center; }
+      h1 { font-size: 1.75rem; }
+      h2 { font-size: 1.35rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="header-content">
+      <h1>Builder Walkthrough</h1>
+      <a href="index.html" class="back-link">← Back to Index</a>
+    </div>
+  </div>
+  <div class="container">
+    <div class="content">
+<h1>Mike Flatley Real Estate - Vision Board Builder Selection Flow</h1>
+
+<h2>User Experience Walkthrough</h2>
+
+<p>This document describes the step-by-step user journey through the Dream Home Wishlist builder.</p>
+
+<hr>
+
+<h2>Step 1: Home Style</h2>
+
+<strong>Screen Title</strong>: "What's Your Dream Home Style?"
+<strong>Selection Type</strong>: Card Selection (choose 1)
+<strong>Visual</strong>: Large cards with AI-generated home images from Glif
+
+<h3>Options:</h3>
+<ol>
+<li><strong>Modern Luxury</strong></li>
+<ul>
+<li>Icon: building</li>
+<li>Tags: modern, luxury, clean-lines, contemporary</li>
+<li>Visual: Modern luxury home with clean architectural lines, floor-to-ceiling windows</li>
+</ul>
+</ol>
+
+<ol>
+<li><strong>Classic Family Home</strong></li>
+<ul>
+<li>Icon: home</li>
+<li>Tags: suburban, family, traditional, spacious</li>
+<li>Visual: Classic family home with large yard, front porch, traditional architecture</li>
+</ul>
+</ol>
+
+<ol>
+<li><strong>Historic Charm</strong></li>
+<ul>
+<li>Icon: landmark</li>
+<li>Tags: historic, character, charm, vintage</li>
+<li>Visual: Historic home with original details, crown molding, hardwood floors</li>
+</ul>
+</ol>
+
+<ol>
+<li><strong>Urban Loft</strong></li>
+<ul>
+<li>Icon: layout</li>
+<li>Tags: urban, loft, industrial, city</li>
+<li>Visual: Urban loft with exposed brick, high ceilings, industrial windows</li>
+</ul>
+</ol>
+
+<ol>
+<li><strong>Waterfront Living</strong></li>
+<ul>
+<li>Icon: waves</li>
+<li>Tags: waterfront, coastal, lakefront, scenic</li>
+<li>Visual: Waterfront property with panoramic water views, dock or deck</li>
+</ul>
+</ol>
+
+<ol>
+<li><strong>New Construction</strong></li>
+<ul>
+<li>Icon: hammer</li>
+<li>Tags: new-build, modern, smart-home, energy-efficient</li>
+<li>Visual: New construction home with modern finishes, smart features</li>
+</ul>
+</ol>
+
+<strong>User Action</strong>: Click one card to select
+<strong>Progress Indicator</strong>: Step 1 of 6
+
+<hr>
+
+<h2>Step 2: Your Neighborhood</h2>
+
+<strong>Screen Title</strong>: "What Kind of Neighborhood Fits Your Lifestyle?"
+<strong>Selection Type</strong>: Card Selection (choose 1)
+<strong>Visual</strong>: Medium cards with icons (no images)
+
+<h3>Options:</h3>
+<ol>
+<li><strong>Walkable Downtown</strong></li>
+<ul>
+<li>Icon: map-pin</li>
+<li>Description: "West Chester Borough, Phoenixville - walkable urban neighborhoods with cafes, shops, and nightlife"</li>
+<li>Tags: urban, walkable, downtown</li>
+</ul>
+</ol>
+
+<ol>
+<li><strong>Quiet Suburbs</strong></li>
+<ul>
+<li>Icon: trees</li>
+<li>Description: "Exton, Malvern, Devon - quiet suburban neighborhoods with tree-lined streets and excellent schools"</li>
+<li>Tags: suburban, quiet, residential</li>
+</ul>
+</ol>
+
+<ol>
+<li><strong>Country Acreage</strong></li>
+<ul>
+<li>Icon: mountain</li>
+<li>Description: "Glenmoore, Elverson - spacious rural properties with land, privacy, and nature"</li>
+<li>Tags: rural, acreage, privacy</li>
+</ul>
+</ol>
+
+<ol>
+<li><strong>Up-and-Coming</strong></li>
+<ul>
+<li>Icon: trending-up</li>
+<li>Description: "Coatesville, Downingtown - trendy neighborhoods with character and growth potential"</li>
+<li>Tags: trendy, emerging, investment</li>
+</ul>
+</ol>
+
+<ol>
+<li><strong>Waterfront Community</strong></li>
+<ul>
+<li>Icon: anchor</li>
+<li>Description: "Marsh Creek area - waterfront communities with scenic views and outdoor recreation"</li>
+<li>Tags: waterfront, coastal, scenic</li>
+</ul>
+</ol>
+
+<ol>
+<li><strong>Family-Friendly</strong></li>
+<ul>
+<li>Icon: users</li>
+<li>Description: "Lionville, Uwchlan - family-friendly neighborhoods with top-rated schools and parks"</li>
+<li>Tags: family, safe, schools</li>
+</ul>
+</ol>
+
+<strong>User Action</strong>: Click one card to select
+<strong>Progress Indicator</strong>: Step 2 of 6
+
+<hr>
+
+<h2>Step 3: How Much Space Do You Need?</h2>
+
+<strong>Screen Title</strong>: "How Many Bedrooms?"
+<strong>Selection Type</strong>: Scale Selector (choose 1)
+<strong>Visual</strong>: Segmented bar with 4 options
+
+<h3>Options:</h3>
+<ol>
+<li><strong>2 Bedrooms</strong></li>
+<ul>
+<li>Tags: small, starter</li>
+<li>Description: Cozy two-bedroom home</li>
+</ul>
+</ol>
+
+<ol>
+<li><strong>3 Bedrooms</strong></li>
+<ul>
+<li>Tags: medium, growing-family</li>
+<li>Description: Comfortable three-bedroom home</li>
+</ul>
+</ol>
+
+<ol>
+<li><strong>4 Bedrooms</strong></li>
+<ul>
+<li>Tags: large, family</li>
+<li>Description: Spacious four-bedroom family home</li>
+</ul>
+</ol>
+
+<ol>
+<li><strong>5+ Bedrooms</strong></li>
+<ul>
+<li>Tags: estate, luxury, large-family</li>
+<li>Description: Expansive five-plus bedroom estate</li>
+</ul>
+</ol>
+
+<strong>User Action</strong>: Click one segment to select
+<strong>Progress Indicator</strong>: Step 3 of 6
+
+<hr>
+
+<h2>Step 4: Must-Have Features</h2>
+
+<strong>Screen Title</strong>: "What Features Are Non-Negotiable?"
+<strong>Subtitle</strong>: "Select 1-5 features"
+<strong>Selection Type</strong>: Chip Multi-Select (choose 1-5)
+<strong>Visual</strong>: Pill-shaped chips with icons, arranged in 3 columns
+
+<h3>Options:</h3>
+<ol>
+<li><strong>Open Kitchen</strong> (icon: utensils) - spacious open-concept kitchen with island</li>
+<li><strong>Home Office</strong> (icon: briefcase) - dedicated home office with natural light</li>
+<li><strong>Outdoor Living</strong> (icon: sun) - outdoor living space with patio or deck</li>
+<li><strong>2+ Car Garage</strong> (icon: car) - spacious two-car garage</li>
+<li><strong>Primary Suite</strong> (icon: bed) - luxurious primary bedroom suite with ensuite bath</li>
+<li><strong>Pool</strong> (icon: droplets) - backyard pool with surrounding landscaping</li>
+<li><strong>Smart Home</strong> (icon: wifi) - smart home technology with integrated controls</li>
+<li><strong>Finished Basement</strong> (icon: layers) - finished walkout basement with recreation area</li>
+<li><strong>Large Yard</strong> (icon: tree) - expansive landscaped yard with mature trees</li>
+<li><strong>Gourmet Kitchen</strong> (icon: chef-hat) - gourmet kitchen with professional-grade appliances</li>
+<li><strong>Natural Light</strong> (icon: sun) - abundant natural light through large windows</li>
+<li><strong>Fireplace</strong> (icon: flame) - statement fireplace in living area</li>
+</ol>
+
+<strong>User Action</strong>: Click 1-5 chips to select (chips highlight when selected)
+<strong>Selection Counter</strong>: Shows "3 of 5 selected" as user chooses
+<strong>Progress Indicator</strong>: Step 4 of 6
+
+<hr>
+
+<h2>Step 5: Investment Range</h2>
+
+<strong>Screen Title</strong>: "What's Your Budget?"
+<strong>Subtitle</strong>: "This helps us match the right listings"
+<strong>Selection Type</strong>: Scale Selector (choose 1)
+<strong>Visual</strong>: Segmented bar with 5 options
+
+<h3>Options:</h3>
+<ol>
+<li><strong>Under $300K</strong></li>
+<ul>
+<li>Tags: budget-starter</li>
+<li>Qualification: cool</li>
+</ul>
+</ol>
+
+<ol>
+<li><strong>$300K - $500K</strong></li>
+<ul>
+<li>Tags: budget-mid</li>
+<li>Qualification: warm</li>
+</ul>
+</ol>
+
+<ol>
+<li><strong>$500K - $750K</strong></li>
+<ul>
+<li>Tags: budget-upper</li>
+<li>Qualification: warm</li>
+</ul>
+</ol>
+
+<ol>
+<li><strong>$750K - $1M</strong></li>
+<ul>
+<li>Tags: budget-premium</li>
+<li>Qualification: hot</li>
+</ul>
+</ol>
+
+<ol>
+<li><strong>$1M+</strong></li>
+<ul>
+<li>Tags: budget-luxury</li>
+<li>Qualification: hot</li>
+</ul>
+</ol>
+
+<strong>User Action</strong>: Click one segment to select
+<strong>Progress Indicator</strong>: Step 5 of 6
+
+<hr>
+
+<h2>Step 6: When Are You Looking to Move?</h2>
+
+<strong>Screen Title</strong>: "What's Your Timeline?"
+<strong>Selection Type</strong>: Card Selection (choose 1)
+<strong>Visual</strong>: Small cards with icons (2 columns)
+
+<h3>Options:</h3>
+<ol>
+<li><strong>ASAP</strong></li>
+<ul>
+<li>Icon: zap</li>
+<li>Tags: immediate, urgent</li>
+<li>Qualification: hot</li>
+</ul>
+</ol>
+
+<ol>
+<li><strong>Within 3 Months</strong></li>
+<ul>
+<li>Icon: calendar</li>
+<li>Tags: 3-months, active-search</li>
+<li>Qualification: hot</li>
+</ul>
+</ol>
+
+<ol>
+<li><strong>3-6 Months</strong></li>
+<ul>
+<li>Icon: calendar-days</li>
+<li>Tags: 6-months, planning</li>
+<li>Qualification: warm</li>
+</ul>
+</ol>
+
+<ol>
+<li><strong>Next Year</strong></li>
+<ul>
+<li>Icon: calendar-plus</li>
+<li>Tags: next-year, early-planning</li>
+<li>Qualification: warm</li>
+</ul>
+</ol>
+
+<ol>
+<li><strong>Just Looking</strong></li>
+<ul>
+<li>Icon: eye</li>
+<li>Tags: browsing, exploring</li>
+<li>Qualification: cool</li>
+</ul>
+</ol>
+
+<strong>User Action</strong>: Click one card to select
+<strong>Progress Indicator</strong>: Step 6 of 6
+
+<hr>
+
+<h2>Step 7: Email Capture</h2>
+
+<strong>Screen Title</strong>: "Where Should We Send Your Dream Home Wishlist?"
+<strong>Visual</strong>: Email input form with privacy reassurance
+
+<strong>Form Fields</strong>:
+<ul>
+<li>First Name (required)</li>
+<li>Email Address (required)</li>
+</ul>
+
+<strong>Privacy Message</strong>: "We'll send you a beautiful visual of your dream home + listings that match your style. No spam, ever."
+
+<strong>CTA Button</strong>: "Create My Wishlist" (navy background, gold text)
+
+<strong>User Action</strong>: Submit form
+<strong>Progress Indicator</strong>: "Creating your personalized wishlist..."
+
+<hr>
+
+<h2>Step 8: Reveal Page (Profile Result)</h2>
+
+<strong>Screen Title</strong>: "[First Name], You're a [Profile Name]!"
+
+<h3>Dynamic Profile Content:</h3>
+
+<h4>The Minimalist</h4>
+<ul>
+<li><strong>Trigger Tags</strong>: modern, clean-lines, urban, loft, smart-home, natural-light</li>
+<li><strong>Description</strong>: "Clean lines, open spaces, and intentional design. Your dream home is proof that less really is more. Every element earns its place."</li>
+<li><strong>Graphic Mood</strong>: Minimal, clean, modern architecture, open spaces with natural light and neutral tones</li>
+</ul>
+
+<h4>The Nester</h4>
+<ul>
+<li><strong>Trigger Tags</strong>: family, suburban, spacious, yard, family-friendly, safe, schools</li>
+<li><strong>Description</strong>: "Home is where the heart is, and yours is big. You want a place where memories are made, kids can play, and everyone has room to grow."</li>
+<li><strong>Graphic Mood</strong>: Warm, family-friendly, spacious rooms with cozy details, large yard with swing set</li>
+</ul>
+
+<h4>The Entertainer</h4>
+<ul>
+<li><strong>Trigger Tags</strong>: open-kitchen, outdoor, pool, gourmet-kitchen, entertaining, luxury</li>
+<li><strong>Description</strong>: "Your home is where the party happens. An open kitchen for cooking with friends, outdoor space for gatherings, and every detail designed for hosting."</li>
+<li><strong>Graphic Mood</strong>: Inviting, social, open-concept kitchen flowing to outdoor entertaining area with pool</li>
+</ul>
+
+<h4>The Urbanite</h4>
+<ul>
+<li><strong>Trigger Tags</strong>: urban, walkable, downtown, trendy, city, loft</li>
+<li><strong>Description</strong>: "You want to be where the action is. Walkable streets, great restaurants, cultural experiences. Your home is your launchpad to city life."</li>
+<li><strong>Graphic Mood</strong>: Urban, energetic, city views from stylish loft or condo, vibrant neighborhood</li>
+</ul>
+
+<h4>The Retreater</h4>
+<ul>
+<li><strong>Trigger Tags</strong>: waterfront, rural, privacy, scenic, acreage, fireplace</li>
+<li><strong>Description</strong>: "Peace, quiet, and a view that never gets old. Your dream home is a sanctuary. Water, trees, or open sky. Room to breathe."</li>
+<li><strong>Graphic Mood</strong>: Serene, waterfront or rural, panoramic nature views, peaceful private setting</li>
+</ul>
+
+<h3>Reveal Page Elements:</h3>
+<ol>
+<li><strong>Hero Graphic</strong>: AI-generated Pinterest-style mood board from Glif (personalized to their selections)</li>
+<li><strong>Profile Badge</strong>: "[Profile Name]" with icon</li>
+<li><strong>Profile Description</strong>: Aspirational paragraph</li>
+<li><strong>Your Selections Summary</strong>: "Here's what matters most to you:"</li>
+<ul>
+<li>Style: [selection]</li>
+<li>Neighborhood: [selection]</li>
+<li>Bedrooms: [selection]</li>
+<li>Must-Haves: [selection 1], [selection 2], [selection 3]...</li>
+<li>Budget: [selection]</li>
+<li>Timeline: [selection]</li>
+</ul>
+</ol>
+
+<ol>
+<li><strong>Download CTA</strong>: "Download Your Wishlist" (downloads graphic as PNG)</li>
+<li><strong>Share CTA</strong>: "Share on Social" (pre-filled: "I'm [Profile Name]! [share<em>text] [builder URL]")</li>
+<li><strong>Next Steps Section</strong>:</li>
+<ul>
+<li>"Ready to Find Your Dream Home?"</li>
+<li>Agent photo + contact info</li>
+<li>CTA: "Schedule a 15-Minute Call" or "Browse Listings That Match"</li>
+</ul>
+</ol>
+
+<ol>
+<li><strong>Email Confirmation</strong>: "Check your inbox! We just sent your wishlist + 3 homes that match your style."</li>
+</ol>
+
+<hr>
+
+<h2>Behind-the-Scenes: Profile Matching Algorithm</h2>
+
+<strong>Matching Logic</strong> (tag-based overlap):
+<ol>
+<li>User completes 6 steps → generates combined tag array</li>
+<li>System compares user tags to each profile's trigger</em>tags</li>
+<li>Calculates overlap ratio: <code>matching<em>tags / total</em>profile<em>trigger</em>tags</code></li>
+<li>Profile with highest overlap ratio wins (threshold: 0.5)</li>
+<li>If no profile meets threshold, fallback to "The Nester" (largest Chester County segment)</li>
+</ol>
+
+<strong>Example</strong>:
+<ul>
+<li>User selects: Modern Luxury + Quiet Suburbs + 4 Bedrooms + Smart Home + Natural Light + $750K-$1M + 3-6 Months</li>
+<li>User tags: <code>modern, luxury, clean-lines, contemporary, suburban, quiet, large, family, smart-home, natural-light, budget-premium, 6-months, planning</code></li>
+<li>The Minimalist trigger tags: <code>modern, clean-lines, urban, loft, smart-home, natural-light</code></li>
+<li>Overlap: 4 of 6 match (modern, clean-lines, smart-home, natural-light) = 67% → <strong>Match!</strong></li>
+</ul>
+
+<hr>
+
+<h2>Qualification Signal (Backend Only)</h2>
+
+<strong>Not shown to user</strong>, but used for email sequence routing:
+
+<strong>Formula</strong>: <code>urgency<em>score <em> 0.6 + budget</em>score </em> 0.4</code>
+
+<strong>Urgency Scoring</strong>:
+<ul>
+<li>Hot (1.0): immediate, urgent, active-search</li>
+<li>Warm (0.6): 3-months, 6-months, planning</li>
+<li>Cool (0.3): browsing, exploring, next-year</li>
+</ul>
+
+<strong>Budget Scoring</strong>:
+<ul>
+<li>Hot (1.0): budget-premium, budget-luxury</li>
+<li>Warm (0.6): budget-mid, budget-upper</li>
+<li>Cool (0.3): budget-starter</li>
+</ul>
+
+<strong>Email Sequence Routing</strong>:
+<ul>
+<li><strong>Hot (≥0.8)</strong>: Immediate listings, market snapshot, consultation ask (email 2)</li>
+<li><strong>Warm (0.5-0.79)</strong>: Neighborhood guides, open houses, soft consultation ask (email 4)</li>
+<li><strong>Cool (<0.5)</strong>: Educational content, market updates, long-term nurture</li>
+</ul>
+
+<hr>
+
+<h2>Technical Notes</h2>
+
+<strong>Total Options</strong>: 73 options across 6 dimensions
+<ul>
+<li>Style: 6 options</li>
+<li>Neighborhood: 6 options</li>
+<li>Bedrooms: 4 options</li>
+<li>Must-Haves: 12 options (multi-select)</li>
+<li>Budget: 5 options</li>
+<li>Timeline: 5 options</li>
+</ul>
+
+<strong>Average Completion Time</strong>: 60-90 seconds
+
+<strong>Mobile Optimization</strong>: All card/chip/scale components are touch-friendly with 44px+ tap targets
+
+<strong>Accessibility</strong>: All options have ARIA labels, keyboard navigation supported
+
+    </div>
+  </div>
+</body>
+</html>
