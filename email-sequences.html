@@ -42,21 +42,14 @@
     }
     .back-link:hover { background: rgba(255,255,255,0.25); }
     .container { max-width: 1200px; margin: 32px auto; padding: 0 32px; }
-    .content {
-      background: white;
-      padding: 48px;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    }
     h1 { font-size: 2.25rem; color: #1a3a52; margin-bottom: 24px; font-weight: 700; }
-    h2 { font-size: 1.75rem; color: #1a3a52; margin: 40px 0 16px 0; font-weight: 600; padding-bottom: 8px; border-bottom: 2px solid #e5e5e5; }
-    h3 { font-size: 1.35rem; color: #2d5570; margin: 32px 0 12px 0; font-weight: 600; }
-    h4 { font-size: 1.1rem; color: #2d5570; margin: 24px 0 8px 0; font-weight: 600; }
+    h2 { font-size: 1.75rem; color: #1a3a52; margin: 32px 0 16px 0; font-weight: 600; }
+    h3 { font-size: 1.35rem; color: #2d5570; margin: 20px 0 12px 0; font-weight: 600; }
+    h4 { font-size: 1.1rem; color: #2d5570; margin: 16px 0 8px 0; font-weight: 600; }
     p { margin: 12px 0; color: #404040; }
     ul, ol { margin: 12px 0 12px 24px; color: #404040; }
     li { margin: 6px 0; }
     strong { color: #1a3a52; font-weight: 600; }
-    em { color: #525252; }
     code {
       background: #f5f5f5;
       padding: 2px 6px;
@@ -65,18 +58,13 @@
       font-size: 0.9em;
       color: #d63384;
     }
-    pre {
-      background: #f5f5f5;
-      padding: 16px;
-      border-radius: 8px;
-      overflow-x: auto;
-      margin: 16px 0;
-      border: 1px solid #e5e5e5;
-    }
-    pre code {
-      background: none;
-      padding: 0;
-      color: #262626;
+    blockquote {
+      border-left: 4px solid #1a3a52;
+      padding: 12px 20px;
+      margin: 20px 0;
+      background: #f8f9fa;
+      color: #525252;
+      font-style: italic;
     }
     table {
       width: 100%;
@@ -96,28 +84,13 @@
       border-bottom: 1px solid #e5e5e5;
     }
     tr:hover { background: #fafafa; }
-    blockquote {
-      border-left: 4px solid #1a3a52;
-      padding: 12px 20px;
-      margin: 20px 0;
-      background: #f8f9fa;
-      color: #525252;
-      font-style: italic;
-    }
-    hr {
-      border: none;
-      border-top: 2px solid #e5e5e5;
-      margin: 32px 0;
-    }
-    a { color: #1a3a52; text-decoration: none; font-weight: 500; }
-    a:hover { text-decoration: underline; }
     @media (max-width: 768px) {
-      .content { padding: 24px; }
       .header-content { flex-direction: column; gap: 12px; text-align: center; }
       h1 { font-size: 1.75rem; }
       h2 { font-size: 1.35rem; }
     }
   </style>
+  <link rel="stylesheet" href="assets/preview-components.css">
 </head>
 <body>
   <div class="header">
@@ -127,504 +100,525 @@
     </div>
   </div>
   <div class="container">
-    <div class="content">
-<h1>Email Sequences - Vision Board Builder</h1>
-
-<blockquote>Mike Flatley | The Gary Mercer Team</blockquote>
-<blockquote>10 emails across 4 sequences (Welcome, Warm Nurture, Hot Follow-Up, Re-Engagement)</blockquote>
-
-<hr>
-
-<h2>Email Routing Logic</h2>
-
-<strong>Profile-based:</strong> All profiles receive profile-specific content
-<strong>Temperature-based:</strong> Hot/Warm/Cool determines sequence track
-<strong>No answer callbacks:</strong> Vision boards use simple personalization
-
-<h3>Merge Tags Available</h3>
-<ul>
-<li><code>{{first<em>name}}</code></li>
-<li><code>{{profile</em>name}}</code></li>
-<li><code>{{profile<em>description}}</code></li>
-<li><code>{{builder</em>url}}</code></li>
-</ul>
-
-<hr>
-
-<h2>Sequence 1: Welcome (2 emails) — ALL LEADS</h2>
-
-<h3>Email 1.1: Immediate Delivery (Day 0)</h3>
-
-<strong>Subject:</strong> Your Chester County Dream Home Wishlist 🏡
-
-<strong>Preview Text:</strong> Here's your personalized mood board + 3 listings that match
-
-<strong>Send Timing:</strong> Immediate (within 60 seconds of submission)
-
-<strong>Body:</strong>
-
-<p>Hi {{first<em>name}},</p>
-
-<p>Here's your personalized Dream Home Wishlist!</p>
-
-<strong>Your Profile: {{profile</em>name}}</strong>
-
-<p>{{profile<em>description}}</p>
-
-<p>[DOWNLOAD YOUR MOOD BOARD →]</p>
-
-<strong>3 Listings That Match Your Style:</strong>
-
-<p>(Dynamic listing insertion based on profile + selections)</p>
-
-<ol>
-<li>[Property 1 - Address, Price, Beds/Baths]</li>
-<li>[Property 2 - Address, Price, Beds/Baths]</li>
-<li>[Property 3 - Address, Price, Beds/Baths]</li>
-</ol>
-
-<p>[VIEW ALL MATCHING LISTINGS →]</p>
-
-<strong>What's Next?</strong>
-
-<p>Reply to this email with questions, or browse our full catalog of Chester County homes. When you're ready to tour, we're here.</p>
-
-<p>No pressure. Just strategic guidance and local expertise.</p>
-
-<p>Sharra Mercer</p>
-<p>The Gary Mercer Team</p>
-<p>(610) 324-9416</p>
-
-<p>P.S. — Want to refine your wishlist? [Retake the quiz →]</p>
-
-<hr>
-
-<h3>Email 1.2: Introduction to Team (Day 2)</h3>
-
-<strong>Subject:</strong> A little more about us (and Chester County) 👋
-
-<strong>Preview Text:</strong> 401 sales, 563+ reviews, and a love for this area
-
-<strong>Send Timing:</strong> Day 2 (48 hours after signup)
-
-<strong>Body:</strong>
-
-<p>Hi {{first</em>name}},</p>
-
-<p>I'm Sharra, and I lead The Gary Mercer Team here in Chester County.</p>
-
-<p>You created a Dream Home Wishlist a couple days ago ({{profile<em>name}} — great taste!). I wanted to introduce myself and share a little about what makes us different.</p>
-
-<strong>Our Story:</strong>
-
-<p>We're not a boutique brokerage with 10 sales a year. We're not a corporate mill that treats you like a number. We're somewhere in between — high volume (401 homes sold in 2024), but every client gets the strategic attention they deserve.</p>
-
-<strong>Why Chester County?</strong>
-
-<p>We've been here since 2005. We know which school districts are worth the premium, which neighborhoods are about to pop, and where you can still find value. That local knowledge? It's your advantage.</p>
-
-<strong>How We Work:</strong>
-
-<ul>
-<li><strong>No pushy sales tactics</strong> — we're consultants, not closers</li>
-<li><strong>Market data, not gut feelings</strong> — we show you the numbers</li>
-<li><strong>Strategic and fun to work with</strong> — our Instagram bio, but also our reality</li>
-</ul>
-
-<p>When you're ready to tour homes, reply to this email or call me directly: (610) 324-9416.</p>
-
-<p>Until then, enjoy browsing. We'll send you new listings that match your wishlist each week.</p>
-
-<p>Sharra Mercer</p>
-<p>The Gary Mercer Team</p>
-<p>smercer@garymercerteam.com</p>
-
-<p>[SCHEDULE A 15-MINUTE CALL →]</p>
-
-<hr>
-
-<h2>Sequence 2: Warm Nurture (3 emails) — WARM & COOL LEADS ONLY</h2>
-
-<h3>Email 2.1: Neighborhood Spotlight (Day 5)</h3>
-
-<strong>Subject:</strong> {{profile</em>name}} homes in [Neighborhood Name] 📍
-
-<strong>Preview Text:</strong> This Chester County community might be your match
-
-<strong>Send Timing:</strong> Day 5 (warm/cool leads only)
-
-<strong>Body:</strong>
-
-<p>Hi {{first<em>name}},</p>
-
-<p>Based on your wishlist ({{profile</em>name}} — still love it), I thought you'd want to know about [Dynamic Neighborhood Name].</p>
-
-<strong>Why [Neighborhood]?</strong>
-
-<ul>
-<li>[Benefit 1 specific to profile/selections]</li>
-<li>[Benefit 2 specific to profile/selections]</li>
-<li>[Benefit 3 specific to profile/selections]</li>
-</ul>
-
-<strong>Current Market Snapshot:</strong>
-
-<ul>
-<li>Median Price: $XXX,XXX</li>
-<li>Average Days on Market: XX</li>
-<li>School District: [District Name]</li>
-<li>Vibe: [Description]</li>
-</ul>
-
-<strong>3 Listings in [Neighborhood] Right Now:</strong>
-
-<ol>
-<li>[Property - Address, Price, Highlights]</li>
-<li>[Property - Address, Price, Highlights]</li>
-<li>[Property - Address, Price, Highlights]</li>
-</ol>
-
-<p>[SEE ALL LISTINGS IN [NEIGHBORHOOD] →]</p>
-
-<p>Curious about other neighborhoods? Reply to this email and I'll send you a custom comparison based on your wishlist.</p>
-
-<p>Sharra Mercer</p>
-<p>The Gary Mercer Team</p>
-<p>(610) 324-9416</p>
-
-<p>P.S. — Open houses this weekend: [Link to open house schedule]</p>
-
-<hr>
-
-<h3>Email 2.2: Market Insight (Day 9)</h3>
-
-<strong>Subject:</strong> Chester County market update (and what it means for you)
-
-<strong>Preview Text:</strong> Rates, inventory, and buyer power in 2026
-
-<strong>Send Timing:</strong> Day 9 (warm/cool leads only)
-
-<strong>Body:</strong>
-
-<p>Hi {{first<em>name}},</p>
-
-<p>Quick market update for Chester County buyers:</p>
-
-<strong>The 3 Things You Need to Know Right Now:</strong>
-
-<strong>1. Inventory is Up</strong>
-<p>We're seeing 20% more listings than this time last year. More choices, less bidding wars.</p>
-
-<strong>2. Rates Have Stabilized</strong>
-<p>We're sitting around 6% — not the 3% pandemic days, but way better than the 7%+ spike last year. Buyers are adjusting.</p>
-
-<strong>3. You Have Negotiating Power</strong>
-<p>For the first time in years, strategic buyers can negotiate. That means price reductions, closing cost credits, and inspection contingencies are back on the table.</p>
-
-<strong>What This Means for {{profile</em>name}} Buyers Like You:</strong>
-
-<p>[Dynamic paragraph based on profile]</p>
-
-<strong>Example for Minimalist:</strong>
-<p>If you're looking for modern, low-maintenance homes in walkable areas, this is your moment. West Chester Borough inventory is up, and sellers are motivated.</p>
-
-<strong>Want to Talk Strategy?</strong>
-
-<p>If you're thinking about making a move in the next 3-6 months, now's the time to get pre-approved and start touring. The spring rush hasn't hit yet.</p>
-
-<p>[SCHEDULE A MARKET STRATEGY CALL →]</p>
-
-<p>Or just reply to this email. I'm here to help.</p>
-
-<p>Sharra Mercer</p>
-<p>The Gary Mercer Team</p>
-<p>(610) 324-9416</p>
-
-<hr>
-
-<h3>Email 2.3: Open House Invitation (Day 14)</h3>
-
-<strong>Subject:</strong> Open houses this weekend — {{profile<em>name}} matches inside 🏠
-
-<strong>Preview Text:</strong> 3 homes you might love (no appointment needed)
-
-<strong>Send Timing:</strong> Day 14 (warm/cool leads only, sent Thursday)
-
-<strong>Body:</strong>
-
-<p>Hi {{first</em>name}},</p>
-
-<p>Quick heads-up: we've got open houses this weekend that match your {{profile<em>name}} wishlist.</p>
-
-<strong>Saturday & Sunday Open Houses:</strong>
-
-<strong>Saturday 1-3 PM</strong>
-<p>[Address, Neighborhood]</p>
-<p>$XXX,XXX | X beds, X baths</p>
-<p>Why you'll love it: [Feature matching wishlist]</p>
-<p>[GET DIRECTIONS →]</p>
-
-<strong>Saturday 2-4 PM</strong>
-<p>[Address, Neighborhood]</p>
-<p>$XXX,XXX | X beds, X baths</p>
-<p>Why you'll love it: [Feature matching wishlist]</p>
-<p>[GET DIRECTIONS →]</p>
-
-<strong>Sunday 12-2 PM</strong>
-<p>[Address, Neighborhood]</p>
-<p>$XXX,XXX | X beds, X baths</p>
-<p>Why you'll love it: [Feature matching wishlist]</p>
-<p>[GET DIRECTIONS →]</p>
-
-<strong>No Appointment Needed</strong>
-
-<p>Just show up. Walk through. Get a feel for the space. Our team will be there if you have questions — but no pressure.</p>
-
-<p>Want me to meet you at one? Reply to this email or text me: (610) 324-9416.</p>
-
-<p>See you this weekend (maybe),</p>
-
-<p>Sharra Mercer</p>
-<p>The Gary Mercer Team</p>
-
-<p>[SEE ALL OPEN HOUSES →]</p>
-
-<hr>
-
-<h2>Sequence 3: Hot Follow-Up (3 emails) — HOT LEADS ONLY</h2>
-
-<h3>Email 3.1: Personal Outreach (Day 3)</h3>
-
-<strong>Subject:</strong> {{first</em>name}}, let's find your home this month
-
-<strong>Preview Text:</strong> You said ASAP — here's how we make that happen
-
-<strong>Send Timing:</strong> Day 3 (hot leads only)
-
-<strong>Body:</strong>
-
-<p>Hi {{first<em>name}},</p>
-
-<p>I saw you're looking to move soon (like, really soon). Let's make that happen.</p>
-
-<p>Here's the plan:</p>
-
-<strong>Step 1: Get Pre-Approved (If You Haven't Already)</strong>
-
-<p>If you need a lender recommendation, I've got 3 who move fast and don't jerk you around. Reply with "lender" and I'll intro you.</p>
-
-<strong>Step 2: Tour Homes This Week</strong>
-
-<p>Based on your {{profile</em>name}} wishlist, I've pulled 5-7 properties we should see in person. Some just hit the market. Some won't last the week.</p>
-
-<p>[VIEW YOUR CUSTOM TOUR LIST →]</p>
-
-<strong>Step 3: Make an Offer When You're Ready</strong>
-
-<p>No games. No pressure. Just strategic guidance on price, contingencies, and how to win in a competitive situation (if it comes to that).</p>
-
-<strong>When Can We Tour?</strong>
-
-<p>Reply with your availability this week or next. Morning, afternoon, evening — we'll make it work.</p>
-
-<p>Or just call me: (610) 324-9416</p>
-
-<p>Let's find your home,</p>
-
-<p>Sharra Mercer</p>
-<p>The Gary Mercer Team</p>
-
-<p>P.S. — Serious question: What's driving your urgency? Job relocation? Lease ending? Growing family? Knowing this helps me prioritize the right homes.</p>
-
-<hr>
-
-<h3>Email 3.2: New Listing Alert (Day 7)</h3>
-
-<strong>Subject:</strong> NEW: {{profile<em>name}} home just listed in [Neighborhood] 🚨
-
-<strong>Preview Text:</strong> This one checks all your boxes — but it won't last
-
-<strong>Send Timing:</strong> Day 7 (hot leads only)
-
-<strong>Body:</strong>
-
-<p>Hi {{first</em>name}},</p>
-
-<p>This just hit the market an hour ago and it screams {{profile<em>name}}.</p>
-
-<strong>[Address, Neighborhood]</strong>
-<p>$XXX,XXX | X beds, X baths | X sq ft</p>
-
-<strong>Why This Matches Your Wishlist:</strong>
-
-<p>✓ [Must-have 1 from their selections]</p>
-<p>✓ [Must-have 2 from their selections]</p>
-<p>✓ [Must-have 3 from their selections]</p>
-<p>✓ [Neighborhood match]</p>
-<p>✓ [Budget match]</p>
-
-<strong>The Catch:</strong>
-
-<p>It's priced right, it's move-in ready, and inventory in this range is tight. I'm guessing we'll see multiple offers by the weekend.</p>
-
-<strong>Want to See It?</strong>
-
-<p>I can get you in today or tomorrow. Reply with your availability or call me: (610) 324-9416.</p>
-
-<p>[SEE PHOTOS & DETAILS →]</p>
-
-<p>If this isn't the one, no worries. But I wanted you to see it before everyone else does.</p>
-
-<p>Sharra Mercer</p>
-<p>The Gary Mercer Team</p>
-
-<hr>
-
-<h3>Email 3.3: Check-In (Day 10)</h3>
-
-<strong>Subject:</strong> Still looking? Or did you find something?
-
-<strong>Preview Text:</strong> Quick check-in from your Chester County agent
-
-<strong>Send Timing:</strong> Day 10 (hot leads only)
-
-<strong>Body:</strong>
-
-<p>Hi {{first</em>name}},</p>
-
-<p>Just checking in. You created your Dream Home Wishlist 10 days ago and said you wanted to move soon.</p>
-
-<strong>Have you:</strong>
-
-<ul>
-<li>[ ] Found a home with another agent?</li>
-<li>[ ] Put your search on hold?</li>
-<li>[ ] Still looking and could use help?</li>
-</ul>
-
-<p>If you're still searching, I'm here. We've got new listings every day that match your {{profile<em>name}} wishlist, and the market's moving.</p>
-
-<p>If your plans changed, totally fine — just let me know so I stop flooding your inbox.</p>
-
-<strong>Still Looking?</strong>
-
-<p>Reply with your current status and I'll send you this week's best matches. Or call me directly: (610) 324-9416.</p>
-
-<p>Thanks,</p>
-
-<p>Sharra Mercer</p>
-<p>The Gary Mercer Team</p>
-
-<p>P.S. — If you went with another agent, I genuinely hope you found a great home. But if you're not loving the service, the door's always open.</p>
-
-<hr>
-
-<h2>Sequence 4: Re-Engagement (2 emails) — NON-RESPONDERS</h2>
-
-<h3>Email 4.1: New Inventory Update (Day 30)</h3>
-
-<strong>Subject:</strong> {{first</em>name}}, new {{profile<em>name}} homes in Chester County
-
-<strong>Preview Text:</strong> Fresh listings that match your style (in case you're still looking)
-
-<strong>Send Timing:</strong> Day 30 (for leads who haven't responded to any emails)
-
-<strong>Body:</strong>
-
-<p>Hi {{first</em>name}},</p>
-
-<p>It's been a month since you built your Dream Home Wishlist ({{profile<em>name}} — still one of my favorite profiles).</p>
-
-<p>Not sure if you're still looking, but I thought you'd want to see what's hit the market since then.</p>
-
-<strong>3 New Listings That Match Your Wishlist:</strong>
-
-<ol>
-<li>[Property - Address, Price, Highlights]</li>
-<li>[Property - Address, Price, Highlights]</li>
-<li>[Property - Address, Price, Highlights]</li>
-</ol>
-
-<p>[SEE ALL NEW LISTINGS →]</p>
-
-<strong>Still Interested?</strong>
-
-<p>If you're still searching, reply to this email and let me know what you're seeing out there. If your plans changed, just hit "unsubscribe" below — no hard feelings.</p>
-
-<p>Sharra Mercer</p>
-<p>The Gary Mercer Team</p>
-<p>(610) 324-9416</p>
-
-<p>P.S. — We're also on Instagram (@sharramercer) if you want to follow along for market updates and Chester County insights.</p>
-
-<hr>
-
-<h3>Email 4.2: Final Check-In (Day 45)</h3>
-
-<strong>Subject:</strong> Last email (unless you want more)
-
-<strong>Preview Text:</strong> Unsubscribe or let me know you're still looking
-
-<strong>Send Timing:</strong> Day 45 (for leads who still haven't responded)
-
-<strong>Body:</strong>
-
-<p>Hi {{first</em>name}},</p>
-
-<p>This is my last email unless you reply.</p>
-
-<p>You created a Dream Home Wishlist 45 days ago, and I haven't heard from you since. That's totally fine — I know life gets busy, plans change, and sometimes people just browse for fun.</p>
-
-<strong>Here's the deal:</strong>
-
-<p>If you're <strong>still looking for a home in Chester County</strong>, reply with "still looking" and I'll keep sending you listings that match your {{profile_name}} wishlist.</p>
-
-<p>If you're <strong>not looking anymore</strong>, just unsubscribe below and you'll never hear from me again. No hard feelings.</p>
-
-<p>If you <strong>found a home with another agent</strong>, congrats! I hope you love it.</p>
-
-<p>Thanks for letting me be part of your search (even if just for a minute).</p>
-
-<p>Sharra Mercer</p>
-<p>The Gary Mercer Team</p>
-<p>(610) 324-9416</p>
-
-<p>[UNSUBSCRIBE]</p>
-
-<hr>
-
-<h2>Email Sequence Summary</h2>
-
-<p>| Sequence | Emails | Send Days | Audience |</p>
-<p>|----------|--------|-----------|----------|</p>
-<p>| Welcome | 2 | Days 0, 2 | ALL leads |</p>
-<p>| Warm Nurture | 3 | Days 5, 9, 14 | Warm/Cool leads |</p>
-<p>| Hot Follow-Up | 3 | Days 3, 7, 10 | Hot leads only |</p>
-<p>| Re-Engagement | 2 | Days 30, 45 | Non-responders |</p>
-
-<strong>Total emails per lead type:</strong>
-<ul>
-<li>Hot leads: 5 emails (Welcome + Hot Follow-Up)</li>
-<li>Warm/Cool leads: 7 emails (Welcome + Warm Nurture + Re-Engagement)</li>
-</ul>
-
-<hr>
-
-<h2>Email Design Notes</h2>
-
-<strong>Voice:</strong> Conversational, transparent, no-BS. Every email gives value before asking for anything.
-
-<strong>CTAs:</strong> Primary CTA in every email. Secondary CTA where appropriate. Never more than 2 CTAs per email.
-
-<strong>Personalization:</strong> Profile name and description used throughout. Dynamic content based on selections (neighborhood, must-haves, budget).
-
-<strong>Unsubscribe Strategy:</strong> Explicitly mentioned in re-engagement emails to reduce list fatigue. "No hard feelings" language reduces guilt.
-
-<strong>Mobile Optimization:</strong> Short paragraphs, bullet points, clear CTAs. Designed to be read on phones.
-
-<strong>Deliverability:</strong> Plain text with light HTML formatting. No heavy images. Sender: "Sharra Mercer | The Gary Mercer Team" for recognition.
-
+    <h1>Email Sequences - Vision Board Builder</h1>
+
+    <div class="preview-card highlight">
+      <div class="card-header">
+        <h3>Overview</h3>
+        <span class="badge primary">10 Emails Total</span>
+      </div>
+      <div class="card-body">
+        <p><strong>Mike Flatley | The Gary Mercer Team</strong></p>
+        <p>10 emails across 4 sequences (Welcome, Warm Nurture, Hot Follow-Up, Re-Engagement)</p>
+
+        <div class="stats-row mt-3">
+          <div class="stat-box">
+            <span class="stat-value">2</span>
+            <span class="stat-label">Welcome Emails</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-value">3</span>
+            <span class="stat-label">Warm Nurture</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-value">3</span>
+            <span class="stat-label">Hot Follow-Up</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-value">2</span>
+            <span class="stat-label">Re-Engagement</span>
+          </div>
+        </div>
+
+        <h4 class="mt-3">Email Routing Logic:</h4>
+        <ul>
+          <li><strong>Profile-based:</strong> All profiles receive profile-specific content</li>
+          <li><strong>Temperature-based:</strong> Hot/Warm/Cool determines sequence track</li>
+          <li><strong>No answer callbacks:</strong> Vision boards use simple personalization</li>
+        </ul>
+
+        <h4 class="mt-2">Merge Tags Available:</h4>
+        <p>
+          <code>{{first_name}}</code>
+          <code>{{profile_name}}</code>
+          <code>{{profile_description}}</code>
+          <code>{{builder_url}}</code>
+        </p>
+      </div>
     </div>
+
+    <div class="controls-bar">
+      <button class="control-btn" data-action="collapse-all">Collapse All Sequences</button>
+      <button class="control-btn" data-action="expand-all">Expand All Sequences</button>
+    </div>
+
+    <!-- Sequence 1: Welcome -->
+    <div class="accordion-section" data-exclusive-group="sequences">
+      <button class="accordion-header">
+        <span><strong>Sequence 1: Welcome</strong> - 2 emails (ALL LEADS)</span>
+        <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </button>
+      <div class="accordion-content">
+        <div class="accordion-body">
+
+          <div class="email-card">
+            <div class="email-meta">
+              <div class="email-meta-item">
+                <span class="email-meta-label">Email:</span>
+                <span class="email-meta-value">1.1 - Immediate Delivery</span>
+              </div>
+              <div class="email-meta-item">
+                <span class="email-meta-label">Subject:</span>
+                <span class="email-meta-value">Your Chester County Dream Home Wishlist 🏡</span>
+              </div>
+              <div class="email-meta-item">
+                <span class="email-meta-label">Preview Text:</span>
+                <span class="email-meta-value">Here's your personalized mood board + 3 listings that match</span>
+              </div>
+              <div class="email-meta-item">
+                <span class="email-meta-label">Send Timing:</span>
+                <span class="email-meta-value badge success">Day 0 (Immediate - within 60 seconds)</span>
+              </div>
+            </div>
+            <div class="email-body">
+              <p>Hi {{first_name}},</p>
+              <p>Here's your personalized Dream Home Wishlist!</p>
+              <p><strong>Your Profile: {{profile_name}}</strong></p>
+              <p>{{profile_description}}</p>
+              <p><strong>[DOWNLOAD YOUR MOOD BOARD →]</strong></p>
+              <p><strong>3 Listings That Match Your Style:</strong></p>
+              <p>(Dynamic listing insertion based on profile + selections)</p>
+              <ol>
+                <li>[Property 1 - Address, Price, Beds/Baths]</li>
+                <li>[Property 2 - Address, Price, Beds/Baths]</li>
+                <li>[Property 3 - Address, Price, Beds/Baths]</li>
+              </ol>
+              <p><strong>[VIEW ALL MATCHING LISTINGS →]</strong></p>
+              <p><strong>What's Next?</strong></p>
+              <p>Reply to this email with questions, or browse our full catalog of Chester County homes. When you're ready to tour, we're here.</p>
+              <p>No pressure. Just strategic guidance and local expertise.</p>
+              <p>Sharra Mercer<br>The Gary Mercer Team<br>(610) 324-9416</p>
+              <p>P.S. — Want to refine your wishlist? [Retake the quiz →]</p>
+            </div>
+          </div>
+
+          <div class="email-card">
+            <div class="email-meta">
+              <div class="email-meta-item">
+                <span class="email-meta-label">Email:</span>
+                <span class="email-meta-value">1.2 - Introduction to Team</span>
+              </div>
+              <div class="email-meta-item">
+                <span class="email-meta-label">Subject:</span>
+                <span class="email-meta-value">A little more about us (and Chester County) 👋</span>
+              </div>
+              <div class="email-meta-item">
+                <span class="email-meta-label">Preview Text:</span>
+                <span class="email-meta-value">401 sales, 563+ reviews, and a love for this area</span>
+              </div>
+              <div class="email-meta-item">
+                <span class="email-meta-label">Send Timing:</span>
+                <span class="email-meta-value badge neutral">Day 2 (48 hours after signup)</span>
+              </div>
+            </div>
+            <div class="email-body">
+              <p>Hi {{first_name}},</p>
+              <p>I'm Sharra, and I lead The Gary Mercer Team here in Chester County.</p>
+              <p>You created a Dream Home Wishlist a couple days ago ({{profile_name}} — great taste!). I wanted to introduce myself and share a little about what makes us different.</p>
+              <p><strong>Our Story:</strong></p>
+              <p>We're not a boutique brokerage with 10 sales a year. We're not a corporate mill that treats you like a number. We're somewhere in between — high volume (401 homes sold in 2024), but every client gets the strategic attention they deserve.</p>
+              <p><strong>Why Chester County?</strong></p>
+              <p>We've been here since 2005. We know which school districts are worth the premium, which neighborhoods are about to pop, and where you can still find value. That local knowledge? It's your advantage.</p>
+              <p><strong>How We Work:</strong></p>
+              <ul>
+                <li><strong>No pushy sales tactics</strong> — we're consultants, not closers</li>
+                <li><strong>Market data, not gut feelings</strong> — we show you the numbers</li>
+                <li><strong>Strategic and fun to work with</strong> — our Instagram bio, but also our reality</li>
+              </ul>
+              <p>When you're ready to tour homes, reply to this email or call me directly: (610) 324-9416.</p>
+              <p>Until then, enjoy browsing. We'll send you new listings that match your wishlist each week.</p>
+              <p>Sharra Mercer<br>The Gary Mercer Team<br>smercer@garymercerteam.com</p>
+              <p><strong>[SCHEDULE A 15-MINUTE CALL →]</strong></p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Sequence 2: Warm Nurture -->
+    <div class="accordion-section" data-exclusive-group="sequences">
+      <button class="accordion-header">
+        <span><strong>Sequence 2: Warm Nurture</strong> - 3 emails <span class="badge warm">WARM & COOL LEADS ONLY</span></span>
+        <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </button>
+      <div class="accordion-content">
+        <div class="accordion-body">
+
+          <div class="email-card">
+            <div class="email-meta">
+              <div class="email-meta-item">
+                <span class="email-meta-label">Email:</span>
+                <span class="email-meta-value">2.1 - Neighborhood Spotlight</span>
+              </div>
+              <div class="email-meta-item">
+                <span class="email-meta-label">Subject:</span>
+                <span class="email-meta-value">{{profile_name}} homes in [Neighborhood Name] 📍</span>
+              </div>
+              <div class="email-meta-item">
+                <span class="email-meta-label">Send Timing:</span>
+                <span class="email-meta-value badge warm">Day 5 (warm/cool leads only)</span>
+              </div>
+            </div>
+            <div class="email-body">
+              <p>Hi {{first_name}},</p>
+              <p>Based on your wishlist ({{profile_name}} — still love it), I thought you'd want to know about [Dynamic Neighborhood Name].</p>
+              <p><strong>Why [Neighborhood]?</strong></p>
+              <ul>
+                <li>[Benefit 1 specific to profile/selections]</li>
+                <li>[Benefit 2 specific to profile/selections]</li>
+                <li>[Benefit 3 specific to profile/selections]</li>
+              </ul>
+              <p><strong>Current Market Snapshot:</strong></p>
+              <ul>
+                <li>Median Price: $XXX,XXX</li>
+                <li>Average Days on Market: XX</li>
+                <li>School District: [District Name]</li>
+                <li>Vibe: [Description]</li>
+              </ul>
+              <p><strong>3 Listings in [Neighborhood] Right Now:</strong></p>
+              <ol>
+                <li>[Property - Address, Price, Highlights]</li>
+                <li>[Property - Address, Price, Highlights]</li>
+                <li>[Property - Address, Price, Highlights]</li>
+              </ol>
+              <p><strong>[SEE ALL LISTINGS IN [NEIGHBORHOOD] →]</strong></p>
+              <p>Curious about other neighborhoods? Reply to this email and I'll send you a custom comparison based on your wishlist.</p>
+            </div>
+          </div>
+
+          <div class="email-card">
+            <div class="email-meta">
+              <div class="email-meta-item">
+                <span class="email-meta-label">Email:</span>
+                <span class="email-meta-value">2.2 - Market Insight</span>
+              </div>
+              <div class="email-meta-item">
+                <span class="email-meta-label">Subject:</span>
+                <span class="email-meta-value">Chester County market update (and what it means for you)</span>
+              </div>
+              <div class="email-meta-item">
+                <span class="email-meta-label">Send Timing:</span>
+                <span class="email-meta-value badge warm">Day 9 (warm/cool leads only)</span>
+              </div>
+            </div>
+            <div class="email-body">
+              <p>Hi {{first_name}},</p>
+              <p>Quick market update for Chester County buyers:</p>
+              <p><strong>The 3 Things You Need to Know Right Now:</strong></p>
+              <p><strong>1. Inventory is Up</strong><br>
+              We're seeing 20% more listings than this time last year. More choices, less bidding wars.</p>
+              <p><strong>2. Rates Have Stabilized</strong><br>
+              We're sitting around 6% — not the 3% pandemic days, but way better than the 7%+ spike last year. Buyers are adjusting.</p>
+              <p><strong>3. You Have Negotiating Power</strong><br>
+              For the first time in years, strategic buyers can negotiate. That means price reductions, closing cost credits, and inspection contingencies are back on the table.</p>
+              <p><strong>What This Means for {{profile_name}} Buyers Like You:</strong></p>
+              <p>[Dynamic paragraph based on profile]</p>
+              <p><strong>[SCHEDULE A MARKET STRATEGY CALL →]</strong></p>
+            </div>
+          </div>
+
+          <div class="email-card">
+            <div class="email-meta">
+              <div class="email-meta-item">
+                <span class="email-meta-label">Email:</span>
+                <span class="email-meta-value">2.3 - Open House Invitation</span>
+              </div>
+              <div class="email-meta-item">
+                <span class="email-meta-label">Subject:</span>
+                <span class="email-meta-value">Open houses this weekend — {{profile_name}} matches inside 🏠</span>
+              </div>
+              <div class="email-meta-item">
+                <span class="email-meta-label">Send Timing:</span>
+                <span class="email-meta-value badge warm">Day 14 (Thursday before weekend)</span>
+              </div>
+            </div>
+            <div class="email-body">
+              <p>Hi {{first_name}},</p>
+              <p>Quick heads-up: we've got open houses this weekend that match your {{profile_name}} wishlist.</p>
+              <p><strong>Saturday & Sunday Open Houses:</strong></p>
+              <p><strong>Saturday 1-3 PM</strong><br>
+              [Address, Neighborhood]<br>
+              $XXX,XXX | X beds, X baths<br>
+              Why you'll love it: [Feature matching wishlist]<br>
+              <strong>[GET DIRECTIONS →]</strong></p>
+              <p><strong>No Appointment Needed</strong></p>
+              <p>Just show up. Walk through. Get a feel for the space. Our team will be there if you have questions — but no pressure.</p>
+              <p>Want me to meet you at one? Reply to this email or text me: (610) 324-9416.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Sequence 3: Hot Follow-Up -->
+    <div class="accordion-section" data-exclusive-group="sequences">
+      <button class="accordion-header">
+        <span><strong>Sequence 3: Hot Follow-Up</strong> - 3 emails <span class="badge hot">HOT LEADS ONLY</span></span>
+        <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </button>
+      <div class="accordion-content">
+        <div class="accordion-body">
+
+          <div class="email-card">
+            <div class="email-meta">
+              <div class="email-meta-item">
+                <span class="email-meta-label">Email:</span>
+                <span class="email-meta-value">3.1 - Personal Outreach</span>
+              </div>
+              <div class="email-meta-item">
+                <span class="email-meta-label">Subject:</span>
+                <span class="email-meta-value">{{first_name}}, let's find your home this month</span>
+              </div>
+              <div class="email-meta-item">
+                <span class="email-meta-label">Send Timing:</span>
+                <span class="email-meta-value badge hot">Day 3 (hot leads only)</span>
+              </div>
+            </div>
+            <div class="email-body">
+              <p>Hi {{first_name}},</p>
+              <p>I saw you're looking to move soon (like, really soon). Let's make that happen.</p>
+              <p>Here's the plan:</p>
+              <p><strong>Step 1: Get Pre-Approved (If You Haven't Already)</strong></p>
+              <p>If you need a lender recommendation, I've got 3 who move fast and don't jerk you around. Reply with "lender" and I'll intro you.</p>
+              <p><strong>Step 2: Tour Homes This Week</strong></p>
+              <p>Based on your {{profile_name}} wishlist, I've pulled 5-7 properties we should see in person. Some just hit the market. Some won't last the week.</p>
+              <p><strong>[VIEW YOUR CUSTOM TOUR LIST →]</strong></p>
+              <p><strong>Step 3: Make an Offer When You're Ready</strong></p>
+              <p>No games. No pressure. Just strategic guidance on price, contingencies, and how to win in a competitive situation (if it comes to that).</p>
+              <p><strong>When Can We Tour?</strong></p>
+              <p>Reply with your availability this week or next. Morning, afternoon, evening — we'll make it work.</p>
+              <p>Or just call me: (610) 324-9416</p>
+              <p>P.S. — Serious question: What's driving your urgency? Job relocation? Lease ending? Growing family? Knowing this helps me prioritize the right homes.</p>
+            </div>
+          </div>
+
+          <div class="email-card">
+            <div class="email-meta">
+              <div class="email-meta-item">
+                <span class="email-meta-label">Email:</span>
+                <span class="email-meta-value">3.2 - New Listing Alert</span>
+              </div>
+              <div class="email-meta-item">
+                <span class="email-meta-label">Subject:</span>
+                <span class="email-meta-value">NEW: {{profile_name}} home just listed in [Neighborhood] 🚨</span>
+              </div>
+              <div class="email-meta-item">
+                <span class="email-meta-label">Send Timing:</span>
+                <span class="email-meta-value badge hot">Day 7 (hot leads only)</span>
+              </div>
+            </div>
+            <div class="email-body">
+              <p>Hi {{first_name}},</p>
+              <p>This just hit the market an hour ago and it screams {{profile_name}}.</p>
+              <p><strong>[Address, Neighborhood]</strong><br>
+              $XXX,XXX | X beds, X baths | X sq ft</p>
+              <p><strong>Why This Matches Your Wishlist:</strong></p>
+              <p>✓ [Must-have 1 from their selections]<br>
+              ✓ [Must-have 2 from their selections]<br>
+              ✓ [Must-have 3 from their selections]<br>
+              ✓ [Neighborhood match]<br>
+              ✓ [Budget match]</p>
+              <p><strong>The Catch:</strong></p>
+              <p>It's priced right, it's move-in ready, and inventory in this range is tight. I'm guessing we'll see multiple offers by the weekend.</p>
+              <p><strong>Want to See It?</strong></p>
+              <p>I can get you in today or tomorrow. Reply with your availability or call me: (610) 324-9416.</p>
+              <p><strong>[SEE PHOTOS & DETAILS →]</strong></p>
+            </div>
+          </div>
+
+          <div class="email-card">
+            <div class="email-meta">
+              <div class="email-meta-item">
+                <span class="email-meta-label">Email:</span>
+                <span class="email-meta-value">3.3 - Check-In</span>
+              </div>
+              <div class="email-meta-item">
+                <span class="email-meta-label">Subject:</span>
+                <span class="email-meta-value">Still looking? Or did you find something?</span>
+              </div>
+              <div class="email-meta-item">
+                <span class="email-meta-label">Send Timing:</span>
+                <span class="email-meta-value badge hot">Day 10 (hot leads only)</span>
+              </div>
+            </div>
+            <div class="email-body">
+              <p>Hi {{first_name}},</p>
+              <p>Just checking in. You created your Dream Home Wishlist 10 days ago and said you wanted to move soon.</p>
+              <p><strong>Have you:</strong></p>
+              <ul>
+                <li>[ ] Found a home with another agent?</li>
+                <li>[ ] Put your search on hold?</li>
+                <li>[ ] Still looking and could use help?</li>
+              </ul>
+              <p>If you're still searching, I'm here. We've got new listings every day that match your {{profile_name}} wishlist, and the market's moving.</p>
+              <p>If your plans changed, totally fine — just let me know so I stop flooding your inbox.</p>
+              <p><strong>Still Looking?</strong></p>
+              <p>Reply with your current status and I'll send you this week's best matches. Or call me directly: (610) 324-9416.</p>
+              <p>P.S. — If you went with another agent, I genuinely hope you found a great home. But if you're not loving the service, the door's always open.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Sequence 4: Re-Engagement -->
+    <div class="accordion-section" data-exclusive-group="sequences">
+      <button class="accordion-header">
+        <span><strong>Sequence 4: Re-Engagement</strong> - 2 emails <span class="badge cool">NON-RESPONDERS</span></span>
+        <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </button>
+      <div class="accordion-content">
+        <div class="accordion-body">
+
+          <div class="email-card">
+            <div class="email-meta">
+              <div class="email-meta-item">
+                <span class="email-meta-label">Email:</span>
+                <span class="email-meta-value">4.1 - New Inventory Update</span>
+              </div>
+              <div class="email-meta-item">
+                <span class="email-meta-label">Subject:</span>
+                <span class="email-meta-value">{{first_name}}, new {{profile_name}} homes in Chester County</span>
+              </div>
+              <div class="email-meta-item">
+                <span class="email-meta-label">Send Timing:</span>
+                <span class="email-meta-value badge neutral">Day 30 (non-responders)</span>
+              </div>
+            </div>
+            <div class="email-body">
+              <p>Hi {{first_name}},</p>
+              <p>It's been a month since you built your Dream Home Wishlist ({{profile_name}} — still one of my favorite profiles).</p>
+              <p>Not sure if you're still looking, but I thought you'd want to see what's hit the market since then.</p>
+              <p><strong>3 New Listings That Match Your Wishlist:</strong></p>
+              <ol>
+                <li>[Property - Address, Price, Highlights]</li>
+                <li>[Property - Address, Price, Highlights]</li>
+                <li>[Property - Address, Price, Highlights]</li>
+              </ol>
+              <p><strong>[SEE ALL NEW LISTINGS →]</strong></p>
+              <p><strong>Still Interested?</strong></p>
+              <p>If you're still searching, reply to this email and let me know what you're seeing out there. If your plans changed, just hit "unsubscribe" below — no hard feelings.</p>
+              <p>P.S. — We're also on Instagram (@sharramercer) if you want to follow along for market updates and Chester County insights.</p>
+            </div>
+          </div>
+
+          <div class="email-card">
+            <div class="email-meta">
+              <div class="email-meta-item">
+                <span class="email-meta-label">Email:</span>
+                <span class="email-meta-value">4.2 - Final Check-In</span>
+              </div>
+              <div class="email-meta-item">
+                <span class="email-meta-label">Subject:</span>
+                <span class="email-meta-value">Last email (unless you want more)</span>
+              </div>
+              <div class="email-meta-item">
+                <span class="email-meta-label">Send Timing:</span>
+                <span class="email-meta-value badge neutral">Day 45 (still non-responders)</span>
+              </div>
+            </div>
+            <div class="email-body">
+              <p>Hi {{first_name}},</p>
+              <p>This is my last email unless you reply.</p>
+              <p>You created a Dream Home Wishlist 45 days ago, and I haven't heard from you since. That's totally fine — I know life gets busy, plans change, and sometimes people just browse for fun.</p>
+              <p><strong>Here's the deal:</strong></p>
+              <p>If you're <strong>still looking for a home in Chester County</strong>, reply with "still looking" and I'll keep sending you listings that match your {{profile_name}} wishlist.</p>
+              <p>If you're <strong>not looking anymore</strong>, just unsubscribe below and you'll never hear from me again. No hard feelings.</p>
+              <p>If you <strong>found a home with another agent</strong>, congrats! I hope you love it.</p>
+              <p>Thanks for letting me be part of your search (even if just for a minute).</p>
+              <p>Sharra Mercer<br>The Gary Mercer Team<br>(610) 324-9416</p>
+              <p><strong>[UNSUBSCRIBE]</strong></p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Summary Table -->
+    <div class="preview-card mt-4">
+      <div class="card-header">
+        <h3>Email Sequence Summary</h3>
+      </div>
+      <div class="card-body">
+        <div class="table-card">
+          <table>
+            <thead>
+              <tr>
+                <th>Sequence</th>
+                <th>Emails</th>
+                <th>Send Days</th>
+                <th>Audience</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Welcome</strong></td>
+                <td>2</td>
+                <td>Days 0, 2</td>
+                <td><span class="badge primary">ALL leads</span></td>
+              </tr>
+              <tr>
+                <td><strong>Warm Nurture</strong></td>
+                <td>3</td>
+                <td>Days 5, 9, 14</td>
+                <td><span class="badge warm">Warm/Cool leads</span></td>
+              </tr>
+              <tr>
+                <td><strong>Hot Follow-Up</strong></td>
+                <td>3</td>
+                <td>Days 3, 7, 10</td>
+                <td><span class="badge hot">Hot leads only</span></td>
+              </tr>
+              <tr>
+                <td><strong>Re-Engagement</strong></td>
+                <td>2</td>
+                <td>Days 30, 45</td>
+                <td><span class="badge cool">Non-responders</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4 class="mt-3">Total emails per lead type:</h4>
+        <ul>
+          <li><strong>Hot leads:</strong> 5 emails (Welcome + Hot Follow-Up)</li>
+          <li><strong>Warm/Cool leads:</strong> 7 emails (Welcome + Warm Nurture + Re-Engagement)</li>
+        </ul>
+
+        <h4 class="mt-3">Email Design Notes:</h4>
+        <ul>
+          <li><strong>Voice:</strong> Conversational, transparent, no-BS. Every email gives value before asking for anything.</li>
+          <li><strong>CTAs:</strong> Primary CTA in every email. Secondary CTA where appropriate. Never more than 2 CTAs per email.</li>
+          <li><strong>Personalization:</strong> Profile name and description used throughout. Dynamic content based on selections.</li>
+          <li><strong>Unsubscribe Strategy:</strong> Explicitly mentioned in re-engagement emails to reduce list fatigue.</li>
+          <li><strong>Mobile Optimization:</strong> Short paragraphs, bullet points, clear CTAs. Designed to be read on phones.</li>
+        </ul>
+      </div>
+    </div>
+
   </div>
+  <script src="assets/preview-components.js"></script>
 </body>
 </html>
