@@ -4,797 +4,809 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ways to Grow - Mike Flatley Real Estate</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-      line-height: 1.6;
-      color: #333;
-      background: #f5f5f5;
-    }
-
-    .header {
-      background: linear-gradient(135deg, #1a3a52 0%, #2d5a7b 100%);
-      color: white;
-      padding: 24px 0;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-
-    .header-content {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-
-    .header h1 {
-      font-size: 1.8rem;
-      font-weight: 600;
-    }
-
-    .back-link {
-      color: #d4a574;
-      text-decoration: none;
-      font-weight: 500;
-      padding: 8px 16px;
-      border: 2px solid #d4a574;
-      border-radius: 6px;
-      transition: all 0.2s;
-    }
-
-    .back-link:hover {
-      background: #d4a574;
-      color: #1a3a52;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 40px auto;
-      padding: 40px;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    }
-
-    .subtitle {
-      color: #666;
-      font-size: 1.1rem;
-      margin-bottom: 8px;
-      font-style: italic;
-    }
-
-    h2 {
-      color: #1a3a52;
-      font-size: 2rem;
-      margin: 48px 0 24px 0;
-      padding-bottom: 12px;
-      border-bottom: 3px solid #d4a574;
-    }
-
-    h2:first-of-type {
-      margin-top: 0;
-    }
-
-    h3 {
-      color: #1a3a52;
-      font-size: 1.5rem;
-      margin: 32px 0 16px 0;
-    }
-
-    h4 {
-      color: #2d5a7b;
-      font-size: 1.2rem;
-      margin: 24px 0 12px 0;
-    }
-
-    p {
-      margin: 16px 0;
-      color: #444;
-      line-height: 1.7;
-    }
-
-    ul {
-      margin: 16px 0;
-      padding-left: 24px;
-    }
-
-    li {
-      margin: 8px 0;
-      line-height: 1.6;
-    }
-
-    strong {
-      color: #1a3a52;
-      font-weight: 600;
-    }
-
-    code {
-      background: #f5f5f5;
-      padding: 2px 6px;
-      border-radius: 3px;
-      font-family: 'Courier New', monospace;
-      font-size: 0.9em;
-      color: #d4a574;
-    }
-
-    .checkmark {
-      color: #d4a574;
-      font-weight: bold;
-      margin-right: 8px;
-    }
-
-    hr {
-      border: none;
-      border-top: 1px solid #e5e5e5;
-      margin: 40px 0;
-    }
-
-    /* Pricing tier cards */
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-      margin: 32px 0;
-    }
-
-    .pricing-card {
-      background: white;
-      border: 1px solid #e5e5e5;
-      border-top: 4px solid #1a3a52;
-      border-radius: 12px;
-      padding: 28px;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .pricing-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-    }
-
-    .pricing-tier {
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: #1a3a52;
-      margin-bottom: 8px;
-    }
-
-    .pricing-cost {
-      font-size: 1.8rem;
-      font-weight: 600;
-      color: #d4a574;
-      margin-bottom: 12px;
-    }
-
-    .pricing-audience {
-      font-size: 0.9rem;
-      color: #666;
-      margin-bottom: 16px;
-      font-style: italic;
-    }
-
-    .pricing-features {
-      font-size: 0.95rem;
-      color: #333;
-      line-height: 1.6;
-    }
-
-    /* Feature add-on cards */
-    .addon-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 24px;
-      margin: 32px 0;
-    }
-
-    .addon-card {
-      background: linear-gradient(135deg, #fafafa 0%, white 100%);
-      border: 1px solid #e5e5e5;
-      border-radius: 12px;
-      padding: 24px;
-      transition: all 0.2s;
-    }
-
-    .addon-card:hover {
-      border-color: #d4a574;
-      box-shadow: 0 4px 16px rgba(212, 165, 116, 0.15);
-    }
-
-    .addon-title {
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: #1a3a52;
-      margin-bottom: 12px;
-    }
-
-    .addon-price {
-      font-size: 1rem;
-      color: #d4a574;
-      font-weight: 600;
-      margin-bottom: 16px;
-    }
-
-    .addon-description {
-      font-size: 0.9rem;
-      color: #555;
-      line-height: 1.6;
-    }
-
-    .addon-description p {
-      margin: 8px 0;
-      font-size: 0.9rem;
-    }
-
-    /* Tier detail sections */
-    .tier-section {
-      background: #f9f9f9;
-      border-left: 4px solid #d4a574;
-      padding: 24px;
-      margin: 24px 0;
-      border-radius: 8px;
-    }
-
-    .tier-section h3 {
-      margin-top: 0;
-    }
-
-    @media (max-width: 768px) {
-      .header h1 {
-        font-size: 1.4rem;
-      }
-
-      .container {
-        padding: 24px;
-        margin: 20px;
-      }
-
-      h2 {
-        font-size: 1.6rem;
-      }
-
-      h3 {
-        font-size: 1.3rem;
-      }
-
-      .pricing-grid,
-      .addon-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
   <link rel="stylesheet" href="assets/preview-components.css">
 </head>
 <body>
-  <div class="header">
+  <div class="preview-header">
     <div class="header-content">
       <h1>Ways to Grow - Mike Flatley Real Estate</h1>
       <a href="index.html" class="back-link">← Back to Index</a>
     </div>
   </div>
 
-  <div class="container">
-    <p class="subtitle">Mike Flatley | The Gary Mercer Team</p>
-    <p class="subtitle">Included features + growth add-ons for vision board funnel</p>
-
-    <hr>
-
-    <h2>What's Included in Your Vision Board Builder</h2>
-
-    <h3>Core Features (Day 1)</h3>
-
-    <p><span class="checkmark">✓</span> <strong>Custom Vision Board Builder</strong></p>
-    <ul>
-      <li>6-step preference selection flow</li>
-      <li>5 profile-based results (Minimalist, Nester, Entertainer, Urbanite, Retreater)</li>
-      <li>AI-generated mood board graphics (Glif integration)</li>
-      <li>Mobile-responsive design</li>
-      <li>Download & social share functionality</li>
-    </ul>
-
-    <p><span class="checkmark">✓</span> <strong>Email Automation</strong></p>
-    <ul>
-      <li>10 email sequences across 4 tracks (Welcome, Warm Nurture, Hot Follow-Up, Re-Engagement)</li>
-      <li>Profile-based personalization</li>
-      <li>Temperature-based routing (hot/warm/cool)</li>
-      <li>Automated send scheduling via Resend</li>
-      <li>Unsubscribe management</li>
-    </ul>
-
-    <p><span class="checkmark">✓</span> <strong>Lead Qualification System</strong></p>
-    <ul>
-      <li>Composite scoring (urgency + budget)</li>
-      <li>Hot/Warm/Cool segmentation</li>
-      <li>CRM-ready data export</li>
-    </ul>
-
-    <p><span class="checkmark">✓</span> <strong>Analytics Dashboard</strong></p>
-    <ul>
-      <li>Wishlist completion tracking</li>
-      <li>Lead temperature distribution</li>
-      <li>Profile popularity metrics</li>
-      <li>Email engagement stats</li>
-      <li>Traffic source attribution (UTM tracking)</li>
-    </ul>
-
-    <p><span class="checkmark">✓</span> <strong>Hosting & Deployment</strong></p>
-    <ul>
-      <li>Vercel deployment (serverless, scalable)</li>
-      <li>Custom domain setup</li>
-      <li>SSL certificate (secure HTTPS)</li>
-      <li>CDN for fast global loading</li>
-    </ul>
-
-    <p><span class="checkmark">✓</span> <strong>Database & Storage</strong></p>
-    <ul>
-      <li>Supabase PostgreSQL database</li>
-      <li>Lead data storage (GDPR-compliant)</li>
-      <li>Graphic caching (SHA-256 hashing)</li>
-      <li>Email template storage</li>
-    </ul>
-
-    <hr>
-
-    <h2>Growth Add-Ons (Available After Launch)</h2>
-
-    <div class="tier-section">
-      <h3>Tier 1: Optimization Insights ($500/month)</h3>
-
-      <p><strong>What You Get:</strong></p>
-      <ul>
-        <li>Monthly performance report (completion rate, lead quality, conversion paths)</li>
-        <li>A/B test recommendations (headlines, CTAs, design tweaks)</li>
-        <li>Email engagement analysis (subject line performance, open rates, click rates)</li>
-        <li>Profile distribution insights (which buyer types are you attracting?)</li>
-        <li>Traffic source analysis (organic, paid, social — what's working?)</li>
-      </ul>
-
-      <p><strong>Best For:</strong> Teams who want data-driven recommendations but will implement changes themselves</p>
-
-      <p><strong>Deliverables:</strong></p>
-      <ul>
-        <li>PDF report delivered 1st of each month</li>
-        <li>30-minute review call</li>
-        <li>Prioritized optimization checklist</li>
-      </ul>
-
-      <p><strong>Example Insights:</strong></p>
-      <ul>
-        <li>"Your 'Entertainer' profile has 2x higher conversion rate — create more ads targeting this segment"</li>
-        <li>"Completion rate drops 40% on Step 4 (must-haves) — reduce options from 12 to 8"</li>
-        <li>"Hot leads are 3x more likely to come from Google Search vs. Facebook — increase search budget"</li>
-      </ul>
+  <div class="preview-container">
+    <div class="page-title">
+      <h1>Ways to Grow Your Vision Board Funnel</h1>
+      <p class="subtitle">Mike Flatley | The Gary Mercer Team</p>
+      <p class="subtitle">Included features + growth add-ons for vision board funnel</p>
     </div>
 
-    <div class="tier-section">
-      <h3>Tier 2: Optimization Partner ($1,500/month)</h3>
-
-      <p><strong>Everything in Tier 1, plus:</strong></p>
-      <ul>
-        <li>Monthly implementation of 3-5 optimizations (we make the changes)</li>
-        <li>New email sequences (seasonal campaigns, re-engagement flows)</li>
-        <li>Landing page CRO (conversion rate optimization)</li>
-        <li>Monthly ad creative refresh (new headlines, images, copy)</li>
-        <li>Retargeting campaign setup (Facebook Pixel, Google Ads)</li>
-      </ul>
-
-      <p><strong>Best For:</strong> Teams who want the insights AND the implementation done for them</p>
-
-      <p><strong>What We Implement Each Month:</strong></p>
-      <ul>
-        <li>Design tweaks (button colors, form placement, mobile optimization)</li>
-        <li>Copy updates (headlines, CTAs, email subject lines)</li>
-        <li>New email sequences (neighborhood spotlights, market updates, holiday campaigns)</li>
-        <li>Ad creative variations (test 3 new concepts monthly)</li>
-        <li>Retargeting flows (abandoned wishlist, non-responders)</li>
-      </ul>
-
-      <p><strong>Expected Lift:</strong></p>
-      <ul>
-        <li>15-30% increase in completion rate (month 2-3)</li>
-        <li>20-40% increase in hot lead percentage (month 3-4)</li>
-        <li>10-25% decrease in cost per lead (month 4-6)</li>
-      </ul>
+    <div class="accordion-controls">
+      <button id="expand-all" class="control-btn">Expand All</button>
+      <button id="collapse-all" class="control-btn">Collapse All</button>
     </div>
 
-    <div class="tier-section">
-      <h3>Tier 3: Growth Accelerator ($3,000/month)</h3>
-
-      <p><strong>Everything in Tier 2, plus:</strong></p>
-      <ul>
-        <li>Advanced segmentation (custom email flows for 10+ segments)</li>
-        <li>MLS integration (show matched listings on reveal page)</li>
-        <li>Viral referral tracking (share analytics + incentives)</li>
-        <li>Custom Glif model training (on agent's portfolio images)</li>
-        <li>Multi-channel retargeting (Facebook, Google, email, SMS)</li>
-        <li>Quarterly funnel audits with strategic roadmap</li>
-      </ul>
-
-      <p><strong>Best For:</strong> High-volume teams (50+ wishlist completions/month) ready to scale aggressively</p>
-
-      <h4>Advanced Features:</h4>
-
-      <p><strong>1. Hyper-Personalized Email Sequences</strong></p>
-      <ul>
-        <li>Not just hot/warm/cool — segment by profile + budget + neighborhood + timeline</li>
-        <li>Example: "Entertainer + $750K-$1M + Chester Springs + 3-6 months" gets custom content</li>
-        <li>Result: 2-3x higher response rates</li>
-      </ul>
-
-      <p><strong>2. Predictive Lead Scoring</strong></p>
-      <ul>
-        <li>Machine learning model trained on your past closings</li>
-        <li>Predicts likelihood to close within 90 days</li>
-        <li>Prioritizes follow-up efforts automatically</li>
-      </ul>
-
-      <p><strong>3. SMS Integration</strong></p>
-      <ul>
-        <li>Add SMS follow-up for hot leads</li>
-        <li>Example: "New listing just hit the market — matches your Minimalist wishlist. Want to see it today?"</li>
-        <li>Twilio or Postscript integration</li>
-      </ul>
-
-      <p><strong>4. Multi-Touch Retargeting</strong></p>
-      <ul>
-        <li>Facebook/Instagram retargeting ads with dynamic content (shows their profile graphic)</li>
-        <li>Google Display Network retargeting</li>
-        <li>Email + SMS + ad coordination for non-responders</li>
-      </ul>
-
-      <p><strong>Expected Lift:</strong></p>
-      <ul>
-        <li>40-60% increase in hot lead conversion rate (month 4-6)</li>
-        <li>30-50% decrease in time-to-contact for hot leads</li>
-        <li>2-3x ROI on paid ad spend</li>
-      </ul>
+    <!-- Overview Card -->
+    <div class="preview-card">
+      <h2>What's Included vs. What's Available</h2>
+      <p>Your vision board builder comes with everything you need to launch and start generating leads. Growth add-ons help you optimize, scale, and increase conversion rates once you have baseline traffic.</p>
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div class="stat-label">Included Features</div>
+          <div class="stat-value">6 Core Systems</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">Monthly Growth Tiers</div>
+          <div class="stat-value">3 Levels</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">A La Carte Add-Ons</div>
+          <div class="stat-value">9 Options</div>
+        </div>
+      </div>
     </div>
 
-    <hr>
+    <!-- Included Features Card -->
+    <div class="preview-card">
+      <h2>What's Included in Your Vision Board Builder</h2>
+      <p><strong>Core Features (Day 1)</strong></p>
 
-    <h2>A La Carte Add-Ons (One-Time or Monthly)</h2>
+      <div class="checklist">
+        <div class="checklist-item">
+          <span class="checkmark">✓</span>
+          <div class="checklist-content">
+            <strong>Custom Vision Board Builder</strong>
+            <ul>
+              <li>6-step preference selection flow</li>
+              <li>5 profile-based results (Minimalist, Nester, Entertainer, Urbanite, Retreater)</li>
+              <li>AI-generated mood board graphics (Glif integration)</li>
+              <li>Mobile-responsive design</li>
+              <li>Download & social share functionality</li>
+            </ul>
+          </div>
+        </div>
 
-    <div class="addon-grid">
-      <div class="addon-card">
-        <div class="addon-title">Custom Glif Model Training</div>
-        <div class="addon-price">$2,500 one-time</div>
-        <div class="addon-description">
+        <div class="checklist-item">
+          <span class="checkmark">✓</span>
+          <div class="checklist-content">
+            <strong>Email Automation</strong>
+            <ul>
+              <li>10 email sequences across 4 tracks (Welcome, Warm Nurture, Hot Follow-Up, Re-Engagement)</li>
+              <li>Profile-based personalization</li>
+              <li>Temperature-based routing (hot/warm/cool)</li>
+              <li>Automated send scheduling via Resend</li>
+              <li>Unsubscribe management</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="checklist-item">
+          <span class="checkmark">✓</span>
+          <div class="checklist-content">
+            <strong>Lead Qualification System</strong>
+            <ul>
+              <li>Composite scoring (urgency + budget)</li>
+              <li>Hot/Warm/Cool segmentation</li>
+              <li>CRM-ready data export</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="checklist-item">
+          <span class="checkmark">✓</span>
+          <div class="checklist-content">
+            <strong>Analytics Dashboard</strong>
+            <ul>
+              <li>Wishlist completion tracking</li>
+              <li>Lead temperature distribution</li>
+              <li>Profile popularity metrics</li>
+              <li>Email engagement stats</li>
+              <li>Traffic source attribution (UTM tracking)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="checklist-item">
+          <span class="checkmark">✓</span>
+          <div class="checklist-content">
+            <strong>Hosting & Deployment</strong>
+            <ul>
+              <li>Vercel deployment (serverless, scalable)</li>
+              <li>Custom domain setup</li>
+              <li>SSL certificate (secure HTTPS)</li>
+              <li>CDN for fast global loading</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="checklist-item">
+          <span class="checkmark">✓</span>
+          <div class="checklist-content">
+            <strong>Database & Storage</strong>
+            <ul>
+              <li>Supabase PostgreSQL database</li>
+              <li>Lead data storage (GDPR-compliant)</li>
+              <li>Graphic caching (SHA-256 hashing)</li>
+              <li>Email template storage</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Growth Tiers Accordions -->
+    <div class="preview-card">
+      <h2>Growth Add-Ons (Available After Launch)</h2>
+      <p>Once you've launched and established baseline metrics, these monthly services help you optimize and scale.</p>
+
+      <div class="accordion-section">
+        <button class="accordion-header">
+          <span><span class="badge" style="background: #10b981;">TIER 1</span> <strong>Optimization Insights</strong> - $500/month</span>
+          <svg class="accordion-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <p><strong>Best For:</strong> Teams who want data-driven recommendations but will implement changes themselves</p>
+
+            <p><strong>What You Get:</strong></p>
+            <ul>
+              <li>Monthly performance report (completion rate, lead quality, conversion paths)</li>
+              <li>A/B test recommendations (headlines, CTAs, design tweaks)</li>
+              <li>Email engagement analysis (subject line performance, open rates, click rates)</li>
+              <li>Profile distribution insights (which buyer types are you attracting?)</li>
+              <li>Traffic source analysis (organic, paid, social — what's working?)</li>
+            </ul>
+
+            <p><strong>Deliverables:</strong></p>
+            <ul>
+              <li>PDF report delivered 1st of each month</li>
+              <li>30-minute review call</li>
+              <li>Prioritized optimization checklist</li>
+            </ul>
+
+            <p><strong>Example Insights:</strong></p>
+            <ul>
+              <li>"Your 'Entertainer' profile has 2x higher conversion rate — create more ads targeting this segment"</li>
+              <li>"Completion rate drops 40% on Step 4 (must-haves) — reduce options from 12 to 8"</li>
+              <li>"Hot leads are 3x more likely to come from Google Search vs. Facebook — increase search budget"</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-section">
+        <button class="accordion-header">
+          <span><span class="badge" style="background: #3b82f6;">TIER 2</span> <strong>Optimization Partner</strong> - $1,500/month</span>
+          <svg class="accordion-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <p><strong>Best For:</strong> Teams who want the insights AND the implementation done for them</p>
+
+            <p><strong>Everything in Tier 1, plus:</strong></p>
+            <ul>
+              <li>Monthly implementation of 3-5 optimizations (we make the changes)</li>
+              <li>New email sequences (seasonal campaigns, re-engagement flows)</li>
+              <li>Landing page CRO (conversion rate optimization)</li>
+              <li>Monthly ad creative refresh (new headlines, images, copy)</li>
+              <li>Retargeting campaign setup (Facebook Pixel, Google Ads)</li>
+            </ul>
+
+            <p><strong>What We Implement Each Month:</strong></p>
+            <ul>
+              <li>Design tweaks (button colors, form placement, mobile optimization)</li>
+              <li>Copy updates (headlines, CTAs, email subject lines)</li>
+              <li>New email sequences (neighborhood spotlights, market updates, holiday campaigns)</li>
+              <li>Ad creative variations (test 3 new concepts monthly)</li>
+              <li>Retargeting flows (abandoned wishlist, non-responders)</li>
+            </ul>
+
+            <p><strong>Expected Lift:</strong></p>
+            <ul>
+              <li>15-30% increase in completion rate (month 2-3)</li>
+              <li>20-40% increase in hot lead percentage (month 3-4)</li>
+              <li>10-25% decrease in cost per lead (month 4-6)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-section">
+        <button class="accordion-header">
+          <span><span class="badge" style="background: #8b5cf6;">TIER 3</span> <strong>Growth Accelerator</strong> - $3,000/month</span>
+          <svg class="accordion-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <p><strong>Best For:</strong> High-volume teams (50+ wishlist completions/month) ready to scale aggressively</p>
+
+            <p><strong>Everything in Tier 2, plus:</strong></p>
+            <ul>
+              <li>Advanced segmentation (custom email flows for 10+ segments)</li>
+              <li>MLS integration (show matched listings on reveal page)</li>
+              <li>Viral referral tracking (share analytics + incentives)</li>
+              <li>Custom Glif model training (on agent's portfolio images)</li>
+              <li>Multi-channel retargeting (Facebook, Google, email, SMS)</li>
+              <li>Quarterly funnel audits with strategic roadmap</li>
+            </ul>
+
+            <h4 style="margin-top: 24px;">Advanced Features:</h4>
+
+            <p><strong>1. Hyper-Personalized Email Sequences</strong></p>
+            <ul>
+              <li>Not just hot/warm/cool — segment by profile + budget + neighborhood + timeline</li>
+              <li>Example: "Entertainer + $750K-$1M + Chester Springs + 3-6 months" gets custom content</li>
+              <li>Result: 2-3x higher response rates</li>
+            </ul>
+
+            <p><strong>2. Predictive Lead Scoring</strong></p>
+            <ul>
+              <li>Machine learning model trained on your past closings</li>
+              <li>Predicts likelihood to close within 90 days</li>
+              <li>Prioritizes follow-up efforts automatically</li>
+            </ul>
+
+            <p><strong>3. SMS Integration</strong></p>
+            <ul>
+              <li>Add SMS follow-up for hot leads</li>
+              <li>Example: "New listing just hit the market — matches your Minimalist wishlist. Want to see it today?"</li>
+              <li>Twilio or Postscript integration</li>
+            </ul>
+
+            <p><strong>4. Multi-Touch Retargeting</strong></p>
+            <ul>
+              <li>Facebook/Instagram retargeting ads with dynamic content (shows their profile graphic)</li>
+              <li>Google Display Network retargeting</li>
+              <li>Email + SMS + ad coordination for non-responders</li>
+            </ul>
+
+            <p><strong>Expected Lift:</strong></p>
+            <ul>
+              <li>40-60% increase in hot lead conversion rate (month 4-6)</li>
+              <li>30-50% decrease in time-to-contact for hot leads</li>
+              <li>2-3x ROI on paid ad spend</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- A La Carte Add-Ons Grid -->
+    <div class="preview-card">
+      <h2>A La Carte Add-Ons (One-Time or Monthly)</h2>
+      <p>Pick and choose individual features to enhance your vision board funnel.</p>
+
+      <div class="addon-grid">
+        <div class="addon-card">
+          <h3>Custom Glif Model Training</h3>
+          <div class="addon-price">$2,500 one-time</div>
           <p>Train Glif AI on 50-100 of your actual listing photos. Generate boards that look like YOUR properties. Higher trust, lower bounce rate, more consultations.</p>
           <p><strong>Great for:</strong> Luxury agents, teams with distinct portfolio aesthetic</p>
         </div>
-      </div>
 
-      <div class="addon-card">
-        <div class="addon-title">MLS Integration</div>
-        <div class="addon-price">$1,800 one-time</div>
-        <div class="addon-description">
+        <div class="addon-card">
+          <h3>MLS Integration</h3>
+          <div class="addon-price">$1,800 one-time</div>
           <p>Live listing data on reveal page. "Homes matching your board" section with photos, prices, neighborhoods. Direct MLS deep-links for instant viewing requests.</p>
           <p><strong>Great for:</strong> All agents (converts browsing into action)</p>
         </div>
-      </div>
 
-      <div class="addon-card">
-        <div class="addon-title">Viral Referral System</div>
-        <div class="addon-price">$400/month</div>
-        <div class="addon-description">
+        <div class="addon-card">
+          <h3>Viral Referral System</h3>
+          <div class="addon-price">$400/month</div>
           <p>Share tracking with unique referral codes. Leaderboards for most-shared boards. Referral rewards (e.g., "$100 closing credit for 5 referrals").</p>
           <p><strong>Great for:</strong> Building organic word-of-mouth growth</p>
         </div>
-      </div>
 
-      <div class="addon-card">
-        <div class="addon-title">Mobile App Packaging</div>
-        <div class="addon-price">$3,500 one-time</div>
-        <div class="addon-description">
+        <div class="addon-card">
+          <h3>Mobile App Packaging</h3>
+          <div class="addon-price">$3,500 one-time</div>
           <p>PWA (Progressive Web App) for iOS/Android. Add-to-home-screen prompt. Offline board saving. Push notifications for new listings.</p>
           <p><strong>Great for:</strong> Teams wanting native app experience without app store</p>
         </div>
-      </div>
 
-      <div class="addon-card">
-        <div class="addon-title">Neighborhood Landing Pages</div>
-        <div class="addon-price">$500 each</div>
-        <div class="addon-description">
+        <div class="addon-card">
+          <h3>Neighborhood Landing Pages</h3>
+          <div class="addon-price">$500 each</div>
           <p>Dedicated landing pages for top 5 Chester County neighborhoods. SEO-optimized for "[neighborhood name] homes for sale". Custom wishlist pre-filled with neighborhood preferences.</p>
           <p><strong>Great for:</strong> Organic search traffic + paid ads</p>
         </div>
-      </div>
 
-      <div class="addon-card">
-        <div class="addon-title">Seasonal Campaign Packages</div>
-        <div class="addon-price">$800/quarter</div>
-        <div class="addon-description">
+        <div class="addon-card">
+          <h3>Seasonal Campaign Packages</h3>
+          <div class="addon-price">$800/quarter</div>
           <p>4 seasonal campaigns per year (Spring, Summer, Fall, Winter). Custom email sequences + ad creative + landing page copy.</p>
           <p><strong>Examples:</strong> "Spring Buyer's Guide", "New Year, New Home", "Beat the Holiday Rush"</p>
         </div>
-      </div>
 
-      <div class="addon-card">
-        <div class="addon-title">CRM Integration</div>
-        <div class="addon-price">$1,200 one-time</div>
-        <div class="addon-description">
+        <div class="addon-card">
+          <h3>CRM Integration</h3>
+          <div class="addon-price">$1,200 one-time</div>
           <p>Connect vision board to your existing CRM (Salesforce, HubSpot, Follow Up Boss). Automatic lead sync with profile, temperature, selections. Custom field mapping.</p>
           <p><strong>Great for:</strong> Teams with established CRM workflows</p>
         </div>
-      </div>
 
-      <div class="addon-card">
-        <div class="addon-title">Advanced Analytics Dashboard</div>
-        <div class="addon-price">$400/month</div>
-        <div class="addon-description">
+        <div class="addon-card">
+          <h3>Advanced Analytics Dashboard</h3>
+          <div class="addon-price">$400/month</div>
           <p>Custom Looker Studio or Tableau dashboard. Real-time lead quality metrics. Cohort analysis (completion rate by traffic source, profile, month). Lifetime value tracking (which profiles close faster?).</p>
           <p><strong>Great for:</strong> Data-driven teams, brokerages with multiple agents</p>
         </div>
-      </div>
 
-      <div class="addon-card">
-        <div class="addon-title">Chatbot Integration</div>
-        <div class="addon-price">$600 one-time + $100/month</div>
-        <div class="addon-description">
+        <div class="addon-card">
+          <h3>Chatbot Integration</h3>
+          <div class="addon-price">$600 one-time + $100/month</div>
           <p>AI chatbot on landing page (answers FAQs, qualifies leads). Powered by OpenAI GPT-4 or Claude. Escalates to human for high-intent questions.</p>
           <p><strong>Great for:</strong> Teams with limited phone capacity</p>
         </div>
       </div>
     </div>
 
-    <hr>
+    <!-- Pricing Summary Card -->
+    <div class="preview-card">
+      <h2>Pricing Tiers Summary</h2>
 
-    <h2>Pricing Tiers Summary</h2>
+      <div class="info-grid cols-4">
+        <div class="info-item">
+          <h3>Included (Day 1)</h3>
+          <div class="addon-price">$0</div>
+          <p><strong>Best for:</strong> Launch</p>
+          <p>Core builder, 10 emails, analytics, hosting</p>
+        </div>
 
-    <div class="pricing-grid">
-      <div class="pricing-card">
-        <div class="pricing-tier">Included (Day 1)</div>
-        <div class="pricing-cost">$0</div>
-        <div class="pricing-audience">Best for: Launch</div>
-        <div class="pricing-features">Core builder, 10 emails, analytics, hosting</div>
-      </div>
+        <div class="info-item">
+          <h3>Optimization Insights</h3>
+          <div class="addon-price">$500/month</div>
+          <p><strong>Best for:</strong> DIY teams with technical resources</p>
+          <p>Monthly performance report, A/B test recommendations, email engagement analysis</p>
+        </div>
 
-      <div class="pricing-card">
-        <div class="pricing-tier">Optimization Insights</div>
-        <div class="pricing-cost">$500/month</div>
-        <div class="pricing-audience">Best for: DIY teams with technical resources</div>
-        <div class="pricing-features">Monthly performance report, A/B test recommendations, email engagement analysis</div>
-      </div>
+        <div class="info-item">
+          <h3>Optimization Partner</h3>
+          <div class="addon-price">$1,500/month</div>
+          <p><strong>Best for:</strong> Hands-off teams who want implementation done</p>
+          <p>Everything in Tier 1 + monthly implementation (3-5 optimizations)</p>
+        </div>
 
-      <div class="pricing-card">
-        <div class="pricing-tier">Optimization Partner</div>
-        <div class="pricing-cost">$1,500/month</div>
-        <div class="pricing-audience">Best for: Hands-off teams who want implementation done</div>
-        <div class="pricing-features">Everything in Tier 1 + monthly implementation (3-5 optimizations)</div>
-      </div>
-
-      <div class="pricing-card">
-        <div class="pricing-tier">Growth Accelerator</div>
-        <div class="pricing-cost">$3,000/month</div>
-        <div class="pricing-audience">Best for: High-volume teams (50+ completions/month)</div>
-        <div class="pricing-features">Everything in Tier 2 + MLS integration + custom Glif training + viral referral</div>
+        <div class="info-item">
+          <h3>Growth Accelerator</h3>
+          <div class="addon-price">$3,000/month</div>
+          <p><strong>Best for:</strong> High-volume teams (50+ completions/month)</p>
+          <p>Everything in Tier 2 + MLS integration + custom Glif training + viral referral</p>
+        </div>
       </div>
     </div>
 
-    <hr>
+    <!-- Bundle Pricing Card -->
+    <div class="preview-card" style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);">
+      <h2>Bundle Pricing (Save 20%)</h2>
 
-    <h2>Bundle Pricing (Save 20%)</h2>
+      <div class="info-grid cols-2">
+        <div class="info-item">
+          <h3>6-Month Optimization Partner Commitment</h3>
+          <p><strong>Regular:</strong> $9,000 (6 × $1,500)</p>
+          <p><strong>Bundle:</strong> $7,200 ($1,200/month — save $1,800)</p>
+        </div>
 
-    <h3>6-Month Optimization Partner Commitment</h3>
-    <ul>
-      <li><strong>Regular:</strong> $9,000 (6 x $1,500)</li>
-      <li><strong>Bundle:</strong> $7,200 ($1,200/month — save $1,800)</li>
-    </ul>
+        <div class="info-item">
+          <h3>12-Month Growth Accelerator Commitment</h3>
+          <p><strong>Regular:</strong> $36,000 (12 × $3,000)</p>
+          <p><strong>Bundle:</strong> $28,800 ($2,400/month — save $7,200)</p>
+        </div>
+      </div>
+    </div>
 
-    <h3>12-Month Growth Accelerator Commitment</h3>
-    <ul>
-      <li><strong>Regular:</strong> $36,000 (12 x $3,000)</li>
-      <li><strong>Bundle:</strong> $28,800 ($2,400/month — save $7,200)</li>
-    </ul>
+    <!-- Decision Framework Card -->
+    <div class="preview-card">
+      <h2>When to Upgrade: Decision Framework</h2>
 
-    <hr>
+      <div class="info-grid cols-2">
+        <div class="info-item">
+          <h3>Stay on Included Plan If:</h3>
+          <ul>
+            <li>You're getting &lt;20 wishlist completions/month</li>
+            <li>You have internal resources to optimize yourself</li>
+            <li>You're happy with current lead quality</li>
+            <li>You're just testing the vision board concept</li>
+          </ul>
+        </div>
 
-    <h2>When to Upgrade: Decision Framework</h2>
+        <div class="info-item">
+          <h3>Upgrade to Optimization Insights If:</h3>
+          <ul>
+            <li>You're getting 20-50 completions/month</li>
+            <li>You want to know what to fix but can implement yourself</li>
+            <li>You're spending on ads and want better ROI</li>
+            <li>You have technical resources in-house</li>
+          </ul>
+        </div>
 
-    <h3>Stay on Included Plan If:</h3>
-    <ul>
-      <li>You're getting &lt;20 wishlist completions/month</li>
-      <li>You have internal resources to optimize yourself</li>
-      <li>You're happy with current lead quality</li>
-      <li>You're just testing the vision board concept</li>
-    </ul>
+        <div class="info-item">
+          <h3>Upgrade to Optimization Partner If:</h3>
+          <ul>
+            <li>You're getting 50-100 completions/month</li>
+            <li>You don't have time or skills to implement changes</li>
+            <li>You want consistent month-over-month improvement</li>
+            <li>You're serious about lead generation</li>
+          </ul>
+        </div>
 
-    <h3>Upgrade to Optimization Insights If:</h3>
-    <ul>
-      <li>You're getting 20-50 completions/month</li>
-      <li>You want to know what to fix but can implement yourself</li>
-      <li>You're spending on ads and want better ROI</li>
-      <li>You have technical resources in-house</li>
-    </ul>
+        <div class="info-item">
+          <h3>Upgrade to Growth Accelerator If:</h3>
+          <ul>
+            <li>You're getting 100+ completions/month</li>
+            <li>You have ad budget &gt;$2,000/month</li>
+            <li>You want cutting-edge personalization and automation</li>
+            <li>You're ready to treat this as a core acquisition channel</li>
+          </ul>
+        </div>
+      </div>
+    </div>
 
-    <h3>Upgrade to Optimization Partner If:</h3>
-    <ul>
-      <li>You're getting 50-100 completions/month</li>
-      <li>You don't have time or skills to implement changes</li>
-      <li>You want consistent month-over-month improvement</li>
-      <li>You're serious about lead generation</li>
-    </ul>
+    <!-- ROI Projections Accordion -->
+    <div class="preview-card">
+      <h2>ROI Projections by Tier</h2>
+      <p>Example scenario based on 50 wishlist completions/month</p>
 
-    <h3>Upgrade to Growth Accelerator If:</h3>
-    <ul>
-      <li>You're getting 100+ completions/month</li>
-      <li>You have ad budget &gt;$2,000/month</li>
-      <li>You want cutting-edge personalization and automation</li>
-      <li>You're ready to treat this as a core acquisition channel</li>
-    </ul>
+      <div class="accordion-section">
+        <button class="accordion-header">
+          <span><strong>Baseline (Included Plan)</strong> - ~$2,833/month revenue</span>
+          <svg class="accordion-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <ul>
+              <li>50 completions/month</li>
+              <li>15% hot leads = 7.5 hot leads/month</li>
+              <li>3% close rate = 0.15 closings/month</li>
+              <li>Average commission: $18,885 (3% of $629K median)</li>
+              <li><strong>Monthly revenue from vision board:</strong> ~$2,833</li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
-    <hr>
+      <div class="accordion-section">
+        <button class="accordion-header">
+          <span><strong>With Optimization Partner</strong> - 466% ROI</span>
+          <svg class="accordion-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <ul>
+              <li>60 completions/month (+20% from CRO)</li>
+              <li>20% hot leads (+5% from better qualification)</li>
+              <li>5% close rate (+2% from better nurture)</li>
+              <li>60 × 0.20 × 0.05 = 0.6 closings/month</li>
+              <li><strong>Monthly revenue:</strong> ~$11,331</li>
+              <li><strong>Net gain:</strong> $11,331 - $2,833 = $8,498</li>
+              <li><strong>ROI:</strong> ($8,498 - $1,500) / $1,500 = 466% ROI</li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
-    <h2>ROI Projections by Tier</h2>
+      <div class="accordion-section">
+        <button class="accordion-header">
+          <span><strong>With Growth Accelerator</strong> - 687% ROI</span>
+          <svg class="accordion-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <ul>
+              <li>80 completions/month (+60% from advanced retargeting)</li>
+              <li>25% hot leads (+10% from predictive scoring)</li>
+              <li>7% close rate (+4% from MLS integration + viral referral)</li>
+              <li>80 × 0.25 × 0.07 = 1.4 closings/month</li>
+              <li><strong>Monthly revenue:</strong> ~$26,439</li>
+              <li><strong>Net gain:</strong> $26,439 - $2,833 = $23,606</li>
+              <li><strong>ROI:</strong> ($23,606 - $3,000) / $3,000 = 687% ROI</li>
+            </ul>
+            <p style="margin-top: 16px;"><strong>Note:</strong> These are projections. Actual results vary by market, ad spend, follow-up speed, and team performance.</p>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <h3>Example Scenario: 50 Wishlist Completions/Month</h3>
+    <!-- Optimization Timeline Accordion -->
+    <div class="preview-card">
+      <h2>Optimization Timeline: What to Expect</h2>
+      <p>6-month roadmap for continuous improvement</p>
 
-    <h4>Baseline (Included Plan):</h4>
-    <ul>
-      <li>50 completions/month</li>
-      <li>15% hot leads = 7.5 hot leads/month</li>
-      <li>3% close rate = 0.15 closings/month</li>
-      <li>Average commission: $18,885 (3% of $629K median)</li>
-      <li><strong>Monthly revenue from vision board:</strong> ~$2,833</li>
-    </ul>
+      <div class="accordion-section">
+        <button class="accordion-header">
+          <span><strong>Month 1:</strong> Baseline Measurement</span>
+          <svg class="accordion-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <ul>
+              <li>Track completion rate, lead quality, email engagement</li>
+              <li>Identify top-performing traffic sources</li>
+              <li>No major changes (establish baseline)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
-    <h4>With Optimization Partner ($1,500/month):</h4>
-    <ul>
-      <li>60 completions/month (+20% from CRO)</li>
-      <li>20% hot leads (+5% from better qualification)</li>
-      <li>5% close rate (+2% from better nurture)</li>
-      <li>60 * 0.20 * 0.05 = 0.6 closings/month</li>
-      <li><strong>Monthly revenue:</strong> ~$11,331</li>
-      <li><strong>Net gain:</strong> $11,331 - $2,833 = $8,498</li>
-      <li><strong>ROI:</strong> ($8,498 - $1,500) / $1,500 = 466% ROI</li>
-    </ul>
+      <div class="accordion-section">
+        <button class="accordion-header">
+          <span><strong>Month 2:</strong> Quick Wins - 10-15% lift</span>
+          <svg class="accordion-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <ul>
+              <li>Optimize landing page headline/CTA</li>
+              <li>Test 3 new email subject lines</li>
+              <li>Add retargeting pixel for abandoners</li>
+              <li><strong>Expected lift:</strong> 10-15% completion rate increase</li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
-    <h4>With Growth Accelerator ($3,000/month):</h4>
-    <ul>
-      <li>80 completions/month (+60% from advanced retargeting)</li>
-      <li>25% hot leads (+10% from predictive scoring)</li>
-      <li>7% close rate (+4% from MLS integration + viral referral)</li>
-      <li>80 * 0.25 * 0.07 = 1.4 closings/month</li>
-      <li><strong>Monthly revenue:</strong> ~$26,439</li>
-      <li><strong>Net gain:</strong> $26,439 - $2,833 = $23,606</li>
-      <li><strong>ROI:</strong> ($23,606 - $3,000) / $3,000 = 687% ROI</li>
-    </ul>
+      <div class="accordion-section">
+        <button class="accordion-header">
+          <span><strong>Month 3:</strong> Email Optimization - 15-20% lift</span>
+          <svg class="accordion-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <ul>
+              <li>Refine email sequences based on engagement data</li>
+              <li>Add new nurture emails for non-responders</li>
+              <li>Personalize copy for top-performing profiles</li>
+              <li><strong>Expected lift:</strong> 15-20% email response rate increase</li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
-    <p><strong>Note:</strong> These are projections. Actual results vary by market, ad spend, follow-up speed, and team performance.</p>
+      <div class="accordion-section">
+        <button class="accordion-header">
+          <span><strong>Month 4:</strong> Ad Creative Refresh - 20-30% CPL decrease</span>
+          <svg class="accordion-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <ul>
+              <li>Launch 3 new ad concepts</li>
+              <li>Build lookalike audiences from past completers</li>
+              <li>Optimize ad targeting by profile</li>
+              <li><strong>Expected lift:</strong> 20-30% decrease in cost per lead</li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
-    <hr>
+      <div class="accordion-section">
+        <button class="accordion-header">
+          <span><strong>Month 5:</strong> Advanced Segmentation - 25-35% conversion increase</span>
+          <svg class="accordion-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <ul>
+              <li>Introduce profile-specific email flows</li>
+              <li>Add neighborhood-specific landing pages</li>
+              <li>Implement SMS for hot leads (if Growth Accelerator)</li>
+              <li><strong>Expected lift:</strong> 25-35% increase in hot lead conversion</li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
-    <h2>Optimization Timeline: What to Expect</h2>
+      <div class="accordion-section">
+        <button class="accordion-header">
+          <span><strong>Month 6:</strong> Scale & Iterate - 40-60% volume increase</span>
+          <svg class="accordion-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <ul>
+              <li>Double down on winning channels</li>
+              <li>Increase ad budget 2x (if ROI supports)</li>
+              <li>Launch seasonal campaign</li>
+              <li><strong>Expected lift:</strong> 40-60% overall lead volume increase</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <h3>Month 1: Baseline Measurement</h3>
-    <ul>
-      <li>Track completion rate, lead quality, email engagement</li>
-      <li>Identify top-performing traffic sources</li>
-      <li>No major changes (establish baseline)</li>
-    </ul>
+    <!-- Getting Started Card -->
+    <div class="preview-card">
+      <h2>How to Get Started with Growth Add-Ons</h2>
 
-    <h3>Month 2: Quick Wins</h3>
-    <ul>
-      <li>Optimize landing page headline/CTA</li>
-      <li>Test 3 new email subject lines</li>
-      <li>Add retargeting pixel for abandoners</li>
-      <li><strong>Expected lift:</strong> 10-15% completion rate increase</li>
-    </ul>
+      <div class="checklist">
+        <div class="checklist-item">
+          <span class="step-number">1</span>
+          <div class="checklist-content">
+            <strong>Launch Your Vision Board</strong>
+            <p>Run the included plan for 30 days. Establish baseline metrics.</p>
+          </div>
+        </div>
 
-    <h3>Month 3: Email Optimization</h3>
-    <ul>
-      <li>Refine email sequences based on engagement data</li>
-      <li>Add new nurture emails for non-responders</li>
-      <li>Personalize copy for top-performing profiles</li>
-      <li><strong>Expected lift:</strong> 15-20% email response rate increase</li>
-    </ul>
+        <div class="checklist-item">
+          <span class="step-number">2</span>
+          <div class="checklist-content">
+            <strong>Review Month 1 Data</strong>
+            <ul>
+              <li>How many completions?</li>
+              <li>What's your completion rate?</li>
+              <li>What % are hot/warm/cool?</li>
+              <li>What's your cost per lead?</li>
+            </ul>
+          </div>
+        </div>
 
-    <h3>Month 4: Ad Creative Refresh</h3>
-    <ul>
-      <li>Launch 3 new ad concepts</li>
-      <li>Build lookalike audiences from past completers</li>
-      <li>Optimize ad targeting by profile</li>
-      <li><strong>Expected lift:</strong> 20-30% decrease in cost per lead</li>
-    </ul>
+        <div class="checklist-item">
+          <span class="step-number">3</span>
+          <div class="checklist-content">
+            <strong>Identify Bottlenecks</strong>
+            <ul>
+              <li>Low completion rate? → Need CRO (Tier 2)</li>
+              <li>Low hot lead %? → Need better qualification (Tier 2)</li>
+              <li>High volume, low conversion? → Need advanced automation (Tier 3)</li>
+            </ul>
+          </div>
+        </div>
 
-    <h3>Month 5: Advanced Segmentation</h3>
-    <ul>
-      <li>Introduce profile-specific email flows</li>
-      <li>Add neighborhood-specific landing pages</li>
-      <li>Implement SMS for hot leads (if Growth Accelerator)</li>
-      <li><strong>Expected lift:</strong> 25-35% increase in hot lead conversion</li>
-    </ul>
+        <div class="checklist-item">
+          <span class="step-number">4</span>
+          <div class="checklist-content">
+            <strong>Choose Your Tier</strong>
+            <ul>
+              <li>DIY team with data skills? → Tier 1</li>
+              <li>Want it done for you? → Tier 2</li>
+              <li>Ready to scale aggressively? → Tier 3</li>
+            </ul>
+          </div>
+        </div>
 
-    <h3>Month 6: Scale & Iterate</h3>
-    <ul>
-      <li>Double down on winning channels</li>
-      <li>Increase ad budget 2x (if ROI supports)</li>
-      <li>Launch seasonal campaign</li>
-      <li><strong>Expected lift:</strong> 40-60% overall lead volume increase</li>
-    </ul>
+        <div class="checklist-item">
+          <span class="step-number">5</span>
+          <div class="checklist-content">
+            <strong>Schedule Kickoff Call</strong>
+            <p>Email: [your email]<br>
+            Phone: [your phone]<br>
+            Calendly: [booking link]</p>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <hr>
+    <!-- FAQ Accordion -->
+    <div class="preview-card">
+      <h2>Frequently Asked Questions</h2>
 
-    <h2>How to Get Started with Growth Add-Ons</h2>
+      <div class="accordion-section">
+        <button class="accordion-header">
+          <span>Can I start with Tier 1 and upgrade later?</span>
+          <svg class="accordion-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <p>Absolutely. Most teams start with Optimization Insights and upgrade to Optimization Partner after 2-3 months.</p>
+          </div>
+        </div>
+      </div>
 
-    <h3>Step 1: Launch Your Vision Board</h3>
-    <p>Run the included plan for 30 days. Establish baseline metrics.</p>
+      <div class="accordion-section">
+        <button class="accordion-header">
+          <span>What if I'm not getting enough completions to justify the cost?</span>
+          <svg class="accordion-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <p>If you're getting &lt;20 completions/month, focus on driving more traffic (SEO, ads, social) before investing in optimization. The included plan is free — use it to build volume first.</p>
+          </div>
+        </div>
+      </div>
 
-    <h3>Step 2: Review Month 1 Data</h3>
-    <ul>
-      <li>How many completions?</li>
-      <li>What's your completion rate?</li>
-      <li>What % are hot/warm/cool?</li>
-      <li>What's your cost per lead?</li>
-    </ul>
+      <div class="accordion-section">
+        <button class="accordion-header">
+          <span>Do you guarantee results?</span>
+          <svg class="accordion-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <p>We don't guarantee specific numbers (too many variables outside our control: your ad spend, follow-up speed, market conditions). But we guarantee effort: if the data shows something isn't working, we'll pivot until it does.</p>
+          </div>
+        </div>
+      </div>
 
-    <h3>Step 3: Identify Bottlenecks</h3>
-    <ul>
-      <li>Low completion rate? → Need CRO (Tier 2)</li>
-      <li>Low hot lead %? → Need better qualification (Tier 2)</li>
-      <li>High volume, low conversion? → Need advanced automation (Tier 3)</li>
-    </ul>
+      <div class="accordion-section">
+        <button class="accordion-header">
+          <span>Can I cancel anytime?</span>
+          <svg class="accordion-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <p>Yes, with 30 days notice. Bundle discounts require full commitment (6 or 12 months) but can be paused for extenuating circumstances.</p>
+          </div>
+        </div>
+      </div>
 
-    <h3>Step 4: Choose Your Tier</h3>
-    <ul>
-      <li>DIY team with data skills? → Tier 1</li>
-      <li>Want it done for you? → Tier 2</li>
-      <li>Ready to scale aggressively? → Tier 3</li>
-    </ul>
+      <div class="accordion-section">
+        <button class="accordion-header">
+          <span>What if I want custom features not listed here?</span>
+          <svg class="accordion-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <p>We do custom development for $150/hour. Common requests: MLS integration, custom reporting, white-label versions for other agents.</p>
+          </div>
+        </div>
+      </div>
 
-    <h3>Step 5: Schedule Kickoff Call</h3>
-    <p>Email: [your email]<br>
-    Phone: [your phone]<br>
-    Calendly: [booking link]</p>
+      <div class="accordion-section">
+        <button class="accordion-header">
+          <span>Do you work with other real estate teams?</span>
+          <svg class="accordion-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <p>Yes. We're building vision board funnels for agents across the country. Your Chester County market is protected — we won't work with direct competitors in your area.</p>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <hr>
+    <!-- Next Steps Card -->
+    <div class="preview-card" style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);">
+      <h2>Next Steps</h2>
 
-    <h2>Frequently Asked Questions</h2>
+      <ol style="margin: 16px 0; padding-left: 24px; line-height: 1.8;">
+        <li><strong>Launch your vision board</strong> (included features, no cost)</li>
+        <li><strong>Run for 30 days</strong> (establish baseline)</li>
+        <li><strong>Review your metrics</strong> (completion rate, lead quality, ROI)</li>
+        <li><strong>Choose your growth tier</strong> (if you want to scale)</li>
+      </ol>
 
-    <p><strong>Q: Can I start with Tier 1 and upgrade later?</strong><br>
-    A: Absolutely. Most teams start with Optimization Insights and upgrade to Optimization Partner after 2-3 months.</p>
-
-    <p><strong>Q: What if I'm not getting enough completions to justify the cost?</strong><br>
-    A: If you're getting &lt;20 completions/month, focus on driving more traffic (SEO, ads, social) before investing in optimization. The included plan is free — use it to build volume first.</p>
-
-    <p><strong>Q: Do you guarantee results?</strong><br>
-    A: We don't guarantee specific numbers (too many variables outside our control: your ad spend, follow-up speed, market conditions). But we guarantee effort: if the data shows something isn't working, we'll pivot until it does.</p>
-
-    <p><strong>Q: Can I cancel anytime?</strong><br>
-    A: Yes, with 30 days notice. Bundle discounts require full commitment (6 or 12 months) but can be paused for extenuating circumstances.</p>
-
-    <p><strong>Q: What if I want custom features not listed here?</strong><br>
-    A: We do custom development for $150/hour. Common requests: MLS integration, custom reporting, white-label versions for other agents.</p>
-
-    <p><strong>Q: Do you work with other real estate teams?</strong><br>
-    A: Yes. We're building vision board funnels for agents across the country. Your Chester County market is protected — we won't work with direct competitors in your area.</p>
-
-    <hr>
-
-    <h2>Next Steps</h2>
-
-    <ol>
-      <li><strong>Launch your vision board</strong> (included features, no cost)</li>
-      <li><strong>Run for 30 days</strong> (establish baseline)</li>
-      <li><strong>Review your metrics</strong> (completion rate, lead quality, ROI)</li>
-      <li><strong>Choose your growth tier</strong> (if you want to scale)</li>
-    </ol>
-
-    <p>Questions? Email [your email] or call [your phone].</p>
-
-    <p><strong>Let's turn this vision board into a lead-generating machine.</strong></p>
+      <p style="margin-top: 24px;">Questions? Email [your email] or call [your phone].</p>
+      <p style="margin-top: 16px; font-size: 1.2rem;"><strong>Let's turn this vision board into a lead-generating machine.</strong></p>
+    </div>
 
   </div>
+
   <script src="assets/preview-components.js"></script>
 </body>
 </html>

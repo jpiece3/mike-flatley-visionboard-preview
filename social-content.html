@@ -4,163 +4,551 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Social Content - Mike Flatley Real Estate</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
-      background: #fafafa;
-      color: #262626;
-      line-height: 1.7;
-      padding-bottom: 80px;
-    }
-    .header {
-      background: linear-gradient(135deg, #1a3a52 0%, #2d5570 100%);
-      color: white;
-      padding: 24px 0;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    .header-content {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 32px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .header h1 { font-size: 1.5rem; font-weight: 600; }
-    .back-link {
-      color: white;
-      text-decoration: none;
-      padding: 8px 16px;
-      background: rgba(255,255,255,0.15);
-      border-radius: 6px;
-      transition: background 0.2s;
-      font-size: 0.9rem;
-    }
-    .back-link:hover { background: rgba(255,255,255,0.25); }
-    .container { max-width: 1200px; margin: 32px auto; padding: 0 32px; }
-    .content {
-      background: white;
-      padding: 48px;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    }
-    h1 { font-size: 2.25rem; color: #1a3a52; margin-bottom: 24px; font-weight: 700; }
-    h2 { font-size: 1.75rem; color: #1a3a52; margin: 40px 0 16px 0; font-weight: 600; padding-bottom: 8px; border-bottom: 2px solid #e5e5e5; }
-    h3 { font-size: 1.35rem; color: #2d5570; margin: 32px 0 12px 0; font-weight: 600; }
-    h4 { font-size: 1.1rem; color: #2d5570; margin: 24px 0 8px 0; font-weight: 600; }
-    p { margin: 12px 0; color: #404040; }
-    ul, ol { margin: 12px 0 12px 24px; color: #404040; }
-    li { margin: 6px 0; }
-    strong { color: #1a3a52; font-weight: 600; }
-    em { color: #525252; }
-    code {
-      background: #f5f5f5;
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-family: 'Monaco', 'Courier New', monospace;
-      font-size: 0.9em;
-      color: #d63384;
-    }
-    pre {
-      background: #f5f5f5;
-      padding: 16px;
-      border-radius: 8px;
-      overflow-x: auto;
-      margin: 16px 0;
-      border: 1px solid #e5e5e5;
-    }
-    pre code {
-      background: none;
-      padding: 0;
-      color: #262626;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 20px 0;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    }
-    th {
-      background: #1a3a52;
-      color: white;
-      padding: 12px;
-      text-align: left;
-      font-weight: 600;
-    }
-    td {
-      padding: 12px;
-      border-bottom: 1px solid #e5e5e5;
-    }
-    tr:hover { background: #fafafa; }
-    blockquote {
-      border-left: 4px solid #1a3a52;
-      padding: 12px 20px;
-      margin: 20px 0;
-      background: #f8f9fa;
-      color: #525252;
-      font-style: italic;
-    }
-    hr {
-      border: none;
-      border-top: 2px solid #e5e5e5;
-      margin: 32px 0;
-    }
-    a { color: #1a3a52; text-decoration: none; font-weight: 500; }
-    a:hover { text-decoration: underline; }
-    @media (max-width: 768px) {
-      .content { padding: 24px; }
-      .header-content { flex-direction: column; gap: 12px; text-align: center; }
-      h1 { font-size: 1.75rem; }
-      h2 { font-size: 1.35rem; }
-    }
-  </style>
   <link rel="stylesheet" href="assets/preview-components.css">
 </head>
 <body>
-  <div class="header">
+  <div class="preview-header">
     <div class="header-content">
-      <h1>Social Content</h1>
+      <h1>Social Content - Mike Flatley Real Estate</h1>
       <a href="index.html" class="back-link">← Back to Index</a>
     </div>
   </div>
-  <div class="container">
-    <div class="content">
-<h1>30-Day Social Content Calendar - Vision Board Promotion</h1>
 
-<blockquote>Mike Flatley | The Gary Mercer Team</blockquote>
-<blockquote>Instagram/Facebook content to drive organic traffic to vision board builder</blockquote>
+  <div class="preview-container">
+    <div class="page-title">
+      <h1>30-Day Social Content Calendar</h1>
+      <p class="subtitle">Mike Flatley | The Gary Mercer Team</p>
+      <p class="subtitle">Instagram/Facebook content to drive organic traffic to vision board builder</p>
+    </div>
 
-<hr>
+    <div class="accordion-controls">
+      <button id="expand-all" class="control-btn">Expand All</button>
+      <button id="collapse-all" class="control-btn">Collapse All</button>
+    </div>
 
-<h2>Content Strategy Overview</h2>
+    <!-- Content Strategy Card -->
+    <div class="preview-card">
+      <h2>Content Strategy Overview</h2>
 
-<strong>Platform Focus:</strong> Instagram (primary), Facebook (secondary)
-<strong>Posting Frequency:</strong> 4-5 posts per week (20 posts over 30 days)
-<strong>Content Mix:</strong>
-<ul>
-<li>40% Vision board promotion (8 posts)</li>
-<li>30% Chester County lifestyle/neighborhoods (6 posts)</li>
-<li>20% Client stories & testimonials (4 posts)</li>
-<li>10% Market insights & tips (2 posts)</li>
-</ul>
+      <div class="info-grid cols-2">
+        <div class="info-item">
+          <h3>Platform Focus</h3>
+          <p>Instagram (primary), Facebook (secondary)</p>
+          <p><strong>Posting Frequency:</strong> 4-5 posts per week (20 posts over 30 days)</p>
+        </div>
 
-<strong>Hashtag Strategy:</strong>
-<ul>
-<li>Brand: #GaryMercerTeam #ChesterCountyRealEstate</li>
-<li>Local: #WestChesterPA #ChesterCounty #ChescoHomes #MontcoHomes</li>
-<li>Lifestyle: #DreamHome #HomeWishlist #HomeBuying #RealEstateTips</li>
-<li>Max 10 hashtags per post (Instagram algorithm prefers fewer, relevant tags)</li>
-</ul>
+        <div class="info-item">
+          <h3>Content Mix</h3>
+          <ul>
+            <li>40% Vision board promotion (8 posts)</li>
+            <li>30% Chester County lifestyle/neighborhoods (6 posts)</li>
+            <li>20% Client stories & testimonials (4 posts)</li>
+            <li>10% Market insights & tips (2 posts)</li>
+          </ul>
+        </div>
 
-<hr>
+        <div class="info-item">
+          <h3>Hashtag Strategy</h3>
+          <div class="tag-list">
+            <span class="tag">Brand: #GaryMercerTeam #ChesterCountyRealEstate</span>
+            <span class="tag">Local: #WestChesterPA #ChesterCounty #ChescoHomes</span>
+            <span class="tag">Lifestyle: #DreamHome #HomeWishlist #HomeBuying</span>
+          </div>
+          <p style="margin-top: 12px;">Max 10 hashtags per post (Instagram algorithm prefers fewer, relevant tags)</p>
+        </div>
 
-<h2>Week 1: Launch Week (Days 1-7)</h2>
+        <div class="info-item">
+          <h3>Success Metrics</h3>
+          <ul>
+            <li>Link clicks to wishlist builder</li>
+            <li>Profile visits & DM inquiries</li>
+            <li>Saves (high-intent signal)</li>
+            <li>Shares (viral indicator)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
 
-<h3>Day 1: Vision Board Launch Announcement</h3>
+    <!-- Weekly Content Accordions -->
+
+    <div class="preview-card">
+      <h2>30-Day Content Calendar</h2>
+      <p>20 posts across 4 weeks, organized by content type and engagement strategy</p>
+
+      <div class="accordion-section">
+        <button class="accordion-header">
+          <span><span class="badge" style="background: #3b82f6;">WEEK 1</span> <strong>Launch Week (Days 1-7)</strong> - 4 posts</span>
+          <svg class="accordion-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="accordion-content">
+          <div class="accordion-body">
+
+            <div class="info-grid cols-2">
+              <div class="info-item">
+                <h4>Day 1: Vision Board Launch Announcement</h4>
+                <p><strong>Format:</strong> Carousel (5 slides)</p>
+                <p><strong>Caption:</strong> "NEW: Build your Chester County Dream Home Wishlist in 60 seconds... Swipe to see 5 home styles (Modern Luxury, Classic Family, Historic Charm, Urban Loft, Waterfront)"</p>
+                <p><strong>CTA:</strong> Link in bio</p>
+              </div>
+
+              <div class="info-item">
+                <h4>Day 3: Client Testimonial (First-Timer)</h4>
+                <p><strong>Format:</strong> Image + Quote overlay</p>
+                <p><strong>Caption:</strong> First-time buyer testimonial + "Build your Dream Home Wishlist. See exactly what you want in 60 seconds."</p>
+                <p><strong>Hashtags:</strong> #FirstTimeBuyer #ChesterCountyHomes</p>
+              </div>
+
+              <div class="info-item">
+                <h4>Day 5: Neighborhood Spotlight (West Chester Borough)</h4>
+                <p><strong>Format:</strong> Reel (15-30 seconds)</p>
+                <p><strong>Content:</strong> Walking footage of West Chester Borough</p>
+                <p><strong>Caption:</strong> "West Chester Borough = walkable vibes + restaurant row. Which Chester County neighborhood fits your life?"</p>
+              </div>
+
+              <div class="info-item">
+                <h4>Day 7: Behind-the-Scenes (Team Introduction)</h4>
+                <p><strong>Format:</strong> Carousel (Team photos)</p>
+                <p><strong>Caption:</strong> "Hi, we're The Gary Mercer Team. 401 homes sold in 2024. 563+ five-star reviews. We just built a tool to help you get clear on what you want."</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-section">
+        <button class="accordion-header">
+          <span><span class="badge" style="background: #10b981;">WEEK 2</span> <strong>Education & Engagement (Days 8-14)</strong> - 5 posts</span>
+          <svg class="accordion-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <div class="info-grid cols-2">
+              <div class="info-item">
+                <h4>Day 9: Profile Reveal (The Nester)</h4>
+                <p><strong>Format:</strong> Static image with profile graphic</p>
+                <p><strong>Caption:</strong> "THE NESTER: Room to grow, space to gather. You want: Big yard for kids, Top school district, Space to make memories."</p>
+                <p><strong>Engagement:</strong> "Which one are you? Comment below"</p>
+              </div>
+
+              <div class="info-item">
+                <h4>Day 11: Market Insight</h4>
+                <p><strong>Format:</strong> Infographic</p>
+                <p><strong>Caption:</strong> "Chester County Market Update: 3 Things Buyers Need to Know - Inventory up 20%, Rates stabilized at 6%, You have negotiating power"</p>
+              </div>
+
+              <div class="info-item">
+                <h4>Day 13: Neighborhood Spotlight (Phoenixville)</h4>
+                <p><strong>Format:</strong> Reel (15-30 seconds)</p>
+                <p><strong>Content:</strong> Phoenixville Bridge Street, revitalized downtown, arts scene</p>
+                <p><strong>Caption:</strong> "Phoenixville = revitalized downtown + arts scene + growth potential"</p>
+              </div>
+
+              <div class="info-item">
+                <h4>Day 15: User-Generated Content</h4>
+                <p><strong>Format:</strong> Repost of client's wishlist graphic</p>
+                <p><strong>Caption:</strong> "@client_handle built their Dream Home Wishlist and found their perfect match. Now it's your turn."</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-section">
+        <button class="accordion-header">
+          <span><span class="badge" style="background: #f59e0b;">WEEK 3</span> <strong>Social Proof & Lifestyle (Days 16-22)</strong> - 5 posts</span>
+          <svg class="accordion-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <div class="info-grid cols-2">
+              <div class="info-item">
+                <h4>Day 17: Profile Reveal (The Entertainer)</h4>
+                <p><strong>Format:</strong> Static image with profile graphic</p>
+                <p><strong>Caption:</strong> "THE ENTERTAINER: Built for hosting, designed for living. You want: Gourmet kitchen with island, Outdoor entertaining space, Room for legendary gatherings."</p>
+              </div>
+
+              <div class="info-item">
+                <h4>Day 19: Before & After (Market Transformation)</h4>
+                <p><strong>Format:</strong> Side-by-side image</p>
+                <p><strong>Caption:</strong> "From 'I don't know what I want' to 'This is exactly my dream home' in 60 seconds. That's the power of clarity."</p>
+              </div>
+
+              <div class="info-item">
+                <h4>Day 21: Neighborhood Spotlight (Unionville)</h4>
+                <p><strong>Format:</strong> Reel (15-30 seconds)</p>
+                <p><strong>Content:</strong> Horse country, rolling hills, stone farmhouses</p>
+                <p><strong>Caption:</strong> "Unionville = horse country + acreage + sanctuary vibes"</p>
+              </div>
+
+              <div class="info-item">
+                <h4>Day 23: Client Testimonial (Relocation)</h4>
+                <p><strong>Format:</strong> Image + Quote overlay</p>
+                <p><strong>Caption:</strong> "Gary and his team are always above board and create the perfect alliance with their sellers and buyers. - Yelp Review"</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-section">
+        <button class="accordion-header">
+          <span><span class="badge" style="background: #ef4444;">WEEK 4</span> <strong>Urgency & Re-Engagement (Days 24-30)</strong> - 6 posts</span>
+          <svg class="accordion-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <div class="info-grid cols-2">
+              <div class="info-item">
+                <h4>Day 25: Profile Reveal (The Minimalist)</h4>
+                <p><strong>Format:</strong> Static image with profile graphic</p>
+                <p><strong>Caption:</strong> "THE MINIMALIST: Less space, more life. You want: Clean lines open spaces, Smart home tech, Every detail intentional."</p>
+              </div>
+
+              <div class="info-item">
+                <h4>Day 27: Urgency Post (Spring Market)</h4>
+                <p><strong>Format:</strong> Bold text graphic</p>
+                <p><strong>Caption:</strong> "Spring market starts in 6 weeks. If you want to move this year, now's the time to get clear on what you want."</p>
+              </div>
+
+              <div class="info-item">
+                <h4>Day 29: FAQ (Addressing Objections)</h4>
+                <p><strong>Format:</strong> Carousel (5 FAQ slides)</p>
+                <p><strong>Caption:</strong> "Dream Home Wishlist FAQs: Is it really free? What do I get? Will you spam me? How long does it take?"</p>
+              </div>
+
+              <div class="info-item">
+                <h4>Day 30: Month-End Recap</h4>
+                <p><strong>Format:</strong> Video (Sharra talking to camera)</p>
+                <p><strong>Caption:</strong> "This month we launched the Dream Home Wishlist — and hundreds of Chester County buyers used it to get clarity on what they want."</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Instagram Stories Card -->
+    <div class="preview-card">
+      <h2>Instagram Stories Strategy (Daily)</h2>
+
+      <div class="info-grid cols-3">
+        <div class="info-item">
+          <h3>Story Series 1: "Profile of the Day" (5 days)</h3>
+          <ul>
+            <li>Day 1: The Minimalist</li>
+            <li>Day 2: The Nester</li>
+            <li>Day 3: The Entertainer</li>
+            <li>Day 4: The Urbanite</li>
+            <li>Day 5: The Retreater</li>
+          </ul>
+          <p style="margin-top: 12px;"><strong>Each story:</strong> Poll: "Is this you?" + Swipe-up link + Profile description + Example neighborhood</p>
+        </div>
+
+        <div class="info-item">
+          <h3>Story Series 2: "Chester County Neighborhoods" (7 days)</h3>
+          <ul>
+            <li>West Chester Borough</li>
+            <li>Phoenixville</li>
+            <li>Unionville</li>
+            <li>Malvern</li>
+            <li>Downingtown</li>
+            <li>Exton</li>
+            <li>Kennett Square</li>
+          </ul>
+          <p style="margin-top: 12px;"><strong>Each story:</strong> Photo/video + 3 quick facts (median price, vibe, school district) + Swipe-up link</p>
+        </div>
+
+        <div class="info-item">
+          <h3>Story Series 3: "Wishlist Builder Demo" (3 parts)</h3>
+          <ul>
+            <li>Part 1: How it works (30 seconds)</li>
+            <li>Part 2: Sample results (mood board reveal)</li>
+            <li>Part 3: Client using it (testimonial)</li>
+          </ul>
+
+          <h4 style="margin-top: 24px;">Story Highlights to Create</h4>
+          <ol>
+            <li>Dream Home Wishlist</li>
+            <li>Client Wins</li>
+            <li>Chester County</li>
+            <li>Market Insights</li>
+            <li>Meet the Team</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <!-- Platform Strategies Card -->
+    <div class="preview-card">
+      <h2>Platform-Specific Strategies</h2>
+
+      <div class="info-grid cols-2">
+        <div class="info-item">
+          <h3>Instagram Best Practices</h3>
+          <ul>
+            <li>Post between 10 AM - 2 PM EST (highest Chester County engagement)</li>
+            <li>Use Reels for neighborhood content (10x organic reach)</li>
+            <li>Stories for daily touchpoints</li>
+            <li>Grid posts for evergreen content</li>
+          </ul>
+        </div>
+
+        <div class="info-item">
+          <h3>Facebook Adjustments</h3>
+          <p><strong>Posting Frequency:</strong> 3-4 posts per week (less frequent, higher-value content)</p>
+          <p><strong>Content Differences:</strong></p>
+          <ul>
+            <li>Longer captions (Facebook algorithm rewards text)</li>
+            <li>More educational/market insight posts</li>
+            <li>Less lifestyle/aesthetic focus</li>
+            <li>Add local community group cross-posts</li>
+          </ul>
+          <p style="margin-top: 12px;"><strong>Facebook Group Strategy:</strong> Share vision board in relevant Chester County community groups (with admin permission). Frame as "free tool from local agent" not "buy my services".</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hashtag Bank Card -->
+    <div class="preview-card">
+      <h2>Hashtag Bank (Rotate These)</h2>
+
+      <div class="info-grid cols-4">
+        <div class="info-item">
+          <h3>Brand Hashtags</h3>
+          <div class="tag-list">
+            <span class="tag">#GaryMercerTeam</span>
+            <span class="tag">#ChesterCountyRealEstate</span>
+            <span class="tag">#ChescoHomes</span>
+            <span class="tag">#MontcoHomes</span>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <h3>Location Hashtags</h3>
+          <div class="tag-list">
+            <span class="tag">#WestChesterPA</span>
+            <span class="tag">#PhoenixvillePA</span>
+            <span class="tag">#ChesterCountyPA</span>
+            <span class="tag">#UnionvillePA</span>
+            <span class="tag">#MalvernPA</span>
+            <span class="tag">#DowningtownPA</span>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <h3>Action Hashtags</h3>
+          <div class="tag-list">
+            <span class="tag">#DreamHome</span>
+            <span class="tag">#HomeWishlist</span>
+            <span class="tag">#HomeBuying</span>
+            <span class="tag">#HomeBuyingTips</span>
+            <span class="tag">#RealEstateTips</span>
+            <span class="tag">#FirstTimeBuyer</span>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <h3>Lifestyle Hashtags</h3>
+          <div class="tag-list">
+            <span class="tag">#ModernHome</span>
+            <span class="tag">#FamilyHome</span>
+            <span class="tag">#LuxuryRealEstate</span>
+            <span class="tag">#UrbanLiving</span>
+            <span class="tag">#CountryLiving</span>
+            <span class="tag">#WalkableNeighborhoods</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Content Creation Tips Card -->
+    <div class="preview-card">
+      <h2>Content Creation Tips</h2>
+
+      <div class="info-grid cols-3">
+        <div class="info-item">
+          <h3>Photography</h3>
+          <ul>
+            <li>Use high-quality images (hire photographer if needed)</li>
+            <li>Natural light, warm tones (match Soft design mode)</li>
+            <li>Mix professional listings with lifestyle shots</li>
+            <li>User-generated content when possible</li>
+          </ul>
+        </div>
+
+        <div class="info-item">
+          <h3>Video</h3>
+          <ul>
+            <li>Keep Reels 15-30 seconds (algorithm prefers short)</li>
+            <li>Vertical format (9:16)</li>
+            <li>Captions/text overlay (most watch without sound)</li>
+            <li>Hook in first 3 seconds</li>
+          </ul>
+        </div>
+
+        <div class="info-item">
+          <h3>Copy</h3>
+          <ul>
+            <li>Start with hook (question, stat, bold statement)</li>
+            <li>Bullet points for readability</li>
+            <li>One clear CTA per post</li>
+            <li>Conversational tone (match brand voice: strategic + fun)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Engagement Strategy Card -->
+    <div class="preview-card">
+      <h2>Engagement Strategy</h2>
+
+      <div class="info-grid cols-2">
+        <div class="info-item">
+          <h3>Daily Engagement Routine (15 minutes)</h3>
+          <ol>
+            <li>Respond to all comments within 2 hours</li>
+            <li>Like/comment on 10 local Chester County posts</li>
+            <li>Engage with past clients' posts</li>
+            <li>Share relevant Chester County community content to stories</li>
+          </ol>
+        </div>
+
+        <div class="info-item">
+          <h3>Comment Responses</h3>
+          <ul>
+            <li>"Which profile are you?" → Personalized response + link to builder</li>
+            <li>Questions about listings → DM to continue conversation</li>
+            <li>"Is this really free?" → Confirm yes, explain value</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Paid Boost Card -->
+    <div class="preview-card">
+      <h2>Paid Boost Recommendations</h2>
+
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div class="stat-label">Total Monthly Budget</div>
+          <div class="stat-value">$200</div>
+        </div>
+      </div>
+
+      <h3 style="margin-top: 24px;">Boost These Posts:</h3>
+      <div class="info-grid cols-2">
+        <div class="info-item">
+          <h4>Vision board launch announcement (Day 1)</h4>
+          <p style="font-weight: 600; color: #d4af37;">$50</p>
+        </div>
+
+        <div class="info-item">
+          <h4>Profile reveal posts (Days 9, 17, 25)</h4>
+          <p style="font-weight: 600; color: #d4af37;">$25 each</p>
+        </div>
+
+        <div class="info-item">
+          <h4>Client testimonial (Day 3)</h4>
+          <p style="font-weight: 600; color: #d4af37;">$25</p>
+        </div>
+
+        <div class="info-item">
+          <h4>Spring market urgency (Day 27)</h4>
+          <p style="font-weight: 600; color: #d4af37;">$50</p>
+        </div>
+      </div>
+
+      <p style="margin-top: 24px;"><strong>Targeting:</strong> Chester County + Montgomery County, ages 25-55, interests: real estate</p>
+    </div>
+
+    <!-- Analytics Card -->
+    <div class="preview-card">
+      <h2>Analytics to Track</h2>
+
+      <div class="info-grid cols-3">
+        <div class="info-item">
+          <h3>Engagement Metrics</h3>
+          <ul>
+            <li>Link clicks to wishlist builder</li>
+            <li>Profile visits</li>
+            <li>DM inquiries</li>
+            <li>Saves (high-intent signal)</li>
+            <li>Shares (viral indicator)</li>
+          </ul>
+        </div>
+
+        <div class="info-item">
+          <h3>Content Performance</h3>
+          <ul>
+            <li>Which profile reveals get most engagement?</li>
+            <li>Which neighborhood spotlights drive most clicks?</li>
+            <li>Reels vs. static posts (reach comparison)</li>
+          </ul>
+        </div>
+
+        <div class="info-item">
+          <h3>Conversion Path</h3>
+          <p>Instagram profile visits → wishlist builder visits → completions</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Summary Card -->
+    <div class="preview-card" style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);">
+      <h2>Content Calendar Summary</h2>
+
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div class="stat-label">Total Posts (30 days)</div>
+          <div class="stat-value">20</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">Vision Board Promotion</div>
+          <div class="stat-value">40%</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">Chester County Lifestyle</div>
+          <div class="stat-value">30%</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">Client Testimonials</div>
+          <div class="stat-value">20%</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">Market Insights</div>
+          <div class="stat-value">10%</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">Boost Budget</div>
+          <div class="stat-value">$200/mo</div>
+        </div>
+      </div>
+
+      <h3 style="margin-top: 32px;">Month 2 Strategy Adjustments</h3>
+      <p>After 30 days, evaluate:</p>
+      <ol>
+        <li>Which profiles got most engagement? (Feature more of those)</li>
+        <li>Which neighborhoods drove most clicks? (Create deep-dive content)</li>
+        <li>What content format performed best? (Reels vs. static vs. carousel)</li>
+        <li>What was cost per link click on boosted posts? (Optimize budget)</li>
+      </ol>
+
+      <p style="margin-top: 16px; font-weight: 600;">Iterate and improve based on data, not assumptions.</p>
+    </div>
+
+  </div>
+
+  <script src="assets/preview-components.js"></script>
+</body>
+</html>
 
 <strong>Format:</strong> Carousel (5 slides)
 <strong>Caption:</strong>
